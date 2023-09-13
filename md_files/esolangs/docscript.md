@@ -3,7 +3,7 @@ Full (ish) IDE built right in to google docs
 
 designed and built to run docscript
 
-![screenshot](.\\md_files\\esolangs\\Screenshot%202023-09-13%20194709.png)
+![screenshot](md_files/esolangs/Screenshot%202023-09-13%20194709.png)
 
 ### features
  - Full syntax highting
