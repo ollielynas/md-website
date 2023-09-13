@@ -9,10 +9,10 @@ body {
     background-color: rgb(249, 249, 249);
     width: 40em;
     padding: 1.2em;
-    margin-left: calc( ( 100dvw - 40em + 15em ) / 2 );
-    margin-right: calc((100dvw - 40em - 15em ) / 2);
-    border-right: 0.1em rgb(211, 211, 142) solid;
-    border-bottom: 0.1em rgb(195, 195, 139) solid;
+    margin-left: calc( ( 100dvw - 40em + 24em ) / 2 );
+    margin-right: calc((100dvw - 40em - 24em ) / 2);
+    border-right: 0.2em rgb(211, 211, 142) solid;
+    border-bottom: 0.2em rgb(195, 195, 139) solid;
     min-height: 56em;
 }
 .navigation {
@@ -25,7 +25,7 @@ body {
     top: 1em;
     min-height: 0;
     overflow: scroll;
-    width: 15em;
+    width: 24em;
     margin: 0;  
     height: calc( 100vh - 3em );
     padding: 0.3em;
@@ -74,4 +74,8 @@ img {
     width: 80%;
     margin: 1em;
     border: 2px rgba(0, 0, 0, 0.668) solid;
+}
+
+iframe {
+    margin-top: 1em;
 }
