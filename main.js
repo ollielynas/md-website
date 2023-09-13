@@ -112,7 +112,12 @@ function update_nav() {
         update_nav()
     }
 
+    
 }
+
+var e = document.createElement("base");
+e.target = "_blank";
+document.head.appendChild(e); 
 
 
 
@@ -125,6 +130,5 @@ function load_md(file) {
         md_block.src = file;
     }
 }
-
 
 
