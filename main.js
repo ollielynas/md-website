@@ -24,7 +24,10 @@ function update_nav() {
     }
     nav.innerHTML = "";
     
+    
     let file_list = files.replace("\r","").split("\n");
+    
+
     for (f of file_list) {
         f=f.trim()
         let do_collapse = false;
@@ -51,12 +54,15 @@ function update_nav() {
                 load_md(this.id);
                 current_file = this.id;
             });
+            if (f==current_file) {
+                new_element_name.className += " ur-here"
+            }
         }else {
             if (first_time) {
                 new_c.push(f);
             }
             new_element_name.className="folder"
-           new_element_name.addEventListener("click", function () {
+            new_element_name.addEventListener("click", function () {
              if (collapsed.includes(this.id)) {
                 collapsed.splice(collapsed.indexOf(this.id),1);
              }else{
@@ -69,12 +75,27 @@ function update_nav() {
                 new_element_name.className += " close";
             }
         }
-
-        if (f.trim() === current_file.trim()) {
-            new_element_name.className += " ur-here"
-        }
+        let last_child = nav.lastChild;
         let path_text = document.createElement("p")
-        path_text.innerText = " ".repeat(Math.max(f2.length - 1, 0)) + "|-".repeat(Math.min(Math.max(f2.length - 1, 0),1));
+        path_text.innerText =
+        " ".repeat(Math.max(f2.length - 1, 0)) +
+        "├─ ".repeat(Math.min(Math.max(f2.length - 1, 0), 1));
+        
+        if (
+            last_child != null &&
+            last_child.firstChild.innerText.length+1 != path_text.innerText.length) {
+                let path_text_child = last_child.firstChild;
+                let new_text = "└─";
+                if (last_child.firstChild.innerText.length+1 < path_text.innerText.length) {
+                    new_text = "└┬";
+                }
+        
+        path_text_child.innerText = path_text_child.innerText.replace(
+            "├─",
+            new_text
+            );
+        }
+
         v_div.appendChild(path_text)
         v_div.appendChild(new_element_name);
         nav.appendChild(v_div)
