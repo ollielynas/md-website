@@ -53,6 +53,10 @@ p {
     color: blue;
 }
 
+.folder, .link {
+  cursor: pointer;
+}
+
 .link:hover {
     text-decoration: underline;
 }
