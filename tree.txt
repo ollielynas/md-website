@@ -1,6 +1,7 @@
 md_files
 md_files\home.md
 md_files\desmos
+md_files\desmos\boids.md
 md_files\desmos\galton board.md
 md_files\desmos\oscilloscope.md
 md_files\desmos\paint tool.md
