@@ -1,3 +1,4 @@
+
 // get a list of all the file in the md_files directory
 var files = "";
 fetch("tree.txt")
@@ -10,12 +11,13 @@ fetch("tree.txt")
   });
 
 var collapsed = []
-
+var first_time = true
 
 var current_file = "md_files\\home.md";
 
 
 function update_nav() {
+    let new_c = [];
     let nav = document.getElementById("nav");
     if (nav == null) {
         return
@@ -26,15 +28,12 @@ function update_nav() {
     for (f of file_list) {
         f=f.trim()
         let do_collapse = false;
-        console.log(f,collapsed)
         for (i of collapsed) {
-            console.log(i)
             if (f.includes(i) && f!=i) {
                 do_collapse = true;
                 break
             }
         }
-        console.log(do_collapse)
         if (do_collapse) {
             continue
         }
@@ -53,6 +52,9 @@ function update_nav() {
                 current_file = this.id;
             });
         }else {
+            if (first_time) {
+                new_c.push(f);
+            }
             new_element_name.className="folder"
            new_element_name.addEventListener("click", function () {
              if (collapsed.includes(this.id)) {
@@ -60,7 +62,6 @@ function update_nav() {
              }else{
                 collapsed.push(this.id);
              }
-             console.log(this.id, collapsed)
             });
             if (collapsed.includes(f)) {
                 new_element_name.className += " open";
@@ -79,6 +80,17 @@ function update_nav() {
         nav.appendChild(v_div)
         
     }
+    if (first_time) {
+
+        console.log(collapsed)
+        new_c.splice(0, 1);
+        new_c.splice(new_c.indexOf(""), 1)
+        collapsed = new_c;
+        console.log(collapsed);
+        first_time = false
+        update_nav()
+    }
+
 }
 
 
