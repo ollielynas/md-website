@@ -1,5 +1,9 @@
 ## Crossword Gen
 
+![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/crossword)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/crossword)
+
+
 makes crosswords using a thesaurus
 
 works better when played on itch.io

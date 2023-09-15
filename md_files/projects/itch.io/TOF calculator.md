@@ -1,5 +1,9 @@
 ## TOF
 
+![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/tramp)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/tramp)
+
+
 The goal of this software is to replace the expensive ToF machines used for jugging trampolining routines with free software that can allow you to calculate your ToF using a video on your phone. This video analyses feature is currently the most complete feature of the software, but it also contains a graphical routine editor that automatically calculates DD and generates FIG notation.
 
 The project uses ffmpeg for video processing. ffmpeg is automatically downloaded with the app if you do not already have it

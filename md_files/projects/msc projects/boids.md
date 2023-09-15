@@ -1,6 +1,10 @@
 
 ## Boids
 
+![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/rust-boid)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/rust-boid)
+
+
 *note to self, find a good looking screenshot*
 
 

@@ -1,4 +1,7 @@
 ## bare king
+![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/Chess)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/Chess)
+
 
 turn based, chess themed, rougelike, survival game
 

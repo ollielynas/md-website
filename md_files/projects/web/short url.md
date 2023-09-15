@@ -1,5 +1,9 @@
 ## Static URL compressor
 
+![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/short_url)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/short_url)
+
+
 input your url
 
 
