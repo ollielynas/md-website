@@ -52,6 +52,7 @@ function update_nav() {
       new_element_name.className = "link";
       new_element_name.addEventListener("click", function () {
         load_md(this.id);
+        // this.scrollIntoView();
       });
       if (f == current_file) {
         new_element_name.className += " ur-here";
