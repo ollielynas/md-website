@@ -8,7 +8,7 @@
 
 this project is unfinished as I still have several features to implement
 
-![screenshot](md_files/projects/esolangs/Screenshot%202023-09-13%20200839.png)
+![screenshot](md_files/portfolio/esolangs/Screenshot%202023-09-13%20200839.png)
 
 ### links
 
