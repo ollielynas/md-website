@@ -20,12 +20,32 @@ body {
         /* font-family: 'Fira Code', monospace; */
     font-size: calc(  1vw + 0.1rem );
     font-family: 'JetBrains Mono', monospace;
-    color: var(--text-color)
+    color: var(--text-color);
+    scrollbar-color: black;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f2f2f200;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #BDBDBD;
+    border-radius: 1px;
+    border: 1px var(--pg-color) solid;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6E6E6E;
 }
 
 h1,h2,h3 {
     color: var(--title-color);
 }
+
 
 
 .md_file {
