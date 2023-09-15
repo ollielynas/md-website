@@ -14,9 +14,9 @@ var saved_cookies = getCookie("saved cookies");
 var collapsed = [];
 var first_time = true;
 
-var current_file = getCookie("current page");;
+var current_file = getCookie("current page");
 if (current_file == null) {
-    current_file = "md_files\\home.md";
+  current_file = "md_files\\home.md";
 }
 function update_nav() {
   let new_c = [];
@@ -31,6 +31,7 @@ function update_nav() {
   for (f of file_list) {
     f = f.trim();
     let do_collapse = false;
+
     for (i of collapsed) {
       if (f.includes(i) && f != i) {
         do_collapse = true;
@@ -60,7 +61,6 @@ function update_nav() {
     } else {
       if (first_time) {
         new_c.push(f);
-
       }
       new_element_name.className = "folder";
       new_element_name.addEventListener("click", function () {
@@ -107,7 +107,7 @@ function update_nav() {
   }
   if (first_time) {
     console.log(collapsed);
-    new_c.splice(0, 1);
+    new_c.splice(0, 2);
     new_c.splice(new_c.indexOf(""), 1);
     collapsed = new_c;
     console.log(collapsed);
@@ -121,22 +121,21 @@ e.target = "_blank";
 document.head.appendChild(e);
 
 function load_md(file) {
-
-  if (file == undefined | file == null) {
+  if ((file == undefined) | (file == null)) {
     return;
   }
-  current_file=file;
+  current_file = file;
   if (file.includes(".md")) {
     let md_block = document.getElementById("md_block");
     if (md_block == null) {
-        console.log("md block not yet loaded")
-        return
-    } 
+      console.log("md block not yet loaded");
+      return;
+    }
     md_block.src = file;
   }
-  setTimeout(()=>{
-    update_cookies()
-  },1000)
+  setTimeout(() => {
+    update_cookies();
+  }, 1000);
 }
 
 function setCookie(name, value, days) {
@@ -161,55 +160,57 @@ function getCookie(name) {
 var first_loop = true;
 
 function update_cookies() {
-    console.log("test");
-      if (saved_cookies.includes("current page" + ",")) {
-        setCookie("current page", current_file, 600);
-      }
-    
-      // code
-    
-      if (!current_file.includes("cookies.md")) {
-        return;
-      }
-      let saved_cookies2 = "";
-      for (i of document.querySelectorAll("ul li input").values()) {
-        let name = i.nextSibling.nodeValue;
+  console.log("test");
+  if (saved_cookies.includes("current page" + ",")) {
+    setCookie("current page", current_file, 600);
+  }
 
-        name = name.replace(" : ", "");
-        console.log(name);
-        name = name.replace(" ", "", 1);
-        i.disabled = false;
-        if (first_loop) {
-          if (saved_cookies.includes(name + ",")) {
-            i.checked = true;
-          } else {
-            i.checked = false;
-          }
-          i.onclick = ()=>{update_cookies()};
-        }
-        if (i.checked) {
-          saved_cookies2 += name + ",";
-        } else {
-          setCookie(name, "null", 0);
-        }
-        let sibling = i.nextElementSibling;
-        let value = getCookie(name);
-        if (value == null) {
-          value = "null";
-        }
-        sibling.innerText = value;
+  // code
+
+  if (!current_file.includes("cookies.md")) {
+    return;
+  }
+  let saved_cookies2 = "";
+  for (i of document.querySelectorAll("ul li input").values()) {
+    let name = i.nextSibling.nodeValue;
+
+    name = name.replace(" : ", "");
+    console.log(name);
+    name = name.replace(" ", "", 1);
+    i.disabled = false;
+    if (first_loop) {
+      if (saved_cookies.includes(name + ",")) {
+        i.checked = true;
+      } else {
+        i.checked = false;
       }
-    
-      first_loop = false;
-    
-      setCookie("saved cookies", saved_cookies2, 600);
-      saved_cookies = saved_cookies2;
-    
-      for (i of document.querySelectorAll("ul li").values()) {
-        i.style = "list-style-type: none; margin-left:-1em";
-      }
+      i.onclick = () => {
+        update_cookies();
+      };
+    }
+    if (i.checked) {
+      saved_cookies2 += name + ",";
+    } else {
+      setCookie(name, "null", 0);
+    }
+    let sibling = i.nextElementSibling;
+    let value = getCookie(name);
+    if (value == null) {
+      value = "null";
+    }
+    sibling.innerText = value;
+  }
+
+  first_loop = false;
+
+  setCookie("saved cookies", saved_cookies2, 600);
+  saved_cookies = saved_cookies2;
+
+  for (i of document.querySelectorAll("ul li").values()) {
+    i.style = "list-style-type: none; margin-left:-1em";
+  }
 }
 
-
-
-setInterval(()=>{update_cookies();}, 3000);
+setInterval(() => {
+  update_cookies();
+}, 3000);

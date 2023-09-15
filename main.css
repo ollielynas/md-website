@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 :root {
     --main-bg-color: rgb(217, 244, 189);
@@ -115,7 +115,7 @@ input:disabled, input:disabled + em {
     display: none;
 }
 
-input {
-    /* height: calc(1.2vw + 0.01rem); */
 
+code {
+    font-family: 'Fira Code', monospace !important;
 }

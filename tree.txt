@@ -19,6 +19,8 @@ md_files\projects\esolangs\docscript.md
 md_files\projects\esolangs\FORTRAN I.md
 md_files\projects\golf
 md_files\projects\golf\dino game.md
+md_files\projects\golf\donut.md
+md_files\projects\golf\go fish.md
 md_files\projects\itch.io
 md_files\projects\itch.io\bare king.md
 md_files\projects\itch.io\Casio BASIC scratch.md
