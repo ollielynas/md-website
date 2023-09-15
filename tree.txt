@@ -1,6 +1,5 @@
 
 md_files
-md_files\cookies.md
 md_files\home.md
 md_files\links.md
 md_files\projects
@@ -36,3 +35,4 @@ md_files\projects\web
 md_files\projects\web\portfolio.md
 md_files\projects\web\short url.md
 md_files\projects\web\superfast re-randomiser.md
+md_files\cookies.md
