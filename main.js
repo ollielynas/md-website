@@ -10,7 +10,9 @@ fetch("tree.txt")
   });
 
 var saved_cookies = getCookie("saved cookies");
-
+if (saved_cookies == null) {
+  saved_cookies=""
+}
 var collapsed = [];
 var first_time = true;
 
