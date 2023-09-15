@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 :root {
-    /* --main-bg-color: rgb(217, 244, 189); */
-        --main-bg-color: rgb(249, 249, 249);
+    --main-bg-color: rgb(217, 244, 189);
+        /* --main-bg-color: rgb(249, 249, 249); */
     --pg-color: rgb(249, 249, 249);
     --text-color: rgb(59, 58, 58);
     /* --outline: rgb(211, 211, 142); */
@@ -15,6 +15,7 @@
 }
 
 
+
 body {
     background-color: var(--main-bg-color);
         /* font-family: 'Fira Code', monospace; */
@@ -22,6 +23,7 @@ body {
     font-family: 'JetBrains Mono', monospace;
     color: var(--text-color);
     scrollbar-color: black;
+    overflow: visible;
 }
 
 ::-webkit-scrollbar {
@@ -29,6 +31,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+    background: #f2f2f200;
+}
+
+::-webkit-scrollbar-track:hover {
     background: #f2f2f200;
 }
 
@@ -64,6 +70,7 @@ h1,h2,h3 {
 .navigation {
     position: sticky;
     top: 0em;
+    left:0;
 }
 
 /* .navigation .md_file {
@@ -90,6 +97,8 @@ h1,h2,h3 {
     padding-top: 1em;
     border-right: 3px rgb(92, 92, 92) solid;
     /* margin-top: -1.5em; */
+    margin-left: -1em;
+    padding-left: 2em;
 }
 
 .horizontal {
