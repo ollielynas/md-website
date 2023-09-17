@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 :root {
-    --main-bg-color: rgb(217, 244, 189);
-        /* --main-bg-color: rgb(249, 249, 249); */
+    /* --main-bg-color: rgb(217, 244, 189); */
+        --main-bg-color: rgb(249, 249, 249);
     --pg-color: rgb(249, 249, 249);
     --text-color: rgb(59, 58, 58);
     /* --outline: rgb(211, 211, 142); */
