@@ -17,6 +17,8 @@
 
 [md_files/portfolio/desmos/complex numbers.md](md_files/portfolio/desmos/complex%20numbers.md)
 
+[md_files/portfolio/desmos/fragment shader.md](md_files/portfolio/desmos/fragment%20shader.md)
+
 [md_files/portfolio/desmos/galton board.md](md_files/portfolio/desmos/galton%20board.md)
 
 [md_files/portfolio/desmos/oscilloscope.md](md_files/portfolio/desmos/oscilloscope.md)
