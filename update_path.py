@@ -39,3 +39,24 @@ for i in text.split("\n"):
 
 with open('tree.csv', 'w') as f:
    f.write(csv)
+
+
+resources = ["/favicon.ico"]
+
+resources.append("/tree.txt")
+resources.append("/main.js")
+resources.append("/main.css")
+
+
+for i in text.split("\n"):
+    if ".md" not in i:
+        continue
+    resources.append(i)
+
+resources_str = ""
+
+for i in resources:
+    resources_str += "\n["+i+"]("+i.replace(" ", "%20")+")"+"\n"
+
+with open('md_files/site/resources.md', 'w') as f:
+   f.write(resources_str)

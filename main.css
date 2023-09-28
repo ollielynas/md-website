@@ -24,6 +24,7 @@ body {
     color: var(--text-color);
     scrollbar-color: black;
     overflow: visible;
+    
 }
 
 ::-webkit-scrollbar {

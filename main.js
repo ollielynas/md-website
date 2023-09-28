@@ -1,3 +1,67 @@
+if (window.XMLHttpRequest)
+  // code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp = new XMLHttpRequest();
+// code for IE6, IE5
+else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+xmlhttp.onreadystatechange = function (oEvent) {
+  if (xmlhttp.readyState === 4) {
+    if (xmlhttp.status === 200) {
+      console.log(xmlhttp.responseText);
+    } else {
+      console.log("Error", xmlhttp.statusText);
+    }
+  }
+};
+
+if (console.everything === undefined) {
+  console.everything = [];
+
+  console.defaultLog = console.log.bind(console);
+  console.log = function () {
+    let date = new Date();
+    console.everything.push({
+      type: "log",
+      datetime: date.toLocaleDateString("en-GB"),
+      value: Array.from(arguments),
+      stack: "stack trace disabled for non-error messages",
+    });
+    console.defaultLog.apply(console, arguments);
+  };
+  console.defaultError = console.error.bind(console);
+  console.error = function () {
+    let date = new Date();
+    console.everything.push({
+      type: "error",
+      datetime: date.toLocaleDateString("en-GB"),
+      value: Array.from(arguments),
+      stack: stackTrace(),
+    });
+    console.defaultError.apply(console, arguments);
+  };
+  console.defaultWarn = console.warn.bind(console);
+  console.warn = function () {
+    let date = new Date();
+    console.everything.push({
+      type: "warn",
+      datetime: date.toLocaleDateString("en-GB"),
+      value: Array.from(arguments),
+      stack: "stack trace disabled for non-error messages",
+    });
+    console.defaultWarn.apply(console, arguments);
+  };
+  console.defaultDebug = console.debug.bind(console);
+  console.debug = function () {
+    let date = new Date();
+    console.everything.push({
+      type: "debug",
+      datetime: date.toLocaleDateString("en-GB"),
+      value: Array.from(arguments),
+      stack: "stack trace disabled for non-error messages",
+    });
+    console.defaultDebug.apply(console, arguments);
+  };
+}
 // get a list of all the file in the md_files directory
 var files = "";
 fetch("tree.txt")
@@ -11,7 +75,7 @@ fetch("tree.txt")
 
 var saved_cookies = getCookie("saved cookies");
 if (saved_cookies == null) {
-  saved_cookies=""
+  saved_cookies = "";
 }
 var collapsed = [];
 var first_time = true;
@@ -134,8 +198,14 @@ function load_md(file) {
       return;
     }
     md_block.src = file;
-    for (i of md_block.querySelectorAll("script")) {
-      eval(i.innerHTML)
+    md_block.onchange = () => {
+      console.log("change");
+    };
+
+    let scripts = md_block.querySelectorAll("script");
+    console.log(scripts);
+    for (var i = 0; i < scripts.length; i++) {
+      console.log("fakeImage: ", scripts[i]);
     }
   }
   setTimeout(() => {
@@ -165,7 +235,6 @@ function getCookie(name) {
 var first_loop = true;
 
 function update_cookies() {
-  console.log("test");
   if (saved_cookies.includes("current page" + ",")) {
     setCookie("current page", current_file, 600);
   }
@@ -219,3 +288,27 @@ function update_cookies() {
 setInterval(() => {
   update_cookies();
 }, 3000);
+
+function stackTrace() {
+  var err = new Error();
+  return err.stack;
+}
+
+function get_meta() {
+  let string = "-----------------------\n";
+
+  string += stackTrace();
+
+  string += "\n";
+
+  for (i of console.everything) {
+    if (i.type != "log") {
+      string += "--------------\n";
+      string += i.datetime + " " + i.type + "\n" + i.value;
+      string += "\n" + i.stack;
+      string += "\n";
+    }
+  }
+
+  return string;
+}
