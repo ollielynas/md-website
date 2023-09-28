@@ -5,11 +5,13 @@ p = Path('./md_files/')
 
 paths = list(p.glob('**/*.md'))
 
+bottom = ["cookies.md", "report bug.md"]
+
 print(paths)
 text = ""
 text_last = ""
 for t in paths:
-    if "cookies.md" in f"{t}":
+    if any([n in f"{t}" for n in bottom]):
         text_last += (f"{t}"+"\n")
     else:
         if "\\".join(f"{t}".split("\\")[:-2])+"\n" not in text:
@@ -27,3 +29,13 @@ text+=text_last
 
 with open('tree.txt', 'w') as f:
    f.write(text)
+
+
+csv = ""
+
+for i in text.split("\n"):
+    if ".md" not in i:continue
+    csv += i.split("\\")[-1]+","
+
+with open('tree.csv', 'w') as f:
+   f.write(csv)

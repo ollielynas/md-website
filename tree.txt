@@ -1,7 +1,8 @@
 
 md_files
 md_files\home.md
-md_files\links.md
+md_files\about me
+md_files\about me\links.md
 md_files\portfolio
 md_files\portfolio\books
 md_files\portfolio\books\tick tack toe.md
@@ -39,3 +40,4 @@ md_files\portfolio\web\portfolio.md
 md_files\portfolio\web\short url.md
 md_files\portfolio\web\superfast re-randomiser.md
 md_files\cookies.md
+md_files\report bug.md

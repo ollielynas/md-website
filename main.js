@@ -134,6 +134,9 @@ function load_md(file) {
       return;
     }
     md_block.src = file;
+    for (i of md_block.querySelectorAll("script")) {
+      eval(i.innerHTML)
+    }
   }
   setTimeout(() => {
     update_cookies();

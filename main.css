@@ -119,6 +119,8 @@ p {
     color: var(--folder);
 }
 
+
+
 .link {
     color: var(--link-light);
 }
@@ -142,6 +144,11 @@ p {
 
 .close:hover::after {
     content: " <";
+}
+
+
+.folder:empty {
+    display: none;
 }
 
 img[src^="https://img.shields.io"] {
