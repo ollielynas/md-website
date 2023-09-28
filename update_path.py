@@ -56,7 +56,8 @@ for i in text.split("\n"):
 resources_str = ""
 
 for i in resources:
-    resources_str += "\n["+i+"]("+i.replace(" ", "%20")+")"+"\n"
+    resources_str += "\n["+i+"](https://ollielynas.github.io/md-website/" + \
+        i.replace(" ", "%20")+")"+"\n"
 
 with open('md_files/site/resources.md', 'w') as f:
    f.write(resources_str)
