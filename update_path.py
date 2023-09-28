@@ -41,11 +41,11 @@ with open('tree.csv', 'w') as f:
    f.write(csv)
 
 
-resources = ["/favicon.ico"]
+resources = ["favicon.ico"]
 
-resources.append("/tree.txt")
-resources.append("/main.js")
-resources.append("/main.css")
+resources.append("tree.txt")
+resources.append("main.js")
+resources.append("main.css")
 
 
 for i in text.split("\n"):
