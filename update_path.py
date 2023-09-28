@@ -56,8 +56,7 @@ for i in text.split("\n"):
 resources_str = ""
 
 for i in resources:
-    resources_str += "\n["+i+"](" + \
-        i.replace(" ", "%20").replace("\\", "/")+")"+"\n"
+    resources_str += "\n["+i.replace("\\", "/")+"](" + i.replace(" ", "%20").replace("\\", "/")+")"+"\n"
 
 with open('md_files/site/resources.md', 'w') as f:
    f.write(resources_str)
