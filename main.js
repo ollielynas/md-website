@@ -73,6 +73,8 @@ fetch("tree.txt")
     update_nav();
   });
 
+  collapsed = files.split("\n");
+
 var saved_cookies = getCookie("saved cookies");
 if (saved_cookies == null) {
   saved_cookies = "";
@@ -80,10 +82,19 @@ if (saved_cookies == null) {
 var collapsed = [];
 var first_time = true;
 
+
 var current_file = getCookie("current page");
 if (current_file == null) {
   current_file = "md_files\\home.md";
 }
+
+let url_pg = decodeURIComponent(new URLSearchParams(window.location.search).get("page"));
+if (url_pg != null) {
+  console.log("urlpg", url_pg)
+  current_file = url_pg.replaceAll("\\","/")
+}
+
+
 function update_nav() {
   let new_c = [];
   let nav = document.getElementById("nav");
@@ -92,7 +103,7 @@ function update_nav() {
   }
   nav.innerHTML = "";
 
-  let file_list = files.replace("\r", "").split("\n");
+  let file_list = files.replaceAll("\r", "").split("\n");
 
   for (f of file_list) {
     f = f.trim();
@@ -121,7 +132,7 @@ function update_nav() {
         load_md(this.id);
         // this.scrollIntoView();
       });
-      if (f == current_file) {
+      if (f == current_file.replaceAll("/","\\")) {
         new_element_name.className += " ur-here";
       }
     } else {
@@ -187,10 +198,15 @@ e.target = "_blank";
 document.head.appendChild(e);
 
 function load_md(file) {
-  if ((file == undefined) | (file == null)) {
+  if (file == null) {
     return;
   }
+
+  
+  collapsed = collapsed.filter((a) => !file.includes(a.replaceAll("\\", "/")));
+
   current_file = file;
+
   if (file.includes(".md")) {
     let md_block = document.getElementById("md_block");
     if (md_block == null) {
@@ -211,6 +227,7 @@ function load_md(file) {
   setTimeout(() => {
     update_cookies();
   }, 1000);
+  update_nav();
 }
 
 function setCookie(name, value, days) {
@@ -248,7 +265,7 @@ function update_cookies() {
   for (i of document.querySelectorAll("ul li input").values()) {
     let name = i.nextSibling.nodeValue;
 
-    name = name.replace(" : ", "");
+    name = name.replaceAll(" : ", "");
     console.log(name);
     name = name.replace(" ", "", 1);
     i.disabled = false;
@@ -312,3 +329,5 @@ function get_meta() {
 
   return string;
 }
+
+

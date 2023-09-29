@@ -11,6 +11,10 @@
 
 [md_files/about me/links.md](md_files/about%20me/links.md)
 
+[md_files/about me/skills.md](md_files/about%20me/skills.md)
+
+[md_files/portfolio/index.md](md_files/portfolio/index.md)
+
 [md_files/portfolio/books/tick tack toe.md](md_files/portfolio/books/tick%20tack%20toe.md)
 
 [md_files/portfolio/desmos/boids.md](md_files/portfolio/desmos/boids.md)

@@ -120,10 +120,20 @@ p {
     color: var(--folder);
 }
 
+button {
+    font-family: 'JetBrains Mono', monospace;
+}
 
+h3 {
+    padding-bottom: 0.1em;
+    margin-bottom: 0.1em;
+    color: var(--folder);
+}
 
 .link {
     color: var(--link-light);
+    background-color: #6e6e6e00;
+    border: none;
 }
 
 .folder, .link {

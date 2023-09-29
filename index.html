@@ -23,12 +23,12 @@
     </div>
     <script>
         var current_file = getCookie("current page");;
-if (current_file == null) {
-    current_file = "md_files\\home.md";
-}
-        document.getElementById("content").src = current_file;
-setInterval(update_cookies(), 3000);
+        if (current_file == null) {
+            current_file = "md_files\\home.md";
+        }
+        // load_md(current_file);
 
+        setInterval(update_cookies(), 3000);
 </script>
 <script src="prism.js"></script>
 </body>
