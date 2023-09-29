@@ -31,8 +31,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Minify Action
-        uses: dra1ex/minify-action@v1.0.3
+        uses: anthonyftwang/minify-action@v1.0.1
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
