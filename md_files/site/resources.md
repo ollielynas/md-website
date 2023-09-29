@@ -73,6 +73,8 @@
 
 [md_files/portfolio/web/superfast re-randomiser.md](md_files/portfolio/web/superfast%20re-randomiser.md)
 
+[md_files/site/cache.md](md_files/site/cache.md)
+
 [md_files/site/credits.md](md_files/site/credits.md)
 
 [md_files/site/resources.md](md_files/site/resources.md)
