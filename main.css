@@ -191,3 +191,10 @@ input:disabled, input:disabled + em {
 code {
     font-family: 'Fira Code', monospace !important;
 }
+
+
+.back-fwd-button {
+    position: absolute;
+    top: 1em;
+    z-index: 100;
+}

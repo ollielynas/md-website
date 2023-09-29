@@ -1,3 +1,4 @@
+import datetime
 import os
 from pathlib import Path
 
@@ -60,3 +61,20 @@ for i in resources:
 
 with open('md_files/site/resources.md', 'w') as f:
    f.write(resources_str)
+
+date_time = datetime.datetime.now()
+sitemap = ""
+
+sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
+
+for i in ["index.html"]+resources:
+    print(i)
+    if ".md" in i or ".html" in i:
+        sitemap += "\n  <url>"
+        i = i.replace('\\', '/')
+        sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/{i}</loc>"
+        sitemap += "\n  </url>"
+sitemap += "\n</urlset>"
+
+with open('sitemap.xml', 'w') as f:
+   f.write(sitemap)

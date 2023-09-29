@@ -5,7 +5,7 @@
 
 
 
-[open in new window](https://itch.io/embed-upload/7949497?color=bdf567)
+[read online](https://itch.io/embed-upload/7949497?color=bdf567)
 
 [download PDF file](https://ollie-lynas.itch.io/the-ultimate-guide-to-naughts-and-crosses/purchase)
 
