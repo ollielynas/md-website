@@ -7,9 +7,11 @@
 
 about 500k rerandomisations per second on a list of around 60 items
 
-as high as 2M per second on a list of 2 items
+as high as 12M per second on a list of 2 items
 
-[website](https://ollielynas.github.io/re-rando/)
+<br>
+
+[try it out!](https://ollielynas.github.io/re-rando/)
 
 [Github](https://github.com/ollielynas/re-rando)
 
