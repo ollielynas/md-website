@@ -57,6 +57,7 @@ resources = ["favicon.ico"]
 resources.append("tree.txt")
 resources.append("main.js")
 resources.append("main.css")
+resources.append("no_js.html")
 
 
 for i in text.split("\n"):
@@ -90,3 +91,40 @@ sitemap += "\n</urlset>"
 
 with open('sitemap.xml', 'w') as f:
    f.write(sitemap)
+
+index = ""
+
+with open("index.html", "r") as f:
+    index=f.read()
+
+index1,index2 = index.split("<noscript id='splithere'>")
+
+index2 = index2.split("</noscript id='splithere'>")[1]
+
+index_inner=""
+
+
+no_js = ""
+
+for i in resources:
+    if ".md" not in i:continue
+    with open(i, "r") as f:
+        a="\\"
+        index_inner += f"\n<a target='_parent' href='#{i}'>{i.split(a)[-1]}</a><br>"
+        no_js += f"<h3 name = '{i}'>{i.split(a)[-1]}</h3>"
+        no_js += f.read()
+
+print(no_js)
+
+
+
+final_index = index1+"\n<noscript id='splithere'>\n"+index_inner+"\n</noscript id='splithere'>" + index2
+
+with open("index.html","w") as f:
+    f.write(final_index)
+
+
+with open("no_js.html","w") as f:
+    f.write(no_js)
+
+
