@@ -1,3 +1,4 @@
+
 # Dino Game
 
 A golfed version of the chrome dino game that can be played in the terminal

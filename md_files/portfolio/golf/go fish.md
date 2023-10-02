@@ -1,5 +1,6 @@
 ## Go Fish
 
+  <style loading="lazy" src = "prism.css"></style>
 
 ```python
 T='cls';S=set
