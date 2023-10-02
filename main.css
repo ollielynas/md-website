@@ -16,6 +16,8 @@
 
 
 
+
+
 body {
     background-color: var(--main-bg-color);
         /* font-family: 'Fira Code', monospace; */
@@ -23,9 +25,13 @@ body {
     font-family: 'JetBrains Mono', monospace;
     color: var(--text-color);
     scrollbar-color: black;
-    overflow: visible;
+    /* overflow: visible; */
+    overflow: hidden;
     
 }
+
+
+
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -198,3 +204,65 @@ code {
     top: 1em;
     z-index: 100;
 }
+
+#swipe_info {
+    display: none;
+}
+
+@media screen and (orientation:portrait) {
+    body {
+        /* overflow: scroll; */
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-snap-type: x mandatory;
+        /* scroll-snap-points-x: repeat(100vw); */
+        scroll-snap-stop: always;
+        display: flex;
+        align-items: start;
+        flex-direction: row;
+        
+    }
+
+    .md_file {
+        position: relative;
+        scroll-snap-align: middle;
+        display: flex;
+        flex-direction: column;
+        font-size: calc((1vw + 0.1rem) * 2);
+        width: 100vw;
+        min-width: 80vw;
+        padding-left: 0em;
+    }
+
+    .navigation .md_file {
+        overflow: scroll;
+        scroll-snap-align: middle;
+        position: relative;
+        width: 90dvw;
+        left: 0;
+        top: 0;
+        padding-left: 1em;
+        font-size: calc( ( 1vw + 0.1rem ) * 3 );
+        border-right: none;
+    }
+
+    #swipe_info {
+        display: flex;
+        position: fixed;
+        bottom: 2em;
+        left: 50vw;
+        transform: translate(-50%,0%);
+        z-index: 101;
+        font-size: 4em;
+        background-color: #6e6e6e37;
+        padding: 1em;
+        border-radius: 1em;
+        border: none;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        
+    }
+
+}
+
+

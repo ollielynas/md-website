@@ -23,6 +23,16 @@ for t in paths:
 
 text+=text_last
 
+# index = "";
+
+# with open("index.html","r") as f:
+#     index = f.read()
+
+# for i in text.split("\n"):
+#     if ".md" not in i: continue
+#     with open(i.replace(".md",".html"),"x") as f:
+#         f.write(index.replace("md_files\\home.md", f"\\{i}"))
+        
 
 
 # text = text.replace("md_files\\","")
@@ -54,6 +64,7 @@ for i in text.split("\n"):
         continue
     resources.append(i)
 
+
 resources_str = ""
 
 for i in resources:
@@ -61,6 +72,7 @@ for i in resources:
 
 with open('md_files/site/resources.md', 'w') as f:
    f.write(resources_str)
+
 
 date_time = datetime.datetime.now()
 sitemap = ""

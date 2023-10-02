@@ -33,6 +33,8 @@
 
 [md_files/portfolio/desmos/probability distributions.md](md_files/portfolio/desmos/probability%20distributions.md)
 
+[md_files/portfolio/desmos/raceing sim.md](md_files/portfolio/desmos/raceing%20sim.md)
+
 [md_files/portfolio/desmos/snake game.md](md_files/portfolio/desmos/snake%20game.md)
 
 [md_files/portfolio/esolangs/desmos interpreter.md](md_files/portfolio/esolangs/desmos%20interpreter.md)

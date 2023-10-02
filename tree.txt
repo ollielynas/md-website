@@ -17,6 +17,7 @@ md_files\portfolio\desmos\oscilloscope.md
 md_files\portfolio\desmos\paint tool.md
 md_files\portfolio\desmos\pixel art gif.md
 md_files\portfolio\desmos\probability distributions.md
+md_files\portfolio\desmos\raceing sim.md
 md_files\portfolio\desmos\snake game.md
 md_files\portfolio\esolangs
 md_files\portfolio\esolangs\desmos interpreter.md

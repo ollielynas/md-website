@@ -26,7 +26,7 @@
   gtag('config', 'G-EXWLJLXEX4');
 </script>
 
-<body >
+<body>
     <!-- <button class = "back-fwd-button"><</button> -->
     <div class="navigation">
         <div class="md_file" id="nav" onclick="update_nav()">
@@ -37,19 +37,13 @@
         <md-block id="md_block" src="md_files\\home.md" >
         </md-block>
     </div>
-    <button id = "swipe_info" onclick="clicked_scroll()"><- menu</button>
     <script>
         var current_file = getCookie("current page");
         if (current_file == null) {
             current_file = "md_files\\home.md";
         }
         // load_md(current_file);
-
-        document.getElementById("content").scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
+        collapsed = sessionStorage.getItem("collapsed").split("$")
 
         setInterval(update_cookies(), 3000);
 </script>
