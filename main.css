@@ -213,6 +213,7 @@ code {
     body {
         /* overflow: scroll; */
         overflow-x: hidden;
+        width: 100vw;
         overflow-y: scroll;
         scroll-snap-type: x mandatory;
         /* scroll-snap-points-x: repeat(100vw); */
