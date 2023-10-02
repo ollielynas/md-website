@@ -212,6 +212,7 @@ function load_md(file) {
 
   
   if (file.includes(".md")) {
+    // show_nav()
     current_file = file;
 
     sessionStorage.setItem("collapsed", collapsed.join("$"));
@@ -222,12 +223,7 @@ function load_md(file) {
       console.log("md block not yet loaded");
       return;
     }
-    md_block.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-    document.getElementById("swipe_info").innerText = "<- menu";
+    show_content()
     md_block.onchange = () => {
       console.log("change");
     };
@@ -358,19 +354,9 @@ var yDown = null;
 
 function clicked_scroll() {
   if (document.getElementById("swipe_info").innerText == "<- menu") {
-    document.getElementById("nav").scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-    document.getElementById("swipe_info").innerText = "document ->";
+    show_nav()
   }else {
-    document.getElementById("content").scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-    document.getElementById("swipe_info").innerText = "<- menu";
+    show_content()
   }
 }
 
@@ -398,19 +384,9 @@ function handleTouchMove(evt) {
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
-             document.getElementById("content").scrollIntoView({
-               behavior: "smooth",
-               block: "end",
-               inline: "nearest",
-             });
-             document.getElementById("swipe_info").innerText = "<- menu"
+             show_content()
         } else {
-             document.getElementById("nav").scrollIntoView({
-               behavior: "smooth",
-               block: "end",
-               inline: "nearest",
-             });
-             document.getElementById("swipe_info").innerText = "document ->"
+             show_nav()
         }                       
     } else {
         if ( yDiff > 0 ) {
@@ -424,4 +400,20 @@ function handleTouchMove(evt) {
     yDown = null;                                             
 };
 
+function show_content() {
+  document.getElementById("content").scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+  document.getElementById("swipe_info").innerText = "<- menu";
+}
 
+function show_nav() {
+  document.getElementById("nav").scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "end",
+  });
+  document.getElementById("swipe_info").innerText = "document ->";
+}

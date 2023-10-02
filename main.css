@@ -232,6 +232,7 @@ code {
         width: 100vw;
         min-width: 80vw;
         padding-left: 0em;
+        padding-right: 3em;
     }
 
     .navigation .md_file {
@@ -261,6 +262,10 @@ code {
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         
+    }
+
+    iframe {
+        width: auto;
     }
 
 }
