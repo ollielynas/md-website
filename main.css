@@ -233,6 +233,7 @@ code {
         min-width: 80vw;
         padding-left: 0em;
         padding-right: 3em;
+        overflow-y: scroll;
     }
 
     .navigation .md_file {
@@ -266,13 +267,19 @@ code {
 
     iframe {
         width: auto;
+        width: 60vw;
     }
 
     a, .link {
         font-size: calc((1vw + 0.1rem) * 3);
+        padding-bottom: 0.5em;
     }
 
-    
+    .folder {
+        padding-bottom: 0.5em;
+    }
+
+
 
 }
 

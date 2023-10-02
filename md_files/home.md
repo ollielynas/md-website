@@ -4,6 +4,8 @@ student
 
 <br>
 
+<!-- ## Other Pages -->
+
 ### About Me
 <button id = "md_files/about me/skills.md" class="link" onclick = "load_md(this.id);">my skills</button>
 
