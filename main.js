@@ -14,54 +14,54 @@ xmlhttp.onreadystatechange = function (oEvent) {
   }
 };
 
-if (console.everything === undefined) {
-  console.everything = [];
+// if (console.everything === undefined) {
+//   console.everything = [];
 
-  console.defaultLog = console.log.bind(console);
-  console.log = function () {
-    let date = new Date();
-    console.everything.push({
-      type: "log",
-      datetime: date.toLocaleDateString("en-GB"),
-      value: Array.from(arguments),
-      stack: "stack trace disabled for non-error messages",
-    });
-    console.defaultLog.apply(console, arguments);
-  };
-  console.defaultError = console.error.bind(console);
-  console.error = function () {
-    let date = new Date();
-    console.everything.push({
-      type: "error",
-      datetime: date.toLocaleDateString("en-GB"),
-      value: Array.from(arguments),
-      stack: stackTrace(),
-    });
-    console.defaultError.apply(console, arguments);
-  };
-  console.defaultWarn = console.warn.bind(console);
-  console.warn = function () {
-    let date = new Date();
-    console.everything.push({
-      type: "warn",
-      datetime: date.toLocaleDateString("en-GB"),
-      value: Array.from(arguments),
-      stack: "stack trace disabled for non-error messages",
-    });
-    console.defaultWarn.apply(console, arguments);
-  };
-  console.defaultDebug = console.debug.bind(console);
-  console.debug = function () {
-    let date = new Date();
-    console.everything.push({
-      type: "debug",
-      datetime: date.toLocaleDateString("en-GB"),
-      value: Array.from(arguments),
-      stack: "stack trace disabled for non-error messages",
-    });
-    console.defaultDebug.apply(console, arguments);
-  };
-}
+//   console.defaultLog = console.log.bind(console);
+//   console.log = function () {
+//     let date = new Date();
+//     console.everything.push({
+//       type: "log",
+//       datetime: date.toLocaleDateString("en-GB"),
+//       value: Array.from(arguments),
+//       stack: "stack trace disabled for non-error messages",
+//     });
+//     console.defaultLog.apply(console, arguments);
+//   };
+//   console.defaultError = console.error.bind(console);
+//   console.error = function () {
+//     let date = new Date();
+//     console.everything.push({
+//       type: "error",
+//       datetime: date.toLocaleDateString("en-GB"),
+//       value: Array.from(arguments),
+//       stack: stackTrace(),
+//     });
+//     console.defaultError.apply(console, arguments);
+//   };
+//   console.defaultWarn = console.warn.bind(console);
+//   console.warn = function () {
+//     let date = new Date();
+//     console.everything.push({
+//       type: "warn",
+//       datetime: date.toLocaleDateString("en-GB"),
+//       value: Array.from(arguments),
+//       stack: "stack trace disabled for non-error messages",
+//     });
+//     console.defaultWarn.apply(console, arguments);
+//   };
+//   console.defaultDebug = console.debug.bind(console);
+//   console.debug = function () {
+//     let date = new Date();
+//     console.everything.push({
+//       type: "debug",
+//       datetime: date.toLocaleDateString("en-GB"),
+//       value: Array.from(arguments),
+//       stack: "stack trace disabled for non-error messages",
+//     });
+//     console.defaultDebug.apply(console, arguments);
+//   };
+// }
 // get a list of all the file in the md_files directory
 var files = "";
 fetch("tree.txt")
@@ -215,8 +215,10 @@ function load_md(file) {
     // show_nav()
     current_file = file;
 
-    sessionStorage.setItem("collapsed", collapsed.join("$"));
 
+    location.hash = file.replaceAll("\\","/");
+
+    
 
     let md_block = document.getElementById("md_block");
     if (md_block == null) {
@@ -224,15 +226,13 @@ function load_md(file) {
       return;
     }
     show_content()
-    md_block.onchange = () => {
-      console.log("change");
-    };
 
-    let scripts = md_block.querySelectorAll("script");
-    console.log(scripts);
-    for (var i = 0; i < scripts.length; i++) {
-      console.log("fakeImage: ", scripts[i]);
-    }
+
+    // let scripts = md_block.querySelectorAll("script");
+    // console.log(scripts);
+    // for (var i = 0; i < scripts.length; i++) {
+    //   console.log("fakeImage: ", scripts[i]);
+    // }
     md_block.src = file;
   }
   setTimeout(() => {
@@ -417,3 +417,13 @@ function show_nav() {
   });
   document.getElementById("swipe_info").innerText = "document ->";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log(location.hash)
+        let hash = location.hash.replaceAll("%20", " ").replace("#","").replaceAll("/","\\");
+        if (location.hash.includes(".md")) {
+            console.log(hash)
+            document.getElementById("md_block").src = hash;
+        }
+    
+});

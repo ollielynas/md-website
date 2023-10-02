@@ -11,7 +11,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script type="module" defer async src="https://md-block.verou.me/md-block.js"></script>
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <script src='main.js'></script>
 
     <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script> -->
@@ -47,12 +47,18 @@
     </div>
     <button id = "swipe_info" onclick="clicked_scroll()"><- menu</button>
     <script>
+
         var current_file = getCookie("current page");
         if (current_file == null) {
             current_file = "md_files\\home.md";
         }
         // load_md(current_file);
-
+        console.log(location.hash)
+        let hash = location.hash.replaceAll("%20", " ").replace("#","").replaceAll("/","\\");
+        if (location.hash.includes(".md")) {
+            console.log(hash);
+            document.getElementById("content").src = hash;
+        }
         document.getElementById("content").scrollIntoView({
       behavior: "smooth",
       block: "end",
