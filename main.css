@@ -259,7 +259,7 @@ a {
         overflow-y: scroll;
         scroll-snap-align: middle;
         position: relative;
-        width: 100dvw;
+        width: 99dvw;
         left: 0;
         top: 0;
         padding-left: 1em;
@@ -310,10 +310,6 @@ a {
         }
     
         @keyframes show_nav {
-            from {
-                left: -100dvw;
-            }
-    
             to {
                 left: 0dvw;
             }
@@ -323,7 +319,6 @@ a {
             from {
                 left: 0dvw;
             }
-    
             to {
                 left: -100dvw;
             }
@@ -362,6 +357,5 @@ table {
         /* color: #fff; */
         background-color: #e4e4e4c0;
     }
-    
 }
 
