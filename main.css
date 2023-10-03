@@ -11,6 +11,7 @@
     --link-dark:rgb(50, 0, 149);
     --folder: rgb(58, 58, 58);
     --title-color: black;
+
 }
 
 
@@ -25,7 +26,9 @@ body {
     color: var(--text-color);
     scrollbar-color: black;
     /* overflow: visible; */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow: hidden;
+
     
 }
 
@@ -222,11 +225,12 @@ a {
     body {
         /* overflow: scroll; */
         overflow-x: hidden;
+        
         width: 100vw;
-        overflow-y: scroll;
-        scroll-snap-type: x mandatory;
+        /* overflow-y: scroll; */
+        /* scroll-snap-type: x mandatory; */
         /* scroll-snap-points-x: repeat(100vw); */
-        scroll-snap-stop: always;
+        /* scroll-snap-stop: always; */
         display: flex;
         align-items: start;
         flex-direction: row;
@@ -235,22 +239,27 @@ a {
 
     .md_file {
         position: relative;
-        scroll-snap-align: middle;
+        /* scroll-snap-align: middle; */
         display: flex;
         flex-direction: column;
         font-size: calc((1vw + 0.1rem) * 2);
-        width: 100vw;
+        width: 80vw;
         min-width: 80vw;
+        margin: 0;
+        margin-left: 4em;
         padding-left: 0em;
         padding-right: 3em;
         overflow-y: scroll;
+        overflow-x:none;
+        max-height: 100dvh;
+        height: 100dvh;
     }
 
     .navigation .md_file {
-        overflow: scroll;
+        overflow-y: scroll;
         scroll-snap-align: middle;
         position: relative;
-        width: 90dvw;
+        width: 100dvw;
         left: 0;
         top: 0;
         padding-left: 1em;
@@ -289,6 +298,37 @@ a {
         padding-bottom: 0.5em;
     }
 
+        #slider {
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            top: 0;
+            height: 100dvh;
+            left: -100dvw;
+            overflow: none;
+            width: 200dvw;
+            animation: show_content 0.4s ease-in-out forwards;
+        }
+    
+        @keyframes show_nav {
+            from {
+                left: -100dvw;
+            }
+    
+            to {
+                left: 0dvw;
+            }
+        }
+    
+        @keyframes show_content {
+            from {
+                left: 0dvw;
+            }
+    
+            to {
+                left: -100dvw;
+            }
+        }
 
 
 }

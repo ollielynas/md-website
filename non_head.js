@@ -83,6 +83,9 @@ function show_content() {
     inline: "nearest",
   });
   document.getElementById("swipe_info").innerText = "<- menu";
+    document.getElementById("slider").style.animation =
+      "show_content 0.1s ease-in-out forwards";
+
 }
 
 function show_nav() {
@@ -92,6 +95,7 @@ function show_nav() {
     inline: "end",
   });
   document.getElementById("swipe_info").innerText = "document ->";
+  document.getElementById("slider").style.animation = "show_nav 0.1s ease-in-out forwards"
 }
 
 // document.addEventListener("DOMContentLoaded", function () {
