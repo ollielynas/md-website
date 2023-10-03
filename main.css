@@ -307,7 +307,6 @@ a {
             left: -100dvw;
             overflow: none;
             width: 200dvw;
-            animation: show_content 0.4s ease-in-out forwards;
         }
     
         @keyframes show_nav {
