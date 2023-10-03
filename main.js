@@ -1,24 +1,39 @@
 
+
+
 var current_file = "md_files\\home.md";
 
+async function load_gzip(a) {
+  let blob = await fetch("gz\\"+a+".gz").then(r => r.blob());
+  
+  let stream = blob.stream();
+  const compressedReadableStream = stream.pipeThrough(
+    new DecompressionStream("gzip")
+  );
+
+    const resp = new Response(compressedReadableStream);
+    return resp.text();
+}
+
+
+
 var files = "";
-fetch("tree.txt")
-  .then((response) => response.text())
-  .then((data) => {
-    // Do something with your data
-    // files = data;
-    files = data;
-    update_nav();
-  });
+console.log("this is decompressed", load_gzip("tree.txt").then((data) => {
+  files = data;
+  update_nav();
+}));
 
-  collapsed = files.split("\n");
+// fetch("tree.txt")
+//   .then((response) => response.text())
+//   .then((data) => {
+//     // Do something with your data
+//     // files = data;
+//   });
 
+collapsed = files.split("\n");
 
 var collapsed = [];
 var first_time = true;
-
-
-
 
 function update_nav() {
   let new_c = [];
@@ -27,7 +42,7 @@ function update_nav() {
     return;
   }
   nav.innerHTML = "";
-  
+
   let file_list = files.replaceAll("\r", "").split("\n");
 
   for (f of file_list) {
@@ -57,7 +72,7 @@ function update_nav() {
         load_md(this.id);
         // this.scrollIntoView();
       });
-      if (f == current_file.replaceAll("/","\\")) {
+      if (f == current_file.replaceAll("/", "\\")) {
         new_element_name.className += " ur-here";
       }
     } else {

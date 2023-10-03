@@ -126,6 +126,8 @@ function clicked_scroll() {
   }
 }
 
+
+
 function load_md(file) {
   if (file == null) {
     return;
@@ -136,14 +138,14 @@ function load_md(file) {
   if (file.includes(".md")) {
     // show_nav()
     current_file = file;
-
     location.hash = file.replaceAll("\\", "/");
 
-    let md_block = document.getElementById("md_block");
-    if (md_block == null) {
-      console.log("md block not yet loaded");
-      return;
-    }
+    load_gzip(file).then((text) => {
+      document.getElementById("md_block").mdContent = text;
+    }, (text)=>{
+      document.getElementById("md_block").mdContent = text;
+    })
+
     show_content();
 
     // let scripts = md_block.querySelectorAll("script");
@@ -151,7 +153,7 @@ function load_md(file) {
     // for (var i = 0; i < scripts.length; i++) {
     //   console.log("fakeImage: ", scripts[i]);
     // }
-    md_block.src = file;
+    // md_block.src = file;
   }
 
   update_nav();

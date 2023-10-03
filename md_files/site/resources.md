@@ -83,6 +83,4 @@
 
 [md_files/site/resources.md](md_files/site/resources.md)
 
-[md_files/site/cookies.md](md_files/site/cookies.md)
-
 [md_files/site/report bug.md](md_files/site/report%20bug.md)
