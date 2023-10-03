@@ -122,12 +122,10 @@ def main():
 
     final_index = index1+"\n<noscript id='splithere'>\n"+index_inner+"\n</noscript id='splithere'>" + index2
 
-    with open("index.html","w") as f:
-        f.write(final_index)
 
 
     with open("no_js.html","w") as f:
-        f.write(no_js)
+        f.write(final_index+"\n"+no_js)
 
 
     def compress(a):
