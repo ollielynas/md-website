@@ -142,9 +142,9 @@ function load_md(file) {
     location.hash = file.replaceAll("\\", "/");
 
     load_gzip(file).then((text) => {
-      document.getElementById("md_block").mdContent = text;
+      document.getElementById("content").mdContent = text;
     }, (text)=>{
-      document.getElementById("md_block").mdContent = text;
+      document.getElementById("content").mdContent = text;
     })
 
     show_content();
