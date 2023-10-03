@@ -83,4 +83,6 @@
 
 [md_files/site/resources.md](md_files/site/resources.md)
 
+[md_files/site/website stats.md](md_files/site/website%20stats.md)
+
 [md_files/site/report bug.md](md_files/site/report%20bug.md)
