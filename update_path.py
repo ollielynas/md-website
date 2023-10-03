@@ -94,14 +94,6 @@ def main():
     with open('sitemap.xml', 'w') as f:
         f.write(sitemap)
 
-    index = ""
-
-    with open("index.html", "r") as f:
-        index=f.read()
-
-    index1,index2 = index.split("<noscript id='splithere'>")
-
-    index2 = index2.split("</noscript id='splithere'>")[1]
 
     index_inner=""
 
@@ -120,12 +112,8 @@ def main():
 
 
 
-    final_index = index1+"\n<noscript id='splithere'>\n"+index_inner+"\n</noscript id='splithere'>" + index2
-
-
-
     with open("no_js.html","w") as f:
-        f.write(final_index+"\n"+no_js)
+        f.write(index_inner+"\n"+no_js)
 
 
     def compress(a):
