@@ -213,6 +213,9 @@ code {
     display: none;
 }
 
+a {
+    background-color: #282a3500;
+}
 
 
 @media screen and (orientation:portrait) {

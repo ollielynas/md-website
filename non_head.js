@@ -1,18 +1,11 @@
-console.log(location.hash);
-let hash = location.hash
-  .replaceAll("%20", " ")
-  .replace("#", "")
-  .replaceAll("/", "\\");
-if (location.hash.includes(".md")) {
-  console.log(hash);
-  document.getElementById("content").src = hash;
-}
+
 document.getElementById("content").scrollIntoView({
   behavior: "smooth",
   block: "end",
   inline: "nearest",
 });
 
+// var collapsed=[]
 
 function stackTrace() {
   var err = new Error();
@@ -101,17 +94,17 @@ function show_nav() {
   document.getElementById("swipe_info").innerText = "document ->";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  console.log(location.hash);
-  let hash = location.hash
-    .replaceAll("%20", " ")
-    .replace("#", "")
-    .replaceAll("/", "\\");
-  if (location.hash.includes(".md")) {
-    console.log(hash);
-    document.getElementById("md_block").src = hash;
-  }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   console.log(location.hash);
+//   let hash = location.hash
+//     .replaceAll("%20", " ")
+//     .replace("#", "")
+//     .replaceAll("/", "\\");
+//   if (location.hash.includes(".md")) {
+//     console.log(hash);
+//     document.getElementById("md_block").src = hash;
+//   }
+// });
 
 var xDown = null;
 var yDown = null;
@@ -142,9 +135,9 @@ function load_md(file) {
     location.hash = file.replaceAll("\\", "/");
 
     load_gzip(file).then((text) => {
-      document.getElementById("content").mdContent = text;
+      document.getElementById("md_block").mdContent = text;
     }, (text)=>{
-      document.getElementById("content").mdContent = text;
+      document.getElementById("md_block").mdContent = text;
     })
 
     show_content();
@@ -171,3 +164,18 @@ window.addEventListener("popstate", function (event) {
     load_md(hash);
   }
 });
+
+
+console.log(location.hash);
+let hash = location.hash
+  .replaceAll("%20", " ")
+  .replace("#", "")
+  .replaceAll("/", "\\");
+if (hash.includes(".md")) {
+  load_md(hash);
+}else{
+  load_md("md_files\\home.md");
+}
+
+// update_nav();
+

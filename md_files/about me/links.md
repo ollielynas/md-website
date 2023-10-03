@@ -1,14 +1,14 @@
 ## Other Links
 
 
-|[itch.io ](https://ollie-lynas.itch.io/)|
-|----------------------------------------|
+[itch.io ](https://ollie-lynas.itch.io/)
 
-|[Github]((https://github.com/ollielynas))|
-|----------------------------------------|
+<br>
 
+[Github]((https://github.com/ollielynas))
 
-|[Email](mailto:lynasollie@gmail.com)|
-|----------------------------------------|
+<br>
+
+[Email](mailto:lynasollie@gmail.com)
 
 

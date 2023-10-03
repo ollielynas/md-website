@@ -15,11 +15,16 @@ async function load_gzip(a) {
     return resp.text();
 }
 
+collapsed = [];
+
 
 
 var files = "";
 console.log("this is decompressed", load_gzip("tree.txt").then((data) => {
   files = data;
+  let file_list = files.replaceAll("\r", "").split("\n");
+  collapsed = file_list;
+  load_md(current_file);
   update_nav();
 }));
 
@@ -30,9 +35,6 @@ console.log("this is decompressed", load_gzip("tree.txt").then((data) => {
 //     // files = data;
 //   });
 
-collapsed = files.split("\n");
-
-var collapsed = [];
 var first_time = true;
 
 function update_nav() {
@@ -44,6 +46,7 @@ function update_nav() {
   nav.innerHTML = "";
 
   let file_list = files.replaceAll("\r", "").split("\n");
+
 
   for (f of file_list) {
     f = f.trim();
@@ -122,15 +125,7 @@ function update_nav() {
     v_div.appendChild(new_element_name);
     nav.appendChild(v_div);
   }
-  if (first_time) {
-    console.log(collapsed);
-    new_c.splice(0, 2);
-    new_c.splice(new_c.indexOf(""), 1);
-    collapsed = new_c;
-    console.log(collapsed);
-    first_time = false;
-    update_nav();
-  }
+
 }
 
 var e = document.createElement("base");
