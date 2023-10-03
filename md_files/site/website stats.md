@@ -18,25 +18,27 @@ stats = [
 'loadEventEnd',
 'loadEventStart',
 'navigationStart',
-'redirectCount',
-'redirectEnd',
-'redirectStart',
+// 'redirectCount',
+// 'redirectEnd',
+// 'redirectStart',
 'requestStart',
 'responseEnd',
 'responseStart',
-'timing',
-'navigation',
-'performance',
-'type',
-'unloadEventEnd',
-'unloadEventStart'        
+// 'timing',
+// 'navigation',
+// 'performance',
+// 'type',
+// 'unloadEventEnd',
+// 'unloadEventStart'        
 ];
 var text='';
 var p = document.getElementById('page-load-stats');
-for (i in stats) {
-    text += '\n'+i
+stats.sort((a,b)=>((window.performance.timing[a] - window.performance.timing.navigationStart)-(window.performance.timing[b] - window.performance.timing.navigationStart)))
+for (i of stats) {
+    text += '<tr><td>'+i+'</td><td>'+ (window.performance.timing[i] - window.performance.timing.navigationStart)+'</td><tr>'
 };
-p.innerText = text;
-"></button>
+console.log(text,p);
+p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
+">Get Load Stats</button>
 
-<p id='page-load-stats'>no stats calculated...</p>
+<table id='page-load-stats'></table>

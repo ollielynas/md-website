@@ -167,6 +167,9 @@ h3 {
     display: none;
 }
 
+img[src^="https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg"] {
+    border: none;
+}
 img[src^="https://img.shields.io"] {
     height: 1.1em;
     width: auto;
@@ -287,4 +290,36 @@ code {
 
 }
 
+table {
+    table {
+        padding-top: 1em;
+        border-collapse: collapse;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 4px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #282a35;
+        font-size: 1em;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 1em;
+    }
+
+    tr:hover {
+        /* color: #fff; */
+        background-color: #e4e4e4c0;
+    }
+    
+}
 
