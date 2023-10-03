@@ -1,5 +1,6 @@
 /* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+python&plugins=line-numbers+toolbar+copy-to-clipboard */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 code[class*=language-],
 pre[class*=language-] {
     color: #ccc;
