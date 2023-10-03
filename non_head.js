@@ -13,6 +13,7 @@ document.getElementById("content").scrollIntoView({
   inline: "nearest",
 });
 
+
 function stackTrace() {
   var err = new Error();
   return err.stack;
@@ -158,3 +159,15 @@ function load_md(file) {
 
   update_nav();
 }
+
+
+window.addEventListener("popstate", function (event) {
+  let hash = location.hash
+    .replaceAll("%20", " ")
+    .replace("#", "")
+    .replaceAll("/", "\\");
+  if (location.hash.includes(".md")) {
+    console.log("lodeing page",hash);
+    load_md(hash);
+  }
+});
