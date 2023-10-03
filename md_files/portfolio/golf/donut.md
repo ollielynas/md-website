@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" media="screen" href="prism.css" loading="lazy">
+
+
 ## Spinning Donut
 
 
