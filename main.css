@@ -28,6 +28,7 @@ body {
     /* overflow: visible; */
     /* overflow-x: hidden; */
     overflow: hidden;
+    overflow-y: scroll;
 
     
 }
@@ -194,20 +195,35 @@ img[src^="https://img.shields.io"] {
 
 
 
-
-
-img {
-    width: 80%;
-    margin: 1em;
-    border: 2px rgba(0, 0, 0, 0.668) solid;
+/* CSS */
+button {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    cursor: pointer;
+    /* font-family: arial, sans-serif; */
+    font-size: 14px;
+    height: 36px;
+    line-height: 27px;
+    min-width: 54px;
+    padding: 0 16px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: pre;
 }
 
-iframe {
-    margin-top: 1em;
+button:hover {
+    border-color: #dadce0;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+    color: #202124;
 }
 
-input:disabled, input:disabled + em {
-    display: none;
+button:focus {
+    border-color: #4285f4;
+    outline: none;
 }
 
 
@@ -235,6 +251,7 @@ a {
     body {
         /* overflow: scroll; */
         overflow-x: hidden;
+        overflow-y: hidden;
         
         width: 100vw;
         /* overflow-y: scroll; */
@@ -292,7 +309,8 @@ a {
         border-radius: 1em;
         border: none;
         padding-top: 0.5em;
-        padding-bottom: 0.5em;
+        padding-bottom: 1.5em;
+        
         
     }
 
@@ -322,6 +340,9 @@ a {
         }
     
         @keyframes show_nav {
+            from {
+                left: -100dvw;
+            }
             to {
                 left: 0dvw;
             }

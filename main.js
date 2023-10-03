@@ -38,8 +38,14 @@ function load_md(file) {
         document.getElementById("md_block").mdContent = text;
       }
     );
-
-    show_content();
+    
+    try {
+      // Try to run this code
+      show_content();
+    } catch (err) {
+      // if any error, Code throws the error
+      console.error(err);
+    }
 
     // let scripts = md_block.querySelectorAll("script");
     // console.log(scripts);

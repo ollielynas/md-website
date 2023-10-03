@@ -83,9 +83,14 @@ function show_content() {
     inline: "nearest",
   });
   document.getElementById("swipe_info").innerText = "<- menu";
+  let slider_style = document.getElementById("slider").style;
+
+  if (slider_style.left == "0dvw") {
     document.getElementById("slider").style.animation =
       "show_content 0.1s ease-in-out forwards";
-
+  }else {
+    console.log(slider_style.left)
+  }
 }
 
 function show_nav() {
