@@ -95,25 +95,25 @@ def main():
         f.write(sitemap)
 
 
-    index_inner=""
+    # index_inner=""
 
 
-    no_js = ""
+    # no_js = ""
 
-    for i in resources:
-        if ".md" not in i:continue
-        with open(i, "r") as f:
-            a="\\"
-            index_inner += f"\n<a target='_parent' href='#{i}'>{i.split(a)[-1]}</a><br>"
-            no_js += f"<h3 name = '{i}'>{i.split(a)[-1]}</h3>"
-            no_js += f.read()
+    # for i in resources:
+    #     if ".md" not in i:continue
+    #     with open(i, "r") as f:
+    #         a="\\"
+    #         index_inner += f"\n<a target='_parent' href='#{i}'>{i.split(a)[-1]}</a><br>"
+    #         no_js += f"<h3 name = '{i}'>{i.split(a)[-1]}</h3>"
+    #         no_js += f.read()
 
-    print(no_js)
+    # print(no_js)
 
 
 
-    with open("no_js.html","w") as f:
-        f.write(index_inner+"\n"+no_js)
+    # with open("no_js.html","w") as f:
+    #     f.write(index_inner+"\n"+no_js)
 
 
     def compress(a):
