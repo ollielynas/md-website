@@ -181,6 +181,16 @@ img[src^="https://img.shields.io"] {
     border: none;
 }
 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 
 
 
@@ -253,6 +263,7 @@ a {
         overflow-x:none;
         max-height: 100dvh;
         height: 100dvh;
+        animation: fadeInAnimation .4s linear forwards;
     }
 
     .navigation .md_file {
@@ -265,6 +276,7 @@ a {
         padding-left: 1em;
         font-size: calc( ( 1vw + 0.1rem ) * 3 );
         border-right: none;
+        animation: fadeInAnimation 1s linear forwards;
     }
 
     #swipe_info {
