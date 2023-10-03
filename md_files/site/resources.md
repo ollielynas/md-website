@@ -7,8 +7,6 @@
 
 [main.css](main.css)
 
-[no_js.html](no_js.html)
-
 [md_files/home.md](md_files/home.md)
 
 [md_files/about me/links.md](md_files/about%20me/links.md)

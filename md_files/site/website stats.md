@@ -1,8 +1,11 @@
-
-![example workflow](https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg)
-
+# Page Stats
 
 
+<br>
+<table id='page-load-stats'>
+<thead><th>Event</th><th>Time (ms)</th></thead>
+<tr>
+<td>
 <button onclick="
 stats = [
 'connectEnd',
@@ -39,6 +42,19 @@ for (i of stats) {
 };
 console.log(text,p);
 p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
-">Get Load Stats</button>
+">Load Timing Stats</button>
+</td>
+<td></td>
+</tr>
 
-<table id='page-load-stats'></table>
+</table>
+
+<table>
+  <thead><th>Key</th><th>Value</th></thead>
+  <tr>
+    <td>Workflow</td><td><md-block>![site workflow](https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg)</md-block>
+</td>
+<tr>
+<td>last compiled</td><td>2023-10-03 23:21:24</td>
+</tr>
+</table>

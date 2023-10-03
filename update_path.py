@@ -59,7 +59,6 @@ def main():
     resources.append("tree.txt")
     resources.append("main.js")
     resources.append("main.css")
-    resources.append("no_js.html")
 
 
     for i in text.split("\n"):
@@ -93,6 +92,8 @@ def main():
 
     with open('sitemap.xml', 'w') as f:
         f.write(sitemap)
+    
+    
 
 
     # index_inner=""
@@ -114,7 +115,17 @@ def main():
 
     # with open("no_js.html","w") as f:
     #     f.write(index_inner+"\n"+no_js)
-
+    text=""
+    with open("md_files/site/website stats.md", "r") as f:
+        lines = f.readlines()
+        for i in range(len(lines)):
+            if "<td>last compiled</td><td>" in lines[i]:
+                lines[i] = "<td>last compiled</td><td>"+date_time.strftime("%Y-%m-%d %H:%M:%S")+"</td>\n"
+        text="".join(lines)
+        
+    with open("md_files/site/website stats.md", "w") as f:
+        if text=="":raise ValueError
+        f.write(text)
 
     def compress(a):
         
