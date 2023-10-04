@@ -1,1 +1,0 @@
-c:\Users\lynas\OneDrive\Desktop\website\md-website\target\wasm32-unknown-unknown\debug\md_website.wasm: c:\Users\lynas\OneDrive\Desktop\website\md-website\src\lib.rs c:\Users\lynas\OneDrive\Desktop\website\md-website\src\tree.txt
