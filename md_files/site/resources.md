@@ -1,11 +1,11 @@
 
 [favicon.ico](favicon.ico)
 
-[tree.txt](tree.txt)
+[src/tree.txt](src/tree.txt)
 
-[main.js](main.js)
+[js/main.js](js/main.js)
 
-[main.css](main.css)
+[css/main.css](css/main.css)
 
 [md_files/home.md](md_files/home.md)
 

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" media="screen" href="prism.css" loading="lazy">
+<link rel="stylesheet" type="text/css" media="screen" href="css/prism.css" loading="lazy">
 
 
 ## Spinning Donut

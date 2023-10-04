@@ -10,22 +10,79 @@
     <meta  name="description" content="A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills">
     <title>Ollie Lynas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link async rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link async rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script defer type="module">
+        import init, {show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
+        window.collapsed = "unset";
+        
 
-    
-    <script preload async src='main.js'></script>
+        async function run() {
+        // First up we need to actually load the wasm file, so we use the
+        // default export to inform it where the wasm file is located on the
+        // server, and then we wait on the returned promise to wait for the
+        // wasm to be loaded.
+        //
+        // It may look like this: `await init('./pkg/without_a_bundler_bg.wasm');`,
+        // but there is also a handy default inside `init` function, which uses
+        // `import.meta` to locate the wasm file relatively to js file.
+        //
+        // Note that instead of a string you can also pass in any of the
+        // following things:
+        //
+        // * `WebAssembly.Module`
+        //
+        // * `ArrayBuffer`
+        //
+        // * `Response`
+        //
+        // * `Promise` which returns any of the above, e.g. `fetch("./path/to/wasm")`
+        //
+        // This gives you complete control over how the module is loaded
+        // and compiled.
+        //
+        // Also note that the promise, when resolved, yields the wasm module's
+        // exports which is the same as importing the `*_bg` module in other
+        // modes
+        await init();
+
+        console_error_panic_hook_set();
+
+        // update_nav("FIRST");
+
+        var e = document.createElement("base");
+        e.target = "_blank";
+        document.head.appendChild(e);
+        
+        console.log("finished");
+        load_md("md_files/home.md")
+
+                window.init = init;
+        window.update_nav = update_nav;
+        window.load_gzip = load_gzip;
+        window.load_md = load_md;
+        window.onload=rs_onload;
+        window.collapse = collapse;
+        window.clicked_scroll = clicked_scroll;
+
+        rs_onload();
+
+        }
+
+      run();
+        
+        </script>
+
+
+    <!-- <script src='js/main.js'></script> -->
 
 
 </head>
 
-
-
 <body style="display: flex; flex-direction: row;">
     <div id = "slider" style="left:0dvw">
     <div class="navigation">
-        <div class="md_file" id="nav" onclick="update_nav()">
+        <div class="md_file" id="nav" onclick="">
             md_files
             <br>
         </div>
@@ -36,13 +93,23 @@
 
     </div>
     </div>
-    <button id = "swipe_info" onclick="clicked_scroll()"><- menu</button>
-
-    <script defer src = "non_head.js"></script>
-
-    <script src="prism.js"></script>
-
-
+    <button id = "swipe_info" onclick="window.clicked_scroll()"><- menu</button>
+    <!-- <script defer src = "js/non_head.js"></script> -->
+    <script src="js/prism.js"></script>
+<script defer>
+    window.addEventListener("popstate", function (event) {
     
+  let hash = location.hash
+    .replaceAll("%20", " ")
+    .replace("#", "")
+    .replaceAll("/", "\\");
+  if (location.hash.includes(".md")) {
+    console.log("lodeing page",event);
+    window.load_md(hash);
+  }
+  
+});
+
+</script>
 </body>
 </html>

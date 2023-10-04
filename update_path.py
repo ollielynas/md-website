@@ -2,14 +2,20 @@ import datetime
 import os
 from pathlib import Path
 import gzip
+import markdown
+from io import BytesIO
+
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 
 p = Path('./md_files/')
 
 paths = list(p.glob('**/*.md'))
 
-bottom = ["cookies.md", "report bug.md"]
+bottom = ["report bug.md"]
 
-print(paths)
 text = ""
 text_last = ""
 for t in paths:
@@ -39,7 +45,7 @@ text+=text_last
 # text = text.replace("md_files\\","")
 # text = text.replace("md_files", "")
 
-with open('tree.txt', 'w') as f:
+with open('src/tree.txt', 'w') as f:
     f.write(text)
 
 
@@ -55,9 +61,9 @@ with open('tree.csv', 'w') as f:
 
 resources = ["favicon.ico"]
 
-resources.append("tree.txt")
-resources.append("main.js")
-resources.append("main.css")
+resources.append("src/tree.txt")
+resources.append("js/main.js")
+resources.append("css/main.css")
 
 
 for i in text.split("\n"):
@@ -81,7 +87,6 @@ sitemap = ""
 sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
 
 for i in ["index.html"]+resources:
-    print(i)
     if ".md" in i or ".html" in i:
         sitemap += "\n  <url>"
         i = i.replace('\\', '/')
@@ -131,10 +136,23 @@ def compress(a):
     output_file = Path('gz/'+a.replace("\\","/")+'.gz')
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
-    with open(a, 'rb') as f_in, gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
-        f_out.writelines(f_in)
-
+    if ".md" in a:
+    
+    
+        with open(a, 'r') as f_in:
+            f_in = markdown.markdown(f_in.read())
+            print(f_in)
+            f_in = BytesIO(bytes(f_in, 'utf-8'))
+            
+            with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
+                f_out.writelines(f_in)
+    else:
+        with open(a, 'rb') as f_in, gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+            f_out.writelines(f_in)
 for i in resources:
     compress(i)
+
+
+# timeline = tomllib.loads(Path("md_files/about me/timeline.toml").read_text(encoding="utf-8"))
 
 

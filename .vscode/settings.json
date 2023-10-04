@@ -1,6 +1,10 @@
 {
     "cSpell.words": [
         "autocapatalisation",
+        "bindgen",
         "rerandomisations"
+    ],
+    "rust-analyzer.linkedProjects": [
+        ".\\Cargo.toml"
     ]
 }

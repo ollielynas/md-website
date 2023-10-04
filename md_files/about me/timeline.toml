@@ -1,10 +1,12 @@
 
 
+start = 2005-01-01
+
 [high_school]
-date = 2010-08-28
+date = 2019-02-01
 title = "started school"
-location = "balmoral school"
-finished = 2019-12-20
+location = "Mount Albert Grammar School"
+finished = 2023-08-20
 row = 0
 
 
@@ -12,7 +14,7 @@ row = 0
 date = 2010-08-28
 title = "started school"
 location = "balmoral school"
-finished = 2019-12-20
+finished = 2018-12-20
 row = 0
 
 [born]
