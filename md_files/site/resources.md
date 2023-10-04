@@ -11,6 +11,8 @@
 
 [md_files/about me/links.md](md_files/about%20me/links.md)
 
+[md_files/about me/resume.md](md_files/about%20me/resume.md)
+
 [md_files/about me/skills.md](md_files/about%20me/skills.md)
 
 [md_files/portfolio/index.md](md_files/portfolio/index.md)
