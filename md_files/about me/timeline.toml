@@ -1,0 +1,16 @@
+
+
+
+
+
+[primary_school]
+date = 2010-08-28
+title = "started school"
+location = "balmoral school"
+finished = 2019-12-20
+row = 0
+
+[born]
+date = 2005-08-28
+title = "born"
+location = "auckland"

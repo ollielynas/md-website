@@ -28,7 +28,7 @@ body {
     /* overflow: visible; */
     /* overflow-x: hidden; */
     overflow: hidden;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 
     
 }
@@ -74,7 +74,8 @@ h1,h2,h3 {
     border-right: 0.2em var(--outline) solid;
     border-bottom: 0.2em var(--outline) solid;
     /* min-height: 56em; */
-    overflow-y: scroll;
+    /* overflow-y:; */
+    width: auto;
     height: 100%;
 }
 .navigation {
@@ -246,6 +247,17 @@ a {
     background-color: #282a3500;
 }
 
+
+#slider {
+    overflow-y: scroll;
+    overflow-x: none;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+img {
+    max-width: 100%;
+}
 
 @media screen and (orientation:portrait) {
     body {
