@@ -28,6 +28,8 @@ body {
     /* overflow: visible; */
     /* overflow-x: hidden; */
     overflow: hidden;
+    width: 100dvw;
+
     /* overflow-y: scroll; */
 
     

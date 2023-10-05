@@ -78,5 +78,6 @@ body {
     font-size: calc(1vw + 0.1rem);
     font-family: 'JetBrains Mono', monospace;
     color: var(--text-color);
+    overflow-x: hidden;
     scrollbar-color: black;
 }
