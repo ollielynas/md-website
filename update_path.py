@@ -62,7 +62,6 @@ with open('tree.csv', 'w') as f:
 resources = ["favicon.ico"]
 
 resources.append("src/tree.txt")
-resources.append("js/main.js")
 resources.append("css/main.css")
 
 
@@ -141,7 +140,6 @@ def compress(a):
     
         with open(a, 'r') as f_in:
             f_in = markdown.markdown(f_in.read())
-            print(f_in)
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
             with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:

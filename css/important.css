@@ -1,0 +1,82 @@
+:root {
+    /* --main-bg-color: rgb(217, 244, 189); */
+    --main-bg-color: rgb(249, 249, 249);
+    --pg-color: rgb(249, 249, 249);
+    --text-color: rgb(59, 58, 58);
+    /* --outline: rgb(211, 211, 142); */
+    --outline: rgb(249, 249, 249);
+    --link-light: blue;
+    --link-dark: rgb(50, 0, 149);
+    --folder: rgb(58, 58, 58);
+    --title-color: black;
+
+}
+
+button {
+    background: none;
+    border: none;
+    color: var(--link-light);
+}
+
+
+#swipe_info {
+    display: none;
+}
+
+.md_file {
+    background-color: var(--pg-color);
+    width: 40em;
+    padding: 1.2em;
+    margin-top: 2em;
+    margin-left: calc((100dvw - 48em + 24em) / 2);
+    margin-right: calc((100dvw - 40em - 24em) / 2);
+    border-right: 0.2em var(--outline) solid;
+    border-bottom: 0.2em var(--outline) solid;
+    /* min-height: 56em; */
+    /* overflow-y:; */
+    width: auto;
+    /* height: 80%; */
+}
+
+.navigation {
+    position: sticky;
+    top: 0em;
+    left: 0;
+}
+
+/* .navigation .md_file {
+    position: absolute;
+    top: 1em;
+    min-height: 0;
+    overflow: scroll;
+    width: 24em;
+    margin: 0;  
+    height: calc( 100vh - 3em );
+    padding: 0.3em;
+    margin-top: -1.5em;
+} */
+
+.navigation .md_file {
+    position: fixed;
+    top: 0em;
+    min-height: 0;
+    overflow: scroll;
+    width: 24em;
+    margin: 0;
+    height: 100%;
+    padding: 0.3em;
+    padding-top: 1em;
+    border-right: 3px rgb(92, 92, 92) solid;
+    /* margin-top: -1.5em; */
+    margin-left: -1em;
+    padding-left: 2em;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    /* font-family: 'Fira Code', monospace; */
+    font-size: calc(1vw + 0.1rem);
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-color);
+    scrollbar-color: black;
+}

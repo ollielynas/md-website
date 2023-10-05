@@ -6,6 +6,7 @@ export function collapse(a: number, b: number): void;
 export function update_nav(): number;
 export function load_gzip(a: number, b: number): number;
 export function load_md(a: number, b: number): number;
+export function load_style(): number;
 export function rs_onload(): number;
 export function clicked_scroll(): number;
 export function show_nav(): number;

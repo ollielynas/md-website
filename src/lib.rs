@@ -4,6 +4,7 @@ use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::JsFuture;
+use web_sugars::document;
 use web_sys::Location;
 use web_sys::Response;
 use web_sys::window;
@@ -33,13 +34,21 @@ pub fn collapse(mut path: String) {
     path = path.replace("\\", "/");
     let window = get_window().unwrap();
     let mut collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
-    if collapsed.contains(&path) {
-        collapsed = collapsed.split(";").filter(|x| !x.contains(path)).collect::<Vec<&str>>().join(";")
-    } else {
-        collapsed += &format!(";{}", path)
+    
+    let mut collapsed_list = collapsed.split(";").collect::<Vec<&str>>();
+    
+    if collapsed.contains(&format!("{};",path)) {
+        // js_sys::eval(&format!("console.log('3.0 {:?} {:?}')",path, collapsed));
+        collapsed_list.retain(|x| x!=&path && x!=&"");
+    }else {
+        collapsed_list.push(&path);
     }
+
+    collapsed = collapsed_list.join(";");
+
     js_sys::eval(&format!("window.collapsed='{}'",collapsed));
     
+
     update_nav();
 }
 
@@ -51,8 +60,7 @@ pub fn update_nav() -> Option<bool> {
     let mut files: Vec<&str> = include_str!(r"tree.txt").lines().collect();
     let mut collapsed;
     if window.get("collapsed").is_none() ||  window.get("collapsed")?.to_string().as_string() == Some("unset".to_owned()) {
-        collapsed = files.iter().filter(|x|!x.contains(".md")).cloned().collect::<Vec<&str>>().join(";").replace("\\", "/");
-        
+        collapsed = files.iter().filter(|x|!x.contains(".md")).cloned().collect::<Vec<&str>>().join(";").replace("\\", "/").replace(";md_files;", ";");
     }else {
         collapsed = window.get("collapsed")?.to_string().as_string().unwrap_or("unset".to_owned());
     }
@@ -60,20 +68,22 @@ pub fn update_nav() -> Option<bool> {
     if collapsed == "" {
         collapsed = files.join(";").replace("\\", "/");
     }
+    
 
     for i in collapsed.split(";") {
         if i == ""{
             continue;
         }
-        js_sys::eval(&format!("console.log('{:?} {:?}')",files, i));
-        files.retain(|x| !x.replace("\\","/").contains(i));
+
+        files.retain(|x| !x.replace("\\","/").contains(&format!("{}/",i)));
     }
     
     let nav = document.get_element_by_id("nav")?;
+    
     js_sys::eval(&format!("window.collapsed='{}'",collapsed));
     
     nav.set_inner_html("");
-
+    
     
 
     for i in 0..files.len() {
@@ -101,30 +111,33 @@ pub fn update_nav() -> Option<bool> {
             .add_event_listener_with_callback(
                 "click",
                 &if md {
-                    Function::new_no_args("window.update_nav();this.className+=' ur-here';window.load_md(this.id);")
+                    Function::new_no_args("window.load_md(this.id);")
                 } else {
                     Function::new_no_args("window.collapse(this.id);")
                 },
             )
             .ok()?;
         let mut tree_text = "".to_owned();
-        tree_text += &" ".repeat(f.split("\\").count());
+        tree_text += &" ".repeat((f.split("\\").count() as i32-1).min(0) as usize);
+        
+        let current_len = f.split("\\").count();
+        let next_len = files.get(i+1).unwrap_or(&"").split("\\").count();
 
+
+        // check out this gross match statement
         tree_text += match (
-            name.contains(".md"),
-            if i + 1 < files.len() {
-                files[i + 1].contains(".md")
-            } else {
-                false
-            },
+            current_len < next_len,
+            current_len > next_len
         ) {
+            _ if current_len == 1 => "",
             (true, true) | (false, false) => "├─",
-            (true, false) => "└─",
-            (false, true) => "└┬",
+            (false, true) => "└─",
+            (true, false) => "└┬",
         };
+        
 
         let path_text_element = document.create_element("p").ok()?;
-        path_text_element.set_text_content(Some(&tree_text));
+            path_text_element.set_text_content(Some(&tree_text));
 
         horizontal.append_child(&path_text_element).ok()?;
         horizontal.append_child(&new_element).ok()?;
@@ -135,7 +148,7 @@ pub fn update_nav() -> Option<bool> {
 }
 
 #[wasm_bindgen]
-pub async fn load_gzip(file: String) -> Result<String, JsValue> {
+pub async fn load_gzip(file: &str) -> Result<String, JsValue> {
 
     let url = format!("gz\\{}.gz", file);
 
@@ -145,8 +158,8 @@ pub async fn load_gzip(file: String) -> Result<String, JsValue> {
     let bytes: Vec<u8> = array.to_vec();
     let mut decoder = DeflateDecoder::new( & bytes);
 
-    let data = decoder.decode_gzip().unwrap();
-    let string = str::from_utf8(&data).unwrap();
+    let data = decoder.decode_gzip().unwrap_or(vec![]);
+    let string = str::from_utf8(&data).unwrap_or("invalid data");
 
     return Ok(string.to_owned());
 }
@@ -160,9 +173,21 @@ pub async fn load_md(file: String) -> Result<(), WebSysSugarsError> {
     let window = get_window()?;
     
     let mut collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
+    let mut file2 = "".to_owned();
+    for i in file.split("\\") {
+        file2+=i;
+        collapsed = collapsed.replace(&format!(";{};",file2), ";");
+    }
+        collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
+    
+    let mut collapsed_list = collapsed.split(";").collect::<Vec<&str>>();
+    let path = file.split("\\").filter(|x|!x.contains(".md")).collect::<Vec<&str>>().join("/");
+    
+    
+    collapsed_list.retain(|x| x!=&path && x!=&"");
 
-    collapsed = collapsed.split(";").filter(|a|!a.contains(&file)).collect::<Vec<&str>>().join(";").to_owned();
 
+    collapsed = collapsed_list.join(";");
     
     
     js_sys::eval(&format!("window.collapsed='{}'",collapsed));
@@ -174,7 +199,7 @@ pub async fn load_md(file: String) -> Result<(), WebSysSugarsError> {
         window.location().set_hash(&file.replace("\\","/"));
     }
 
-    let text = match load_gzip(file).await {
+    let text = match load_gzip(&file).await {
         Ok(a) => a,
         Err(a) => format!("{:?}",a),
     };
@@ -182,24 +207,47 @@ pub async fn load_md(file: String) -> Result<(), WebSysSugarsError> {
     md_block.set_inner_html(&text);
 
     // window()
-    
+    update_nav();
 
+    
+    
+    get_element_by_id(&file)?.set_class_name("link ur-here");
     // md
 
     return Ok(());
 }
 
+#[wasm_bindgen]
+pub async fn load_style() -> Result<(), WebSysSugarsError> {
+let style = match load_gzip("css/main.css").await {
+        Ok(a) => a,
+        Err(a) => format!("body:after {{content: '{:?}'}}", a),
+    };
+    
+    get_element_by_id("main-style")?.set_inner_html(&style);
+    
+
+    Ok(())
+}
+
 
 #[wasm_bindgen]
 pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
+
     
-    let hash = get_window()?.location().hash().unwrap_or("md_files\\home.md".to_owned());
+    
+    
+    
+    let hash = get_window()?.location().hash().unwrap_or("md_files/home.md".to_owned());
 
     if hash.contains(".md") {
-        load_md(hash);
+        load_md(hash.replace("#", "")).await?;
     }
 
-    update_nav();
+    // update_nav();
+
+    collapse("md_files".to_owned());
+    
 
     return Ok(());
 }

@@ -3,8 +3,6 @@
 
 [src/tree.txt](src/tree.txt)
 
-[js/main.js](js/main.js)
-
 [css/main.css](css/main.css)
 
 [md_files/home.md](md_files/home.md)

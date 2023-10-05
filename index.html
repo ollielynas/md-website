@@ -10,10 +10,13 @@
     <meta  name="description" content="A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills">
     <title>Ollie Lynas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link async rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link async  rel='stylesheet' type='text/css' media='screen' href='css/important.css'>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script defer type="module">
-        import init, {show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
+    <style id="main-style">
+
+    </style>
+    <script type="module">
+        import init, {load_style, show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
         window.collapsed = "unset";
         
 
@@ -55,17 +58,21 @@
         document.head.appendChild(e);
         
         console.log("finished");
-        load_md("md_files/home.md")
+        // load_md("md_files/home.md")
 
-                window.init = init;
+        window.init = init;
         window.update_nav = update_nav;
+        window.load_style = load_style;
         window.load_gzip = load_gzip;
         window.load_md = load_md;
-        window.onload=rs_onload;
+        window.rs_onload=rs_onload;
         window.collapse = collapse;
         window.clicked_scroll = clicked_scroll;
 
+      
         rs_onload();
+        load_style();
+        
 
         }
 
@@ -88,8 +95,19 @@
         </div>
     </div>
     <div class="md_file" id="content">
-        <md-block id="md_block">
-        </md-block>
+        <div id="md_block">
+        <div id="md_block"><h1>Ollie Lynas</h1>
+<p>student</p>
+<p><br></p>
+<!-- ## Other Pages -->
+
+<h3>About Me</h3>
+<p><button id="md_files/about me/skills.md" class="link" onclick="window.load_md(this.id);">my skills</button></p>
+<p><button id="md_files/about me/links.md" class="link" onclick="window.load_md(this.id);">contact me</button></p>
+<h3>Projects</h3>
+<p><button id="md_files/portfolio/index.md" class="link" onclick="window.load_md(this.id);">example projects</button></p></div>
+
+        </div>
 
     </div>
     </div>
@@ -97,19 +115,22 @@
     <!-- <script defer src = "js/non_head.js"></script> -->
     <script src="js/prism.js"></script>
 <script defer>
-    window.addEventListener("popstate", function (event) {
+//     window.addEventListener("popstate", function (event) {
     
-  let hash = location.hash
-    .replaceAll("%20", " ")
-    .replace("#", "")
-    .replaceAll("/", "\\");
-  if (location.hash.includes(".md")) {
-    console.log("lodeing page",event);
-    window.load_md(hash);
-  }
+//   let hash = location.hash
+//     .replaceAll("%20", " ")
+//     .replace("#", "")
+//     .replaceAll("/", "\\");
+//   if (location.hash.includes(".md")) {
+//     console.log("lodeing page",event);
+//     window.load_md(hash);
+//   }
   
-});
-
+// });
+// (async () => {
+//   window.rs_onload();
+//   window.load_style();
+// })();
 </script>
 </body>
 </html>

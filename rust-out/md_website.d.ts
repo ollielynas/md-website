@@ -25,6 +25,10 @@ export function load_md(file: string): Promise<void>;
 /**
 * @returns {Promise<void>}
 */
+export function load_style(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
 export function rs_onload(): Promise<void>;
 /**
 * @returns {Promise<void>}
@@ -48,6 +52,7 @@ export interface InitOutput {
   readonly update_nav: () => number;
   readonly load_gzip: (a: number, b: number) => number;
   readonly load_md: (a: number, b: number) => number;
+  readonly load_style: () => number;
   readonly rs_onload: () => number;
   readonly clicked_scroll: () => number;
   readonly show_nav: () => number;
