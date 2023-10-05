@@ -140,6 +140,12 @@ def compress(a):
     
         with open(a, 'r') as f_in:
             f_in = markdown.markdown(f_in.read())
+            if "home.md" in a:
+                with open("index.html", "r") as f_index:
+                    f_index_list = f_index.read().split("<!-- START-STOP -->")
+                with open("index.html", "w") as f_index_w:
+                    f_index_w.write(f_index_list[0]+"<!-- START-STOP -->"+
+                                    f_in+"<!-- START-STOP -->"+f_index_list[2] )
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
             with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
