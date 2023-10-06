@@ -5,6 +5,8 @@ import gzip
 import markdown
 from io import BytesIO
 
+from css_html_js_minify import html_minify, js_minify, css_minify
+
 try:
     import tomllib
 except ModuleNotFoundError:
@@ -160,14 +162,24 @@ def compress(a):
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
     if ".md" in a:
-    
-    
         with open(a, 'r') as f_in:
             f_in = process(f_in.read(),a)
 
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
             with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
+                f_out.writelines(f_in)
+    elif ".js" in a:
+        with open(a, 'r') as f_in:
+            f_in = js_minify(f_in.read())
+            f_in = BytesIO(bytes(f_in, 'utf-8'))
+            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+                f_out.writelines(f_in)
+    elif ".css" in a:
+        with open(a, 'r') as f_in:
+            f_in = css_minify(f_in.read())
+            f_in = BytesIO(bytes(f_in, 'utf-8'))
+            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
     else:
         with open(a, 'rb') as f_in, gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
