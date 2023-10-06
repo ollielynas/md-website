@@ -55,6 +55,6 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
     <td>Workflow</td><td><md-block>![site workflow](https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg)</md-block>
 </td>
 <tr>
-<td>last compiled</td><td>2023-10-07 01:27:57</td>
+<td>last compiled</td><td>2023-10-07 01:30:08</td>
 </tr>
 </table>
