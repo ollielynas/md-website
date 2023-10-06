@@ -2,6 +2,7 @@ use console_error_panic_hook;
 use js_sys::Function;
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
+use web_sugars::window;
 use zune_inflate::DeflateDecoder;
 use web_sugars::prelude::*;
 use std::str;
@@ -190,8 +191,10 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     let md_block = get_element_by_id("md_block")?;
 
     let window = get_window()?;
-    if window.location().hash().unwrap_or("x".to_owned()) != file {
-        window.location().set_hash(&file.replace("\\","/"));
+    let loc = window.location();
+    if loc.hash().unwrap_or("x".to_owned()) != file {
+        // window.location().set_hash(&file.replace("\\","/"));
+        loc.replace(&format!("{}#{}",loc.pathname().unwrap_or("error!".to_string()), file.replace("\\","/")));
     }
 
     let text = match load_gzip(&file).await {

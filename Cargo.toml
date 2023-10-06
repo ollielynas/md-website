@@ -29,5 +29,6 @@ features = [
   'RequestInit',
   'RequestMode',
   'Response',
-  'Location'
+  'Location',
+  'History'
 ]
