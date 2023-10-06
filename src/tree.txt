@@ -41,6 +41,8 @@ md_files\portfolio\itch.io\quantum chess.md
 md_files\portfolio\itch.io\TOF calculator.md
 md_files\portfolio\msc projects
 md_files\portfolio\msc projects\boids.md
+md_files\portfolio\team projects
+md_files\portfolio\team projects\capture the flag.md
 md_files\portfolio\web
 md_files\portfolio\web\portfolio.md
 md_files\portfolio\web\short url.md

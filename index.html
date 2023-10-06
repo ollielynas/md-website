@@ -12,11 +12,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link async  rel='stylesheet' type='text/css' media='screen' href='css/important.css'>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style id="main-style">
-
+        
     </style>
     <script type="module">
-        import init, {load_style, show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
+        import init, {update_from_hash, load_style, show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
         window.collapsed = "unset";
         
 
@@ -68,6 +69,7 @@
         window.rs_onload=rs_onload;
         window.collapse = collapse;
         window.clicked_scroll = clicked_scroll;
+        window.update_from_hash = update_from_hash;
 
       
         rs_onload();

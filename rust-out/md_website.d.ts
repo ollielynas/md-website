@@ -29,6 +29,10 @@ export function load_style(): Promise<void>;
 /**
 * @returns {Promise<void>}
 */
+export function update_from_hash(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
 export function rs_onload(): Promise<void>;
 /**
 * @returns {Promise<void>}
@@ -53,6 +57,7 @@ export interface InitOutput {
   readonly load_gzip: (a: number, b: number) => number;
   readonly load_md: (a: number, b: number) => number;
   readonly load_style: () => number;
+  readonly update_from_hash: () => number;
   readonly rs_onload: () => number;
   readonly clicked_scroll: () => number;
   readonly show_nav: () => number;

@@ -1,11 +1,10 @@
 <link rel="stylesheet" type="text/css" media="screen" href="css/prism.css" loading="lazy">
+<script src="js/prism.js"></script>
 
 
 ## Go Fish
 
-  <style loading="lazy" src = "prism.css"></style>
-
-```python
+<code data-language="python">
 T='cls';S=set
 R=input;I=print;H=len
 import random as J,os
@@ -39,4 +38,5 @@ while H(D[0]+D[1])<12:
    D[B].append(C+N);I(f"{K[B]} placed a set of {C}s")
 if H(D[0])==H(D[1]):R('tie');quit()
 I(K[int(H(D[0])<H(D[1]))]+' won')
-```
+</code>
+

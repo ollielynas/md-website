@@ -152,6 +152,7 @@ h3 {
 
 .folder, .link {
   cursor: pointer;
+  user-select: none;
 }
 
 .link:hover {

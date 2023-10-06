@@ -71,6 +71,8 @@
 
 [md_files/portfolio/msc projects/boids.md](md_files/portfolio/msc%20projects/boids.md)
 
+[md_files/portfolio/team projects/capture the flag.md](md_files/portfolio/team%20projects/capture%20the%20flag.md)
+
 [md_files/portfolio/web/portfolio.md](md_files/portfolio/web/portfolio.md)
 
 [md_files/portfolio/web/short url.md](md_files/portfolio/web/short%20url.md)

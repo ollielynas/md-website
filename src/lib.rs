@@ -31,8 +31,11 @@ pub fn collapse(mut path: String) {
     if path == "" {
         return;
     }
+
     path = path.replace("\\", "/");
+
     let window = get_window().unwrap();
+
     let mut collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
     
     let mut collapsed_list = collapsed.split(";").collect::<Vec<&str>>();
@@ -45,6 +48,7 @@ pub fn collapse(mut path: String) {
     }
 
     collapsed = collapsed_list.join(";");
+
 
     js_sys::eval(&format!("window.collapsed='{}'",collapsed));
     
@@ -107,14 +111,15 @@ pub fn update_nav() -> Option<bool> {
                 }
         });
 
-        new_element
-            .add_event_listener_with_callback(
+        new_element.
+            add_event_listener_with_callback_and_bool(
                 "click",
                 &if md {
                     Function::new_no_args("window.load_md(this.id);")
                 } else {
                     Function::new_no_args("window.collapse(this.id);")
                 },
+                true
             )
             .ok()?;
         let mut tree_text = "".to_owned();
@@ -165,33 +170,35 @@ pub async fn load_gzip(file: &str) -> Result<String, JsValue> {
 }
 
 #[wasm_bindgen]
-pub async fn load_md(file: String) -> Result<(), WebSysSugarsError> {
+pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 
+    
     if !file.contains(".md") {
         return Err(WebSysSugarsError::NotImplemented);
     }
+    
+
+    file = file.replace("/", "\\");
+
     let window = get_window()?;
     
     let mut collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
-    let mut file2 = "".to_owned();
-    for i in file.split("\\") {
-        file2+=i;
-        collapsed = collapsed.replace(&format!(";{};",file2), ";");
-    }
-        collapsed = window.get("collapsed").unwrap().to_string().as_string().unwrap_or("unset".to_owned());
+    
     
     let mut collapsed_list = collapsed.split(";").collect::<Vec<&str>>();
+    
     let path = file.split("\\").filter(|x|!x.contains(".md")).collect::<Vec<&str>>().join("/");
     
+    collapsed_list.retain(|x| !path.replace("\\", "/").contains(x) && x!=&"");
+    js_sys::eval(&format!("console.log('{}, {}')",path, collapsed));
+
     
-    collapsed_list.retain(|x| x!=&path && x!=&"");
 
 
     collapsed = collapsed_list.join(";");
     
     
-    js_sys::eval(&format!("window.collapsed='{}'",collapsed));
-
+    
     let md_block = get_element_by_id("md_block")?;
 
     let window = get_window()?;
@@ -206,12 +213,13 @@ pub async fn load_md(file: String) -> Result<(), WebSysSugarsError> {
     
     md_block.set_inner_html(&text);
 
+
     // window()
     update_nav();
 
     
     
-    get_element_by_id(&file)?.set_class_name("link ur-here");
+    get_element_by_id(&file.replace("/", "\\"))?.set_class_name("link ur-here");
     // md
 
     return Ok(());
@@ -230,23 +238,33 @@ let style = match load_gzip("css/main.css").await {
     Ok(())
 }
 
+#[wasm_bindgen]
+pub async fn update_from_hash() -> Result<(), WebSysSugarsError> {
+
+    
+    let mut hash = get_window()?.location().hash().unwrap_or("md_files/home.md".to_owned());
+    
+    if hash.contains(".md") {
+        hash = hash.replace("#", "").replace("%20"," ");
+        load_md(hash).await?;
+    }else {
+        load_md("md_files/home.md".to_owned()).await?;
+    }
+    
+    Ok(())
+}
 
 #[wasm_bindgen]
 pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
-
     
     
+    // collapse("md_files".to_owned());
     
+    update_from_hash().await?;
     
-    let hash = get_window()?.location().hash().unwrap_or("md_files/home.md".to_owned());
-
-    if hash.contains(".md") {
-        load_md(hash.replace("#", "")).await?;
-    }
-
-    // update_nav();
-
-    collapse("md_files".to_owned());
+    get_window()?.add_event_listener_with_callback(
+        "hashchange", 
+        &Function::new_with_args("event","console.log('hashchange');window.update_from_hash()"));
     
 
     return Ok(());
