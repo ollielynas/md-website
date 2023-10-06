@@ -2,13 +2,6 @@ use console_error_panic_hook;
 use js_sys::Function;
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsCast;
-use wasm_bindgen_futures::JsFuture;
-use web_sugars::document;
-use web_sys::Location;
-use web_sys::Response;
-use web_sys::window;
-use web_sys::{Request, RequestInit, RequestMode};
 use zune_inflate::DeflateDecoder;
 use web_sugars::prelude::*;
 use std::str;
@@ -83,9 +76,6 @@ pub fn update_nav() -> Option<bool> {
     }
     
     let nav = document.get_element_by_id("nav")?;
-    
-    js_sys::eval(&format!("window.collapsed='{}'",collapsed));
-    
     nav.set_inner_html("");
     
     
@@ -190,8 +180,6 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     let path = file.split("\\").filter(|x|!x.contains(".md")).collect::<Vec<&str>>().join("/");
     
     collapsed_list.retain(|x| !path.replace("\\", "/").contains(x) && x!=&"");
-    js_sys::eval(&format!("console.log('{}, {}')",path, collapsed));
-
     
 
 
@@ -217,7 +205,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     // window()
     update_nav();
 
-    
+    show_content().await?;
     
     get_element_by_id(&file.replace("/", "\\"))?.set_class_name("link ur-here");
     // md

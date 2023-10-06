@@ -301,6 +301,7 @@ img {
     }
 
     .navigation .md_file {
+        display: flex !important;
         overflow-y: scroll;
         scroll-snap-align: middle;
         position: relative;

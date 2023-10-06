@@ -81,3 +81,66 @@ body {
     overflow-x: hidden;
     scrollbar-color: black;
 }
+
+@media screen and (orientation:portrait) {
+    body {
+        overflow: hidden;
+        width: 100dvw;
+        display: flex;
+        align-items: start;
+        flex-direction: row;
+        max-width: 100%;
+    }
+    
+    #swipe_info {
+        position: fixed;
+        bottom: 2em;
+        left: 50vw;
+        transform: translate(-50%, 0%);
+    }
+    #slider {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        top: 0;
+        height: 100dvh;
+        left: -100dvw;
+        /* overflow: none; */
+        width: 200dvw;
+        overflow: hidden;
+    }
+
+    
+    .md_file {
+        position: relative;
+        /* scroll-snap-align: middle; */
+        display: flex;
+        flex-direction: column;
+        font-size: calc((1vw + 0.1rem) * 2);
+        width: 80vw;
+        min-width: 80vw;
+        margin: 0;
+        margin-left: 4em;
+        padding-left: 0em;
+        padding-right: 3em;
+        overflow-y: scroll;
+        overflow-x:none;
+        max-height: 80dvh;
+        height: 100dvh;
+    }
+
+    .navigation .md_file {
+        overflow-y: scroll;
+        scroll-snap-align: middle;
+        position: relative;
+        width: 99dvw;
+        left: 0;
+        top: 0;
+        padding-left: 1em;
+        border-right: none;
+        animation: fadeInAnimation 1s linear forwards;
+        display: none;
+    }
+
+
+}
