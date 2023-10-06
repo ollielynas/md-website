@@ -11,8 +11,8 @@
     <title>Ollie Lynas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link async  rel='stylesheet' type='text/css' media='screen' href='css/important.css'>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://ollielynas.github.io" />
     <style id="main-style">
         
@@ -117,23 +117,8 @@ h2 {
     <button id = "swipe_info" onclick="window.clicked_scroll()"><- menu</button>
     <!-- <script defer src = "js/non_head.js"></script> -->
     <script src="js/prism.js"></script>
-<script defer>
-//     window.addEventListener("popstate", function (event) {
-    
-//   let hash = location.hash
-//     .replaceAll("%20", " ")
-//     .replace("#", "")
-//     .replaceAll("/", "\\");
-//   if (location.hash.includes(".md")) {
-//     console.log("lodeing page",event);
-//     window.load_md(hash);
-//   }
-  
-// });
-// (async () => {
-//   window.rs_onload();
-//   window.load_style();
-// })();
+<script>
+ document.querySelector("link[rel*='icon']").href = "favicon-dev.ico";
 </script>
 </body>
 </html>

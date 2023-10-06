@@ -32,3 +32,10 @@ features = [
   'Location',
   'History'
 ]
+
+[profile.release]
+lto = true
+
+[profile.release.package."*"]
+opt-level = "z"
+
