@@ -95,7 +95,7 @@ pub fn update_nav() -> Option<bool> {
             "link".to_owned()
         } else {
             "folder ".to_owned()
-                + if collapsed.contains(f) {
+                + if collapsed.contains(&f.replace("\\","/")) {
                     "open"
                 } else {
                     "close"
@@ -252,12 +252,18 @@ pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
     // collapse("md_files".to_owned());
     
     update_from_hash().await?;
+
+        let mut files: Vec<&str> = include_str!(r"tree.txt").lines().collect();
+    let mut collapsed;
+
+    collapsed = files.iter().filter(|x|!x.contains(".md")).cloned().collect::<Vec<&str>>().join(";").replace("\\", "/").replace(";md_files;", ";");
     
+        js_sys::eval(&format!("window.collapsed='{}'",collapsed));
+
     get_window()?.add_event_listener_with_callback(
         "hashchange", 
         &Function::new_with_args("event","console.log('hashchange');window.update_from_hash()"));
     
-
     return Ok(());
 }
 
