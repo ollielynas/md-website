@@ -92,11 +92,22 @@ body {
         max-width: 100%;
     }
     
-    #swipe_info {
+        #swipe_info {
+        display: flex;
         position: fixed;
         bottom: 2em;
         left: 50vw;
-        transform: translate(-50%, 0%);
+        transform: translate(-50%,0%);
+        z-index: 101;
+        font-size: 4em;
+        background-color: #6e6e6e37;
+        padding: 1em;
+        border-radius: 1em;
+        border: none;
+        padding-top: 0.5em;
+        padding-bottom: 1.5em;
+        
+        
     }
     #slider {
         position: fixed;
