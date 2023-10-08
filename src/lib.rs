@@ -12,6 +12,9 @@ use std::str;
 #[wasm_bindgen]
 extern "C" {
     fn alert(s: &str);
+
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(s: &str);
 }
 
 #[wasm_bindgen]
@@ -20,8 +23,18 @@ pub fn console_error_panic_hook_set() {
     
 }
 
+macro_rules! console_log {
+    // Note that this is using the `log` function imported above during
+    // `bare_bones`
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+}
+
+
 #[wasm_bindgen]
 pub fn collapse(mut path: String) {
+
+    console_log!("{}", path);
+
     if path == "" {
         return;
     }
@@ -108,7 +121,7 @@ pub fn update_nav() -> Option<bool> {
                 &if md {
                     Function::new_no_args("window.load_md(this.id);")
                 } else {
-                    Function::new_no_args("window.collapse(this.id);")
+                    Function::new_no_args(&format!("window.collapse('{}');", f.replace("\\", "/")))
                 },
                 true
             )

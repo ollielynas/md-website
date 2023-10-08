@@ -164,24 +164,24 @@ h3 {
     color: var(--link-dark);
 }
 
-.open {
+/* .open {
     pointer-events: none;
-}
-
+} */
+/* 
 @media (hover: none) {
     .open {
             pointer-events: all;
     }
-}
+} */
 
 .open:hover::after {
     content: "...";
-    pointer-events: all;
+    /* pointer-events: all; */
 }
 
 .close:hover::after {
     content: " <";
-    pointer-events: all;
+    /* pointer-events: all; */
 }
 
 
