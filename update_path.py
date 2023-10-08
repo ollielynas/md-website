@@ -156,15 +156,35 @@ def process(text,a):
     
     return text
 
+def html_template(path, html):
+    template = ""
+    with open("sub/template.html") as t:
+        template = t.read()
+
+    if "no index" in html:return
+    template = template.replace("CONTENT", html)
+    print(path.split("/")[-2:])
+    folder , name = path.split("\\")[-2:]
+    folder = folder.replace("md_files","")
+    name = name.replace(".md","")
+    template = template.replace("TITLE",f"Ollie Lynas - {folder} - {name}")
+    template = template.replace("THISPAGE", path.replace("\\", "/"))
+    output_file = Path('sub/'+path.replace("\\", "/"))
+    output_file.parent.mkdir(exist_ok=True, parents=True)
+    
+    with open("sub/"+path.replace(".md",".html"), "w") as f:
+        f.write(template)
+    
 def compress(a):
     
     output_file = Path('gz/'+a.replace("\\","/")+'.gz')
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
     if ".md" in a:
+        
         with open(a, 'r') as f_in:
             f_in = process(f_in.read(),a)
-
+            html_template(a,f_in)
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
             with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
@@ -186,6 +206,7 @@ def compress(a):
             f_out.writelines(f_in)
 for i in resources:
     compress(i)
+
 
 
 # timeline = tomllib.loads(Path("md_files/about me/timeline.toml").read_text(encoding="utf-8"))

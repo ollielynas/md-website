@@ -424,3 +424,10 @@ table {
     }
 }
 
+#link_to_external {
+    position: fixed;
+    bottom: 0;
+    right: 1em;
+    /* left: inherit; */
+}
+

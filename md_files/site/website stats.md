@@ -1,3 +1,5 @@
+<!-- no index -->
+
 # Page Stats
 
 
@@ -55,6 +57,6 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
     <td>Workflow</td><td><md-block>![site workflow](https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg)</md-block>
 </td>
 <tr>
-<td>last compiled</td><td>2023-10-08 15:07:08</td>
+<td>last compiled</td><td>2023-10-09 12:29:49</td>
 </tr>
 </table>

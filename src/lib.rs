@@ -181,6 +181,8 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         return Err(WebSysSugarsError::NotImplemented);
     }
     
+    
+
 
     file = file.replace("/", "\\");
 
@@ -215,6 +217,11 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         Err(a) => format!("{:?}",a),
     };
     
+    let link = get_element_by_id("link_to_external")?;
+
+
+    link.set_attribute("href", &format!("https://ollielynas.github.io/md-website/sub/{}",file.replace("\\","/") ));
+    link.set_inner_html("open external ->");
     md_block.set_inner_html(&text);
 
 

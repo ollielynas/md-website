@@ -1,9 +1,6 @@
-
+<!-- no index -->
 Firefox doesn't seem to like to update the cache so manual clearing may be necessary
 
-<br>
-
-*turns out evan this is not enough and the cache must be reset in settings*
 <br>
 
 

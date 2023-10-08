@@ -1,3 +1,5 @@
+<!-- no index -->
+
 ## Static URL compressor
 
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/short_url)

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ollie Lynas - team projects - capture the flag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <!-- <script src='main.js'></script> -->
+  </head>
+  <body>
+    <style>
+        img, iframe, video {
+            max-width: 100%;
+        }
+        body {
+            background-color: rgb(247, 248, 246);
+        }
+        #md_block {
+        padding: 1em;
+        margin-left: 23dvw;
+        background-color: white;
+        filter: drop-shadow(0px 7px 3px rgba(0, 0, 0, 0.627));
+        width: 50dvw;
+        min-height: 65dvw;
+    }
+        @media screen and (orientation:portrait) {
+           #md_block {
+        padding: 1em;
+        margin-left: 0;
+        background-color: white;
+        filter: none;
+        width: 90dvw;
+    } 
+}
+
+    .home_link {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 1em;
+    }
+    </style>
+
+
+    <div class="md_file" id="content">
+      <div id="md_block"><h2>Capture The Flag</h2>
+<p><a href="https://sseptimus.github.io/CTF/">web interface</a></p>
+<p><em>The interface seems to be broken at the moment</em></p>
+<p><br></p>
+<p>This project was inspired by <a href="https://www.youtube.com/@jetlagthegame">Jet Lag:The Game</a>. I was in charge of the web interface. The web interface tracks the position of all of the players and relays this position back to the server. The positions of all of the players and the flags are rendered on a map of the globe. The web interface is also in charge of calculating which pieces of land belong to which teams. All of the data that is sent to te server is sent through https and the server will not send a device data unless they provide a randomly generated password. for security reasons the server host cannot pick the password because I know how bad my friends are at picking passwords. </p>
+<p><br></p>
+<p>Those are the features that are currently implemented. The plan is to add the ability to tag a person by takeing a picture of them. The web interface allows you to send pictures to any of the people playing. Once they conform that the picture is of them, they will be marked as dead. They will then need to return to their sides in order to respawn. This works on the honor system, however the pictures are kept on the server until the game is over so they can be used to settle disagreements after the fact. This also serves to discourage cheating. </p></div>
+    </div>
+    <div class="home_link">
+        <a href="https://ollielynas.github.io/md-website/#md_files/portfolio/team projects/capture the flag.md"><- return to portfolio</a>
+    </div>
+  </body>
+</html>
