@@ -8,8 +8,6 @@ set arg2=%2
 shift
 shift
 
-
-
 python update_path.py
 
 cargo +nightly build --target wasm32-unknown-unknown %arg1%
