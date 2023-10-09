@@ -87,16 +87,11 @@ sitemap = ""
 
 sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
 
-for i in ["index.html"]+resources:
-    if ".md" in i or ".html" in i:
-        sitemap += "\n  <url>"
-        i = i.replace('\\', '/')
-        sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/{i}</loc>"
-        sitemap += "\n  </url>"
-sitemap += "\n</urlset>"
-
-with open('sitemap.xml', 'w') as f:
-    f.write(sitemap)
+for i in ["index.html"]:        
+    sitemap += "\n  <url>"
+    i = i.replace('\\', '/')
+    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/{i}</loc>"
+    sitemap += "\n  </url>"
 
 
 
@@ -157,23 +152,27 @@ def process(text,a):
     return text
 
 def html_template(path, html):
+    global sitemap
     template = ""
     with open("sub/template.html") as t:
         template = t.read()
-
+    path2 = path.replace('\\', '/')
     if "no index" in html:return
     template = template.replace("CONTENT", html)
-    print(path.split("/")[-2:])
     folder , name = path.split("\\")[-2:]
     folder = folder.replace("md_files","")
     name = name.replace(".md","")
     template = template.replace("TITLE",f"Ollie Lynas - {folder} - {name}")
-    template = template.replace("THISPAGE", path.replace("\\", "/"))
-    output_file = Path('sub/'+path.replace("\\", "/"))
+    template = template.replace("THISPAGE", path2)
+    output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
+    sitemap += "\n  <url>"
+    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html')}</loc>"
+    sitemap += "\n  </url>"
     
     with open("sub/"+path.replace(".md",".html"), "w") as f:
         f.write(template)
+        # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
 def compress(a):
     
@@ -209,6 +208,13 @@ for i in resources:
 
 
 
+# with open('tree.csv', 'w') as f:
+#     f.write(csv)
+
 # timeline = tomllib.loads(Path("md_files/about me/timeline.toml").read_text(encoding="utf-8"))
 
 
+
+sitemap += "\n</urlset>"
+with open('sitemap.xml', 'w') as f:
+    f.write(sitemap)
