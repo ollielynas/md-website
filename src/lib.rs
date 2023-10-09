@@ -220,7 +220,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     let link = get_element_by_id("link_to_external")?;
 
 
-    link.set_attribute("href", &format!("https://ollielynas.github.io/md-website/sub/{}",file.replace("\\","/") ));
+    link.set_attribute("href", &format!("https://ollielynas.github.io/md-website/sub/{}",file.replace("\\","/").replace(".md", ".html") ));
     link.set_inner_html("open external ->");
     md_block.set_inner_html(&text);
 
