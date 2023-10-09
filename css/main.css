@@ -426,7 +426,7 @@ table {
 
 #link_to_external {
     position: fixed;
-    bottom: 0;
+    bottom: 1em;
     right: 1em;
     /* left: inherit; */
 }
