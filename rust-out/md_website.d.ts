@@ -5,13 +5,14 @@
 export function console_error_panic_hook_set(): void;
 /**
 * @param {string} path
+* @returns {Promise<void>}
 */
-export function collapse(path: string): void;
+export function collapse(path: string): Promise<void>;
 /**
 * todo: make this function return a result
-* @returns {boolean | undefined}
+* @returns {Promise<void>}
 */
-export function update_nav(): boolean | undefined;
+export function update_nav(): Promise<void>;
 /**
 * @param {string} file
 * @returns {Promise<string>}
@@ -52,7 +53,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly console_error_panic_hook_set: () => void;
-  readonly collapse: (a: number, b: number) => void;
+  readonly collapse: (a: number, b: number) => number;
   readonly update_nav: () => number;
   readonly load_gzip: (a: number, b: number) => number;
   readonly load_md: (a: number, b: number) => number;

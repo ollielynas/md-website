@@ -2,7 +2,8 @@ rem run:
 rem ./update -r 
 rem to build in release mode
 
-echo off
+rem @echo off
+
 set arg1=%1
 set arg2=%2
 shift

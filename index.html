@@ -17,8 +17,20 @@
         
     </style>
     <script type="module">
-        import init, {update_from_hash, load_style, show_content, show_nav, clicked_scroll, rs_onload, collapse, update_nav, load_gzip, load_md, console_error_panic_hook_set } from "./rust-out/md_website.js";
-        window.collapsed = "unset";
+        import init, {
+            update_from_hash,
+            load_style,
+            show_content,
+            show_nav,
+            clicked_scroll,
+            rs_onload,
+            collapse,
+            update_nav,
+            load_gzip,
+            load_md,
+            console_error_panic_hook_set
+        } from "./rust-out/md_website.js";
+
         async function run() {
         await init();
 

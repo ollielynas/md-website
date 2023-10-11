@@ -2,7 +2,7 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export function console_error_panic_hook_set(): void;
-export function collapse(a: number, b: number): void;
+export function collapse(a: number, b: number): number;
 export function update_nav(): number;
 export function load_gzip(a: number, b: number): number;
 export function load_md(a: number, b: number): number;
