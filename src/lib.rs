@@ -234,13 +234,13 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 
     let link = get_element_by_id("link_to_external")?;
 
-    link.set_attribute(
+    err_to_sugar(link.set_attribute(
         "href",
         &format!(
             "https://ollielynas.github.io/md-website/sub/{}",
             file.replace("\\", "/").replace(".md", ".html")
         ),
-    );
+    ))?;
     link.set_inner_html("open external ->");
     md_block.set_inner_html(&text);
 
@@ -290,13 +290,13 @@ pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
     update_nav().await?;
     update_from_hash().await?;
 
-    get_window()?.add_event_listener_with_callback(
+    err_to_sugar(get_window()?.add_event_listener_with_callback(
         "hashchange",
         &Function::new_with_args(
             "event",
             "console.log('hashchange');window.update_from_hash()",
         ),
-    );
+    ))?;
 
     
 

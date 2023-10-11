@@ -54,9 +54,12 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
 <table>
   <thead><th>Key</th><th>Value</th></thead>
   <tr>
-    <td>Workflow</td><td><md-block>![site workflow](https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg)</md-block>
+    <td>Workflow</td><td><md-block>
+    <img src="https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg">
+    deployment status
+  </img>
 </td>
 <tr>
-<td>last compiled</td><td>2023-10-12 12:24:26</td>
+<td>last compiled</td><td>2023-10-12 12:56:07</td>
 </tr>
 </table>
