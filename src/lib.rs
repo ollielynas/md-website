@@ -100,8 +100,7 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
                 },
                 true,
             ))?;
-        let mut tree_text = "".to_owned();
-        tree_text += &" ".repeat((f.split("\\").count() as i32 - 1).min(0) as usize);
+        let mut tree_text = " ".repeat((f.split("\\").count() as i32 - 1).max(0) as usize);
 
         let current_len = f.split("\\").count();
         let next_len = files.get(i + 1).unwrap_or(&"").split("\\").count();
@@ -241,7 +240,11 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
             file.replace("\\", "/").replace(".md", ".html")
         ),
     ))?;
-    link.set_inner_html("open external ->");
+    if text.contains("no index") {
+        link.set_inner_html("");
+    }else {
+        link.set_inner_html("open external ->");
+    }
     md_block.set_inner_html(&text);
 
     // window()

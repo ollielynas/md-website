@@ -17,7 +17,7 @@
 
 [md_files/portfolio/index.md](md_files/portfolio/index.md)
 
-[md_files/portfolio/books/tick tack toe.md](md_files/portfolio/books/tick%20tack%20toe.md)
+[md_files/portfolio/books/tic tac toe.md](md_files/portfolio/books/tic%20tac%20toe.md)
 
 [md_files/portfolio/desmos/boids.md](md_files/portfolio/desmos/boids.md)
 
@@ -35,7 +35,7 @@
 
 [md_files/portfolio/desmos/probability distributions.md](md_files/portfolio/desmos/probability%20distributions.md)
 
-[md_files/portfolio/desmos/raceing sim.md](md_files/portfolio/desmos/raceing%20sim.md)
+[md_files/portfolio/desmos/racing sim.md](md_files/portfolio/desmos/racing%20sim.md)
 
 [md_files/portfolio/desmos/snake game.md](md_files/portfolio/desmos/snake%20game.md)
 
