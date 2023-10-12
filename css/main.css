@@ -16,8 +16,6 @@
 
 
 
-
-
 body {
     background-color: var(--main-bg-color);
         /* font-family: 'Fira Code', monospace; */
@@ -64,7 +62,14 @@ h1,h2,h3 {
     color: var(--title-color);
 }
 
-
+.dark_mode {
+    position: fixed;
+    left: 1em;
+    bottom: 1em;
+    padding: 1em;
+    background-color:#202124;
+    border-radius: 2em;
+}
 
 
 

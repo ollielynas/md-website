@@ -5,7 +5,7 @@
 
 
 creates a spinning donut
-```python
+<code>
 E=range;import math as A;B=0
 while 1:
  B+=0.1;C=''
@@ -15,9 +15,12 @@ while 1:
   C+='\n'
  print('\x1b[2J',C)
 
-```
+</code>
+
+<br>
 that ends up looking a bit like this:
-```
+<br>
+<code>
         aattttttaa
     aa33ppOOOOOOpp33tt
   aa33OOXX####XXXX77pp33aa
@@ -34,7 +37,4 @@ aa33OOOO33aa  aatt33pp77OO33tt
           aattttttttttttttaaaa
             aaaattttttttaaaa
                 aaaaaaaa
-
-```
-
-
+</code>

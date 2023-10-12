@@ -38,5 +38,6 @@ while H(D[0]+D[1])<12:
    D[B].append(C+N);I(f"{K[B]} placed a set of {C}s")
 if H(D[0])==H(D[1]):R('tie');quit()
 I(K[int(H(D[0])<H(D[1]))]+' won')
+
 </code>
 
