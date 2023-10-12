@@ -402,13 +402,13 @@ table {
 
     th,
     td {
-        border: 1px solid #ddd;
+        border: 1px solid;
         padding: 4px;
         text-align: left;
     }
 
     th {
-        background-color: #282a35;
+        background-color: #2a35;
         font-size: 1em;
         color: #fff;
         font-weight: bold;
@@ -420,7 +420,7 @@ table {
 
     tr:hover {
         /* color: #fff; */
-        background-color: #e4e4e4c0;
+        background-color: #e4e4c0;
     }
 }
 
