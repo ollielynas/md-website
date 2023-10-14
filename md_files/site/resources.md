@@ -73,6 +73,8 @@
 
 [md_files/portfolio/team projects/capture the flag.md](md_files/portfolio/team%20projects/capture%20the%20flag.md)
 
+[md_files/portfolio/team projects/typing competition game.md](md_files/portfolio/team%20projects/typing%20competition%20game.md)
+
 [md_files/portfolio/web/portfolio.md](md_files/portfolio/web/portfolio.md)
 
 [md_files/portfolio/web/short url.md](md_files/portfolio/web/short%20url.md)

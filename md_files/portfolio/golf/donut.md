@@ -1,11 +1,11 @@
-<link rel="stylesheet" type="text/css" media="screen" href="css/prism.css" loading="lazy">
 
 
 ## Spinning Donut
 
 
 creates a spinning donut
-<code>
+<pre>
+<code class="language-python">
 E=range;import math as A;B=0
 while 1:
  B+=0.1;C=''
@@ -16,11 +16,13 @@ while 1:
  print('\x1b[2J',C)
 
 </code>
+</pre>
 
 <br>
 that ends up looking a bit like this:
 <br>
-<code>
+<pre>
+<code class="language-">
         aattttttaa
     aa33ppOOOOOOpp33tt
   aa33OOXX####XXXX77pp33aa
@@ -38,3 +40,4 @@ aa33OOOO33aa  aatt33pp77OO33tt
             aaaattttttttaaaa
                 aaaaaaaa
 </code>
+</pre>

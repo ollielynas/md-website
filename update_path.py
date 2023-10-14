@@ -21,6 +21,7 @@ bottom = ["report bug.md"]
 text = ""
 text_last = ""
 for t in paths:
+    print(t)
     if any([n in f"{t}" for n in bottom]):
         text_last += (f"{t}"+"\n")
     else:

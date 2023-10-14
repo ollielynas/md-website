@@ -11,5 +11,5 @@ shift
 
 python update_path.py
 
-cargo +nightly build --target wasm32-unknown-unknown %arg1%
-if %arg1% == -r (wasm-bindgen target/wasm32-unknown-unknown/release/md_website.wasm --out-dir ./rust-out --target web) else (wasm-bindgen target/wasm32-unknown-unknown/debug/md_website.wasm --out-dir ./rust-out --target web)
+cargo +nightly build --target wasm32-unknown-unknown -r
+if %arg1% == -r (wasm-bindgen target/wasm32-unknown-unknown/release/md_website.wasm --out-dir ./rust-out --target web) else (wasm-bindgen target/wasm32-unknown-unknown/release/md_website.wasm --out-dir ./rust-out --target web)

@@ -1,10 +1,10 @@
-<link rel="stylesheet" type="text/css" media="screen" href="css/prism.css" loading="lazy">
-<script src="js/prism.js"></script>
+
 
 
 ## Go Fish
 
-<code data-language="python">
+<pre>
+<code class="language-python">
 T='cls';S=set
 R=input;I=print;H=len
 import random as J,os
@@ -40,4 +40,5 @@ if H(D[0])==H(D[1]):R('tie');quit()
 I(K[int(H(D[0])<H(D[1]))]+' won')
 
 </code>
+</pre>
 

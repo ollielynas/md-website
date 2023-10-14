@@ -14,6 +14,19 @@
 
 }
 
+pre {
+    max-width: 100%;
+    overflow: scroll;
+    background-color: #e0dddd;
+    padding: 0.3em;
+    padding-left: 0.3em;
+}
+
+code {
+    color: black;
+    font-family: 'Fira Code', monospace !important;
+    
+}
 
 
 body {
@@ -250,9 +263,7 @@ button:focus {
 }
 
 
-code {
-    font-family: 'Fira Code', monospace !important;
-}
+
 
 
 .back-fwd-button {
