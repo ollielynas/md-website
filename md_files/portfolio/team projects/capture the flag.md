@@ -1,5 +1,15 @@
 ## Capture The Flag
 
+Made by:
+
+[BelgianSalamander](https://github.com/BelgianSalamander)
+
+[Ollie Lynas](https://github.com/ollielynas)
+
+[Sseptimus](https://github.com/Sseptimus)
+
+<br>
+
 [web interface](https://sseptimus.github.io/CTF/)
 
 *The interface seems to be broken at the moment*
