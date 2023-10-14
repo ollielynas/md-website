@@ -7,13 +7,13 @@
 
 [md_files/home.md](md_files/home.md)
 
+[md_files/about me/github.md](md_files/about%20me/github.md)
+
 [md_files/about me/links.md](md_files/about%20me/links.md)
 
 [md_files/about me/resume.md](md_files/about%20me/resume.md)
 
 [md_files/about me/skills.md](md_files/about%20me/skills.md)
-
-[md_files/about me/timeline.md](md_files/about%20me/timeline.md)
 
 [md_files/portfolio/index.md](md_files/portfolio/index.md)
 
