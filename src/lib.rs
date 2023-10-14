@@ -67,6 +67,8 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
     }
 
     let nav = get_element_by_id("nav")?;
+    let inner_html = nav.inner_html();
+
     nav.set_inner_html("");
 
     for i in 0..files.len() {
@@ -74,7 +76,11 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         let name = option_to_sugar(f.split("\\").last())?;
         let md = f.contains(".md");
         let horizontal = err_to_sugar(document.create_element("div"))?;
-        horizontal.set_class_name("horizontal");
+        horizontal.set_class_name(&("horizontal".to_owned() + if inner_html.contains(
+            &format!("\"{}\"",f)) {""} else {
+                " new"
+            })
+        );
         let new_element = err_to_sugar(document.create_element("p"))?;
         new_element.set_id(&f);
         new_element.set_text_content(Some(&name.replace(".md","")));

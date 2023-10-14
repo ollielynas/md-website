@@ -140,6 +140,17 @@ h1,h2,h3 {
     flex-direction: row;
     padding: 0;
     margin: 0;
+    font-size: 1em;
+}
+.new {
+    /* animation: scale_in .3s ease-out forwards; */
+}
+@keyframes scale_in {
+    from {
+        height: 0;
+    }to {
+        height: 1em;
+    }
 }
 
 p {
@@ -211,6 +222,7 @@ img[src^="https://github.com/ollielynas/md-website/actions/workflows/static.yml/
     border: none;
 }
 img[src^="https://img.shields.io"] {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     height: 1.1em;
     width: auto;
     padding: 0;
@@ -292,7 +304,30 @@ img {
     max-width: 40em;
 }
 
+.blocker {
+    position: fixed;
+    right: 0em;
+    width: calc ( 100dvw - 24em );
+    background-color: var(--pg-color);
+    height: 100vw;
+    display: none;
+    pointer-events: none;
+    /* animation: blockerSlide 1.2s linear forwards alternate; */
+}
+
+@keyframes blockerSlide {
+    from {
+        right: 0em;
+    }
+    to {
+        right: calc ( - ( 100dvw - 24em) );
+    }
+}
+
 @media screen and (orientation:portrait) {
+    .blocker {
+        display: none;
+    }
     body {
         /* overflow: scroll; */
         overflow-x: hidden;

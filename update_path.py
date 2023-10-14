@@ -142,12 +142,12 @@ def process(text,a):
     for i in replace:
         text = text.replace(f"<p>{replace[i]}</p>", replace[i])
 
-    if "home.md" in a:
-        with open("index.html", "r") as f_index:
-            f_index_list = f_index.read().split("<!-- START-STOP -->")
-        with open("index.html", "w") as f_index_w:
-            f_index_w.write(f_index_list[0]+"<!-- START-STOP -->" +
-                            text+"<!-- START-STOP -->"+f_index_list[2])
+    # if "home.md" in a:
+    #     with open("index.html", "r") as f_index:
+    #         f_index_list = f_index.read().split("<!-- START-STOP -->")
+    #     with open("index.html", "w") as f_index_w:
+    #         f_index_w.write(f_index_list[0]+"<!-- START-STOP -->" +
+    #                         text+"<!-- START-STOP -->"+f_index_list[2])
 
     
     return text
