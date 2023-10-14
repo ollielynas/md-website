@@ -24,6 +24,6 @@ Made by:
 
 ![screenshot1](md_files/portfolio/team%20projects/Screenshot%202023-10-13%20182708.png)
 
-![screenshot2](md_files/portfolio\team%20projects/Screenshot%202023-10-14%20124337.png)
+![screenshot2](md_files/portfolio/team%20projects/Screenshot%202023-10-14%20124337.png)
 
 ![screenshot3](md_files/portfolio/team%20projects/Screenshot%202023-10-14%20185546.png)

@@ -77,7 +77,7 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         horizontal.set_class_name("horizontal");
         let new_element = err_to_sugar(document.create_element("p"))?;
         new_element.set_id(&f);
-        new_element.set_text_content(Some(name));
+        new_element.set_text_content(Some(&name.replace(".md","")));
 
         new_element.set_class_name(&if md {
             "link".to_owned()
