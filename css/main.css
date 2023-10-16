@@ -142,9 +142,10 @@ h1,h2,h3 {
     margin: 0;
     font-size: 1em;
 }
-.new {
+/* .new { */
     /* animation: scale_in .3s ease-out forwards; */
-}
+/* } */
+
 @keyframes scale_in {
     from {
         height: 0;
