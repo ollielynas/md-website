@@ -29,6 +29,7 @@
 
 # Ollie Lynas
 ##### todo: make look good, this is more of a proof of concept
+##### to generate a resume tick the items that you want and click generate
 
 
 ## Personal Values - [ ]
@@ -57,6 +58,14 @@ Python was one of the first languages that I learnt. I have continued to use it 
 
 I have used JS to create a number websites. Most notably is [capture the flag](/index.html#md_files/portfolio/team projects/capture the flag.md) which I made with a couple of friends.
 
+
+## Qualifications - [ ]
+
+## Prior Work Experience - [ ]
+
+### TriStar - [ ]
+
+I have worked at [TriStar](https://tristar.org.nz/) as a coach. 
 
 
 
@@ -95,4 +104,4 @@ for (i of md.children) {
         i.className='hide'
     }
 };
-">gen</button>
+">generate</button>

@@ -3,7 +3,8 @@
 ## Spinning Donut
 
 
-creates a spinning donut
+creates a spinning donut. Not true 3D. 
+
 <pre>
 <code class="language-python">
 E=range;import math as A;B=0

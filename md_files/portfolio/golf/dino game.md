@@ -2,6 +2,9 @@
 # Dino Game
 
 A golfed version of the chrome dino game that can be played in the terminal
+This was made to be able to fit into my discord description
+
+Thanks to [BelgianSalamander](https://github.com/BelgianSalamander) for helping
 
 <pre>
 <code class="language-python">

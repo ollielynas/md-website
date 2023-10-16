@@ -3,6 +3,8 @@
 
 ## Go Fish
 
+Includes an ai opponent
+
 <pre>
 <code class="language-python">
 T='cls';S=set

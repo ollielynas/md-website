@@ -60,10 +60,20 @@
       <div id="md_block"><h2>probability distributions</h2>
 <p>In order to input your own data you will need to open in Desmos</p>
 <h3>how to use</h3>
-<p>takes data input in the for of a list fo values</p>
-<p>can calculate normal, triangular, and rectangular prediction models based on the data provided</p>
+<p>takes data input in the for of a list of values</p>
+<p>can calculate normal, triangular, and rectangular prediction models based on the data provided.</p>
+<p>Equations
+$$f_{unc}\ =\ \left[f_{n}\left(x\right),f_{r}\left(x\right),f_{t}\left(x\right)\right]$$</p>
+<p>Normal Distribution
+$$f_{n}\left(x\right)=\frac{1}{s_{d}\cdot\left(2\pi\right)^{0.5}}e^{-\frac{1}{2}\left(\frac{x-m}{s_{d}}\right)^{2}}$$</p>
+<p>Rectangular Distribution
+$$f_{r}\left(x\right)={\min\left(d\right)&lt;x&lt;\max\left(d\right):\frac{1}{\left(\max\left(d\right)-\min\left(d\right)\right)},}$$</p>
+<p>Triangular Distribution
+$$f_{t}\left(x\right)={\min\left(d\right)&lt;x&lt;t_{c}:\frac{2\left(x-\min\left(d\right)\right)}{\left(\max\left(d\right)-\min\left(d\right)\right)\left(t_{c}-\min\left(d\right)\right)},t_{c}&lt;x&lt;\max\left(d\right):\frac{2\left(\max\left(d\right)-x\right)}{\left(\max\left(d\right)-\min\left(d\right)\right)\left(\max\left(d\right)-t_{c}\right)},}$$</p>
+<p>The best distribution is calculated using this function
+$$m_{atch}=\left[\sum_{w=\frac{r_{g}}{100}}^{100}\left(f_{p}\left(w,w+\frac{r_{g}}{100},i_{12}\right)-\frac{\operatorname{count}\left(d\left[w&lt;d&lt;w+\frac{r_{g}}{10}\right]\right)}{\operatorname{count}\left(d\right)}\right)^{2}\ \operatorname{for}\ i_{12}=\left[1...f_{unc}.\operatorname{length}\right]\right]$$</p>
 <p>click <em>find best distro</em> to find the best model to fit your data</p>
-<iframe src="https://www.desmos.com/calculator/acydcvlec3?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe></div>
+<p><iframe src="https://www.desmos.com/calculator/acydcvlec3?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe></p></div>
     </div>
     <div class="home_link">
         <a href="https://ollielynas.github.io/md-website/#md_files/portfolio/desmos/probability distributions.md"><- return to portfolio</a>

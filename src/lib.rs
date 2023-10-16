@@ -202,7 +202,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     if !file.contains(".md") {
         return Err(WebSysSugarsError::NotImplemented);
     }
-
+    
     file = file.replace("/", "\\");
 
     // let window = get_window()?;
@@ -214,13 +214,13 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         .filter(|x| !x.contains(".md"))
         .collect::<Vec<&str>>()
         .join("/");
-
+    
     collapsed_list.retain(|x| !path.replace("\\", "/").contains(x) && x != &"");
-
+    
     set_collapsed(collapsed_list);
-
+    
     let md_block = get_element_by_id("md_block")?;
-
+    
     let window = get_window()?;
     let loc = window.location();
     if loc.hash().unwrap_or("x".to_owned()) != file {
@@ -231,14 +231,14 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
             file.replace("\\", "/")
         ));
     }
-
+    
     let text = match load_gzip(&file).await {
         Ok(a) => a,
         Err(a) => format!("{:?}", a),
     };
-
+    
     let link = get_element_by_id("link_to_external")?;
-
+    
     err_to_sugar(link.set_attribute(
         "href",
         &format!(
@@ -252,15 +252,16 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         link.set_inner_html("open external ->");
     }
     md_block.set_inner_html(&text);
-
+    
     // window()
     update_nav().await?;
-
+    
     show_content().await?;
-
+    
     get_element_by_id(&file.replace("/", "\\"))?.set_class_name("link ur-here");
     // md
-
+    
+    js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
 }
 

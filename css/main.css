@@ -483,3 +483,9 @@ table {
     /* left: inherit; */
 }
 
+
+.katex-display  {
+    max-width: 100%;
+    padding-bottom: 1em;
+    overflow: scroll;
+}
