@@ -60,6 +60,6 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
   </img>
 </td>
 <tr>
-<td>last compiled</td><td>2023-10-14 23:51:12</td>
+<td>last compiled</td><td>2023-10-16 18:20:30</td>
 </tr>
 </table>

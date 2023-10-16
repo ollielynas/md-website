@@ -91,6 +91,7 @@ sitemap += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
 for i in ["index.html"]:        
     sitemap += "\n  <url>"
     i = i.replace('\\', '/')
+    i = i.replace(" ", "%20")
     sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/{i}</loc>"
     sitemap += "\n  </url>"
 
@@ -168,7 +169,7 @@ def html_template(path, html):
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
     sitemap += "\n  <url>"
-    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html')}</loc>"
+    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html').replace(' ', '%20')}</loc>"
     sitemap += "\n  </url>"
     
     with open("sub/"+path.replace(".md",".html"), "w") as f:
