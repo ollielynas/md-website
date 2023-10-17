@@ -14,7 +14,7 @@ Made by:
 
 <br>
 
-2 player typing speed competition
+2 player typing speed competition. You are given two lists of words. If you type words from the list on the left they will be added to your opponents right hand list. If your right hand list gets longer than 20 words then you lose. 
 
 [GitHub](https://github.com/BelgianSalamander/word-game)
 
