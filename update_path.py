@@ -146,8 +146,8 @@ with open("md_files/site/website stats.md", "r", encoding="utf-8") as f:
             lines[i] = "<td>number of pages</td><td>"+str(len([i for i in resources if ".md" in i]))+"</td>\n"
         if "<td>project size</td><td>" in lines[i]:
             lines[i] = "<td>project size</td><td>"+sizeof_fmt(get_size())+"</td>\n"
-        if "<td>word count</td><td>" in lines[i]:
-            lines[i] = "<td>word count</td><td>"+str(total_words)+"</td>\n"
+        # if "<td>word count</td><td>" in lines[i]:
+        #     lines[i] = "<td>word count</td><td>"+str(total_words)+"</td>\n"
     text="".join(lines)
     
 with open("md_files/site/website stats.md", "w", encoding="utf-8") as f:
@@ -207,14 +207,14 @@ def html_template(path, html):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
 def compress(a):
-    global total_words
+    # global total_words
     output_file = Path('gz/'+a.replace("\\","/")+'.gz')
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
     if ".md" in a:
         with open(a, 'r', encoding = "utf-8") as f_in:
-            total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
-            print(total_words)
+            # total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
+            # print(total_words)
             f_in = process(f_in.read(),a)
             html_template(a,f_in)
             
