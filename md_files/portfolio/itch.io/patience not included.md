@@ -1,5 +1,7 @@
 ## Patience Not Included
 
+<!-- META A movement based game with infinite randomly generated levels with increasing difficulty (but all technically possible) META -->
+
 <!-- ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/password-game-clone)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/password-game-clone) -->
 

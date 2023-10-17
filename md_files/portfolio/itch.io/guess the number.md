@@ -1,5 +1,5 @@
 ## Guess the number
-
+<!-- META A number guessing game inspired by The Password Game META -->
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/password-game-clone)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/password-game-clone)
 

@@ -1,5 +1,7 @@
 ## probability distributions
 
+<!-- META use demsos to fit a list of continuous data to probability distribution. Then use this distribution to calculate probities  META -->
+
 In order to input your own data you will need to open in Desmos
 
 ### how to use

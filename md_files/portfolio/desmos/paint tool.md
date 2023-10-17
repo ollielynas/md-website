@@ -1,5 +1,7 @@
 ## Paint tool
 
+<!-- META This tool allows you to draw SVGs in desmos using bezier curves. META-->
+
 This tool allows you to draw SVGs using bezier curves. The curves are only quadratic.
 
 Here is an teh equation for a single curve

@@ -1,5 +1,5 @@
 ## Boids
-
+<!-- META a boid simulation made entirely within desmos META -->
 The boids follow each other and this causes them to demonstrate a sort of flocking behavior. In this example the boids are also attracted towards the center of the graph. This prevents them from flying out of view. 
 
 The following variables can be changed to influence behavior:

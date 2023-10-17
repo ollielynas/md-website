@@ -1,5 +1,7 @@
 ## TOF
 
+<!-- META A video based time of flight calculator for trampolining META -->
+
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/tramp)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/tramp)
 

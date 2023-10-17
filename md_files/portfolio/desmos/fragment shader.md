@@ -2,6 +2,8 @@
 
 ## Fragment shader
 
+<!-- A full fragment shader made in desmos -->
+
 This graph simulates a fragment shader. It can display the full 0-255 color range for red green and blue. Includes uniforms for time, mouse position, and resolution.
 
 

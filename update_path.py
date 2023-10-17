@@ -48,7 +48,7 @@ text+=text_last
 # text = text.replace("md_files\\","")
 # text = text.replace("md_files", "")
 
-with open('src/tree.txt', 'w') as f:
+with open('src/tree.txt', 'w', encoding="utf-8") as f:
     f.write(text)
 
 
@@ -58,7 +58,7 @@ for i in text.split("\n"):
     if ".md" not in i:continue
     csv += i.split("\\")[-1]+","
 
-with open('tree.csv', 'w') as f:
+with open('tree.csv', 'w', encoding="utf-8") as f:
     f.write(csv)
 
 
@@ -79,7 +79,7 @@ resources_str = ""
 for i in resources:
     resources_str += "\n["+i.replace("\\", "/")+"](" + i.replace(" ", "%20").replace("\\", "/")+")"+"\n"
 
-with open('md_files/site/resources.md', 'w') as f:
+with open('md_files/site/resources.md', 'w', encoding="utf-8") as f:
     f.write(resources_str)
 
 
@@ -118,14 +118,14 @@ for i in ["index.html"]:
 # with open("no_js.html","w") as f:
 #     f.write(index_inner+"\n"+no_js)
 text=""
-with open("md_files/site/website stats.md", "r") as f:
+with open("md_files/site/website stats.md", "r", encoding="utf-8") as f:
     lines = f.readlines()
     for i in range(len(lines)):
         if "<td>last compiled</td><td>" in lines[i]:
             lines[i] = "<td>last compiled</td><td>"+date_time.strftime("%Y-%m-%d %H:%M:%S")+"</td>\n"
     text="".join(lines)
     
-with open("md_files/site/website stats.md", "w") as f:
+with open("md_files/site/website stats.md", "w", encoding="utf-8") as f:
     if text=="":raise ValueError
     f.write(text)
     
@@ -155,8 +155,9 @@ def process(text,a):
 
 def html_template(path, html):
     global sitemap
+    meta = html.split("META")
     template = ""
-    with open("sub/template.html") as t:
+    with open("sub/template.html", encoding="utf-8") as t:
         template = t.read()
     path2 = path.replace('\\', '/')
     if "no index" in html:return
@@ -166,13 +167,17 @@ def html_template(path, html):
     name = name.replace(".md","")
     template = template.replace("TITLE",f"Ollie Lynas - {folder} - {name}")
     template = template.replace("THISPAGE", path2)
+    if len(meta) > 2:
+        _, inner_meta, _ = meta
+    else: inner_meta = name + " by Ollie Lynas"
+    template=template.replace("META_DESCRIPTION", inner_meta)
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
     sitemap += "\n  <url>"
     sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html').replace(' ', '%20')}</loc>"
     sitemap += "\n  </url>"
     
-    with open("sub/"+path.replace(".md",".html"), "w") as f:
+    with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
         f.write(template)
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
@@ -183,21 +188,21 @@ def compress(a):
     
     if ".md" in a:
         
-        with open(a, 'r') as f_in:
+        with open(a, 'r', encoding = "utf-8") as f_in:
             f_in = process(f_in.read(),a)
             html_template(a,f_in)
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
-            with gzip.open('gz/'+a.replace("\\","/")+'.gz', 'wb') as f_out:
+            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
     elif ".js" in a:
-        with open(a, 'r') as f_in:
+        with open(a, 'r', encoding = "utf-8") as f_in:
             f_in = js_minify(f_in.read())
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
     elif ".css" in a:
-        with open(a, 'r') as f_in:
+        with open(a, 'r', encoding="utf-8") as f_in:
             f_in = css_minify(f_in.read())
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
@@ -218,5 +223,5 @@ for i in resources:
 
 
 sitemap += "\n</urlset>"
-with open('sitemap.xml', 'w') as f:
+with open('sitemap.xml', 'w', encoding = "utf-8") as f:
     f.write(sitemap)

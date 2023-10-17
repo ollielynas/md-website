@@ -1,5 +1,5 @@
 ## Casio BASIC visual editor
-
+<!-- META A scratch-like visual editor for the CASIO basic language (for calculators) META -->
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/casio-basic-visual-editor)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/casio-basic-visual-editor)
 

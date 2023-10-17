@@ -2,7 +2,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/Chess)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/Chess)
 
-
+<!-- META A turn based, chess themed, rougelike, survival game made with rust META -->
 turn based, chess themed, rougelike, survival game
 
 you play as the king on a 16x16 grid. White chess pieces appear on the edges of the board. Each third move you make the white pieces make a single move. The game ends when one of the white pieces successfully takes your king. 

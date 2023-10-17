@@ -1,4 +1,4 @@
-<!-- no index -->
+<!--META A static url shortener that uses string compression to generate shorter redirect links META -->
 
 ## Static URL compressor
 

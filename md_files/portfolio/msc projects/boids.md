@@ -1,6 +1,8 @@
 
 ## Boids
 
+<!-- META A somewhat optimized boid simulation (tested for up to 100,000 boids) META -->
+
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/rust-boid)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/rust-boid)
 

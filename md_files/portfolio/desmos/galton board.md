@@ -1,7 +1,7 @@
 
 ## Galton Board Simulation
 
-
+<!-- META A Galton Board simulated in desmos META -->
 
 This is a simulation of a Galton Board. Each ball is assigned a random number. The bits of this random number are calculated using:
 

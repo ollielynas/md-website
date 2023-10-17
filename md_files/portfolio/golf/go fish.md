@@ -3,6 +3,8 @@
 
 ## Go Fish
 
+<!-- META A golfed version of the game Go Fish made with python META -->
+
 Includes an ai opponent
 
 <pre>

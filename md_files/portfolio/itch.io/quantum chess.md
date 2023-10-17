@@ -1,5 +1,7 @@
 ## Quantum chess
 
+<!-- META Quantum Chess. A terminal based game that adds random chance to chess (just what it was missing) META -->
+
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/quantum_chess)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/quantum_chess)
 
