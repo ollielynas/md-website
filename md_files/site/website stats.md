@@ -54,12 +54,20 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
 <table>
   <thead><th>Key</th><th>Value</th></thead>
   <tr>
-    <td>Workflow</td><td><md-block>
+    <td>deployment status</td><td><md-block>
     <img src="https://github.com/ollielynas/md-website/actions/workflows/static.yml/badge.svg">
-    deployment status
   </img>
 </td>
 <tr>
-<td>last compiled</td><td>2023-10-17 23:31:59</td>
+<td>last compiled</td><td>2023-10-18 00:31:18</td>
+</tr>
+<tr>
+<td>number of pages</td><td>43</td>
+</tr>
+<tr>
+<td>project size</td><td>158.5MiB</td>
+</tr>
+<tr>
+<td>word count</td><td>0</td>
 </tr>
 </table>

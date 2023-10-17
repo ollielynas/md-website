@@ -11,6 +11,8 @@ try:
     import tomllib
 except ModuleNotFoundError:
     import tomli as tomllib
+    
+total_words = 0
 
 p = Path('./md_files/')
 
@@ -113,8 +115,25 @@ for i in ["index.html"]:
 
 # print(no_js)
 
+def sizeof_fmt(num, suffix="B"):
+    for unit in ("", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"):
+        if abs(num) < 1024.0:
+            return f"{num:3.1f}{unit}{suffix}"
+        num /= 1024.0
+    return f"{num:.1f}Yi{suffix}"
 
 
+def get_size(start_path='.'):
+    total_size = 0
+    for dirpath, dirnames, filenames in os.walk(start_path):
+        for f in filenames:
+            fp = os.path.join(dirpath, f)
+            if "target" in fp: continue
+            # skip if it is symbolic link
+            if not os.path.islink(fp):
+                total_size += os.path.getsize(fp)
+
+    return total_size
 # with open("no_js.html","w") as f:
 #     f.write(index_inner+"\n"+no_js)
 text=""
@@ -123,6 +142,12 @@ with open("md_files/site/website stats.md", "r", encoding="utf-8") as f:
     for i in range(len(lines)):
         if "<td>last compiled</td><td>" in lines[i]:
             lines[i] = "<td>last compiled</td><td>"+date_time.strftime("%Y-%m-%d %H:%M:%S")+"</td>\n"
+        if "<td>number of pages</td><td>" in lines[i]:
+            lines[i] = "<td>number of pages</td><td>"+str(len([i for i in resources if ".md" in i]))+"</td>\n"
+        if "<td>project size</td><td>" in lines[i]:
+            lines[i] = "<td>project size</td><td>"+sizeof_fmt(get_size())+"</td>\n"
+        if "<td>word count</td><td>" in lines[i]:
+            lines[i] = "<td>word count</td><td>"+str(total_words)+"</td>\n"
     text="".join(lines)
     
 with open("md_files/site/website stats.md", "w", encoding="utf-8") as f:
@@ -182,15 +207,17 @@ def html_template(path, html):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
 def compress(a):
-    
+    global total_words
     output_file = Path('gz/'+a.replace("\\","/")+'.gz')
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
     if ".md" in a:
-        
         with open(a, 'r', encoding = "utf-8") as f_in:
+            total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
+            print(total_words)
             f_in = process(f_in.read(),a)
             html_template(a,f_in)
+            
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
             with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
