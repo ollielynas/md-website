@@ -4,7 +4,6 @@ use js_sys::Uint8Array;
 use std::str;
 use wasm_bindgen::prelude::*;
 use web_sugars::prelude::*;
-use web_sugars::window;
 use zune_inflate::DeflateDecoder;
 
 // Import the `window.alert` function from the Web.
@@ -120,7 +119,9 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         };
 
         let path_text_element = err_to_sugar(document.create_element("p"))?;
+        path_text_element.set_class_name("path");
         path_text_element.set_text_content(Some(&tree_text));
+        
 
         err_to_sugar(horizontal.append_child(&path_text_element))?;
         err_to_sugar(horizontal.append_child(&new_element))?;
