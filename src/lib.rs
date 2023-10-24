@@ -70,8 +70,13 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
 
     nav.set_inner_html("");
 
+    let mut indent_number = (0,0);
+
     for i in 0..files.len() {
         let f = files[i];
+        if f == "md_files" {
+            continue;
+        }
         let name = option_to_sugar(f.split("\\").last())?;
         let md = f.contains(".md");
         let horizontal = err_to_sugar(document.create_element("div"))?;
@@ -105,18 +110,33 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
                 },
                 true,
             ))?;
-        let mut tree_text = " ".repeat((f.split("\\").count() as i32 - 1).max(0) as usize);
-
+        
+        let indent = (f.split("\\").count() as i32 - 1).max(0) as usize;
+        let mut tree_text = " ".repeat(indent);
+        
         let current_len = f.split("\\").count();
         let next_len = files.get(i + 1).unwrap_or(&"").split("\\").count();
 
-        // check out this gross match statement
+
         tree_text += match (current_len < next_len, current_len > next_len) {
-            _ if current_len == 1 => "",
+            _ if current_len <= 2 => "",
             (true, true) | (false, false) => "├─",
             (false, true) => "└─",
             (true, false) => "└┬",
         };
+        // if indent_number.0 != indent {
+        //     indent_number.0 = indent;
+        //     indent_number.1 = 1;
+        // } else {
+        //     indent_number.1 += 1;
+        // }
+        // tree_text += &format!("{}.{}.",indent, indent_number.1);
+        // tree_text += match (current_len < next_len, current_len > next_len) {
+        //     _ if current_len <= 2 => "",
+        //     (true, true) | (false, false) => "",
+        //     (false, true) => "",
+        //     (true, false) => "",
+        // };
 
         let path_text_element = err_to_sugar(document.create_element("p"))?;
         path_text_element.set_class_name("path");

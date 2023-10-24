@@ -102,6 +102,7 @@ h1,h2,h3 {
     /* min-height: 56em; */
     /* overflow-y:; */
     width: auto;
+    max-height: 100dvh;
     /* height: 80%; */
 }
 .navigation {

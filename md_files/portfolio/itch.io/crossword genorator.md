@@ -12,6 +12,12 @@ This website generates crosswords using a thesaurus. All of the words are checke
 
 **works best when played on [itch.io](https://v6p9d9t4.ssl.hwcdn.net/html/8308172/dist/index.html)**
 
+<br>
+
+[alt link](https://ollielynas.github.io/crossword/)
+
+<br>
+
 <iframe src="https://v6p9d9t4.ssl.hwcdn.net/html/8308172/dist/index.html" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="200px" width="600px"
 style="scale:0.6" allowfullscreen></iframe>
 

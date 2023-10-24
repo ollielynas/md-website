@@ -10,7 +10,10 @@
 
 [download PDF file](https://ollie-lynas.itch.io/the-ultimate-guide-to-naughts-and-crosses/purchase)
 
+<br>
+
 Extract from itch.io website:
+
 <br>
 
 *To play read the book/PDF as if it were a pick your own adventure book. To place you move on any valid square turn to page number written on the square. The book will automatically make a move in response and you will be one move closer to losing.*
