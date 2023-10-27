@@ -17,6 +17,14 @@
 
 [md_files/portfolio/index.md](md_files/portfolio/index.md)
 
+[md_files/site/cache.md](md_files/site/cache.md)
+
+[md_files/site/credits.md](md_files/site/credits.md)
+
+[md_files/site/resources.md](md_files/site/resources.md)
+
+[md_files/site/website stats.md](md_files/site/website%20stats.md)
+
 [md_files/portfolio/books/tic tac toe.md](md_files/portfolio/books/tic%20tac%20toe.md)
 
 [md_files/portfolio/desmos/boids.md](md_files/portfolio/desmos/boids.md)
@@ -80,13 +88,5 @@
 [md_files/portfolio/web/short url.md](md_files/portfolio/web/short%20url.md)
 
 [md_files/portfolio/web/superfast re-randomiser.md](md_files/portfolio/web/superfast%20re-randomiser.md)
-
-[md_files/site/cache.md](md_files/site/cache.md)
-
-[md_files/site/credits.md](md_files/site/credits.md)
-
-[md_files/site/resources.md](md_files/site/resources.md)
-
-[md_files/site/website stats.md](md_files/site/website%20stats.md)
 
 [md_files/site/report bug.md](md_files/site/report%20bug.md)
