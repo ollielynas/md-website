@@ -89,8 +89,13 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         new_element.set_id(&f);
         new_element.set_text_content(Some(&name.replace(".md","")));
 
-        new_element.set_class_name(&if md {
+        new_element.set_class_name(&if md 
+            {
+            if include_str!("favorite.txt").contains(&(f.to_owned())) {
+                "favorite link".to_owned()
+            }else {
             "link".to_owned()
+            }
         } else {
             "folder ".to_owned()
                 + if collapsed.contains(&f.replace("\\", "/")) {
@@ -137,6 +142,8 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         //     (false, true) => "",
         //     (true, false) => "",
         // };
+
+        
 
         let path_text_element = err_to_sugar(document.create_element("p"))?;
         path_text_element.set_class_name("path");
@@ -279,7 +286,9 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     
     show_content().await?;
     
-    get_element_by_id(&file.replace("/", "\\"))?.set_class_name("link ur-here");
+    let link = get_element_by_id(&file.replace("/", "\\"))?;
+    let class = link.class_name();
+    link.set_class_name(&class.replace("link ur-here", "link").replace("link", "link ur-here"));
     // md
     
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");

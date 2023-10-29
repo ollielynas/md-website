@@ -1,4 +1,5 @@
 ## Re-randomizer
+<!-- STAR ICON -->
 
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/re-rando)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/re-rando)

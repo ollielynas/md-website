@@ -1,0 +1,6 @@
+md_files\portfolio\desmos\fragment shader.md
+md_files\portfolio\esolangs\docscript.md
+md_files\portfolio\golf\donut.md
+md_files\portfolio\itch.io\bare king.md
+md_files\portfolio\itch.io\quantum chess.md
+md_files\portfolio\web\superfast re-randomiser.md

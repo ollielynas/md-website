@@ -24,7 +24,11 @@ text = ""
 text_last = ""
 for t in paths:
     print(t)
-    if any([n in f"{t}" for n in bottom]):
+    if any([n in f"{t}" for n in bottom]) or "\\site" in f"{t}":
+        if "\\".join(f"{t}".split("\\")[:-2])+"\n" not in text_last+text:
+            text_last += ("\\".join(f"{t}".split("\\")[:-2])+"\n")
+        if "\\".join(f"{t}".split("\\")[:-1])+"\n" not in text_last+text:
+            text_last += ("\\".join(f"{t}".split("\\")[:-1])+"\n")
         text_last += (f"{t}"+"\n")
     else:
         if "\\".join(f"{t}".split("\\")[:-2])+"\n" not in text:
@@ -33,7 +37,10 @@ for t in paths:
             text += ("\\".join(f"{t}".split("\\")[:-1])+"\n")
         text += (f"{t}"+"\n")
 
+
+
 text+=text_last
+
 
 # index = "";
 
@@ -178,14 +185,18 @@ def process(text,a):
     
     return text
 
+favorite = ""
+
 def html_template(path, html):
-    global sitemap
+    global sitemap, favorite, sitemap
     meta = html.split("META")
     template = ""
     with open("sub/template.html", encoding="utf-8") as t:
         template = t.read()
     path2 = path.replace('\\', '/')
     if "no index" in html:return
+    if "<!-- STAR ICON -->" in html:
+        favorite += f"{path}\n"
     template = template.replace("CONTENT", html)
     folder , name = path.split("\\")[-2:]
     folder = folder.replace("md_files","")
@@ -252,3 +263,6 @@ for i in resources:
 sitemap += "\n</urlset>"
 with open('sitemap.xml', 'w', encoding = "utf-8") as f:
     f.write(sitemap)
+
+with open('src/favorite.txt', 'w', encoding = "utf-8") as f:
+    f.write(favorite)

@@ -8,11 +8,6 @@ md_files\about me\resume.md
 md_files\about me\skills.md
 md_files\portfolio
 md_files\portfolio\index.md
-md_files\site
-md_files\site\cache.md
-md_files\site\credits.md
-md_files\site\resources.md
-md_files\site\website stats.md
 md_files\portfolio\books
 md_files\portfolio\books\tic tac toe.md
 md_files\portfolio\desmos
@@ -53,4 +48,9 @@ md_files\portfolio\web
 md_files\portfolio\web\portfolio.md
 md_files\portfolio\web\short url.md
 md_files\portfolio\web\superfast re-randomiser.md
+md_files\site
+md_files\site\cache.md
+md_files\site\credits.md
 md_files\site\report bug.md
+md_files\site\resources.md
+md_files\site\website stats.md

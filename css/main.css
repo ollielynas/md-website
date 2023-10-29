@@ -11,6 +11,7 @@
     --link-dark:rgb(50, 0, 149);
     --folder: rgb(58, 58, 58);
     --title-color: black;
+    --epic: 0;
 
 }
 
@@ -33,6 +34,8 @@ code {
     font-family: 'Fira Code', monospace !important;
     
 }
+
+
 
 
 body {
@@ -165,6 +168,8 @@ p {
     padding-left: 0.3em;
 }
 
+
+
 .folder {
     color: var(--folder);
 }
@@ -247,7 +252,11 @@ img[src^="https://img.shields.io"] {
 }
 
 
-
+#md_block > p {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    /* color: green; */
+}
 
 /* CSS */
 button {
@@ -493,4 +502,36 @@ table {
     max-width: 100%;
     padding-bottom: 1em;
     overflow: scroll;
+}
+
+
+.favorite::after {
+    content: " ★";
+    color: rgba(209, 179, 9, 0.377)
+}
+
+
+
+
+@keyframes move_left {
+    from {
+    background-position-x: 0vw;
+    }
+    to {
+    background-position-x: 100vw;
+    }
+}
+
+.unicorn {
+    height: 4em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.02;
+}
+
+.unicorn:hover {
+    opacity: 0.8;
+    /* animate opacity smothly */
+          transition: 500ms linear; 
 }

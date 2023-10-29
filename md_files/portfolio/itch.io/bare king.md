@@ -1,6 +1,7 @@
 ## bare king
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/Chess)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/Chess)
+<!-- STAR ICON -->
 
 <!-- META A turn based, chess themed, rougelike, survival game made with rust META -->
 turn based, chess themed, rougelike, survival game

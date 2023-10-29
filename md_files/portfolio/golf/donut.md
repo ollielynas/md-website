@@ -1,7 +1,7 @@
 
 
 ## Spinning Donut
-
+<!-- STAR ICON -->
 <!-- META A golfed version of a spinning donut, made with python META -->
 
 creates a spinning donut. Not true 3D. 
