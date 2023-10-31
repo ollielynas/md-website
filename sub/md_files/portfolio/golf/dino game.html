@@ -39,10 +39,13 @@ while' '==l[3]or d:
         body {
             background-color: rgb(247, 248, 246);
             overflow-y: scroll;
+            padding-top: none;
         }
         .md_file {
             margin-left: 1dvw;
-            overflow-y: scroll;
+            /* overflow-y: no; */
+            height: 100%;
+            
         }
         #md_block {
         padding: 1em;
@@ -52,7 +55,15 @@ while' '==l[3]or d:
         width: 50dvw;
         min-height: 65dvw;
     }
-        @media screen and (orientation:portrait) {
+    .md_file {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      top: 0;
+      padding-top: 0;
+      background-color: transparent;
+    }
+    @media screen and (orientation:portrait) {
            #md_block {
         padding: 1em;
         margin-left: 0;
@@ -60,6 +71,19 @@ while' '==l[3]or d:
         filter: none;
         width: 90dvw;
     } 
+    .md_file {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      top: 0;
+      padding-top: 0;
+      padding-right: 0;
+      background-color: transparent;
+      width: 100%;
+    }
+    .md_content {
+      
+    }
 }
 
     .home_link {
@@ -68,6 +92,7 @@ while' '==l[3]or d:
         left: 0;
         padding: 1em;
     }
+    
     </style>
 
 
