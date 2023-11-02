@@ -258,6 +258,10 @@ img[src^="https://img.shields.io"] {
     /* color: green; */
 }
 
+#md_block {
+    margin-bottom: 4em;
+}
+
 /* CSS */
 
 /* CSS */
@@ -346,6 +350,11 @@ a {
 
 img {
     max-width: 40em;
+}
+
+#nav {
+    margin-bottom: 2em !important;
+    height: 95%;
 }
 
 .blocker {
