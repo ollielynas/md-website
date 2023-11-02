@@ -1,5 +1,6 @@
 ## Projects
 
+*todo: this page could be improved*
 
 ### High Performance Software
 
