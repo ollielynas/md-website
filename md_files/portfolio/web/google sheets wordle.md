@@ -23,7 +23,6 @@ you should not need to click "refresh google sheet" each time you submit however
     function() {
         var iframe = document.getElementById('FrameID');
         iframe.src = iframe.src;
-
     }, 1000);
 }
 }, 100);" src="https://docs.google.com/forms/d/e/1FAIpQLSeT9-owRH8ygfzdOOtc9s4rroqqnueQ72HEjxs0Rru-DGCiBA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" height="600" width= "100%">Loading…</iframe>
