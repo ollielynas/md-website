@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <meta  name="description" content="google sheets wordle by Ollie Lynas">
+    <meta  name="description" content=" the game Wordle made using only a mixture of google forms and google sheets ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Security-Policy" content="sandbox" />
     <title>Ollie Lynas - web - google sheets wordle</title>
@@ -94,9 +94,12 @@
 
     <div class="md_file" id="content">
       <div id="md_block"><h2>Wordle</h2>
+<!-- META the game Wordle made using only a mixture of google forms and google sheets META -->
+
 <p>wordle implemented using google sheets and google forms. the google sheet &amp; form are shared between all players. every 7th submission will clear the wordle and generate a new word. </p>
 <p>to make a guess submit your word using the google sheet below</p>
 <p>you should not need to click "refresh google sheet" each time you submit however if nothing happens after a couple of seconds you should try clicking the button.</p>
+<p>sometimes the google sheet formatting breaks and you need to manually refresh untill it sortes itself out. I have no idea why it behaves like that, something to do with race conditions I think. </p>
 <p><button onclick="var iframe = document.getElementById('FrameID');iframe.src = iframe.src;">refresh google sheet</button></p>
 <iframe id="FrameID" src="https://docs.google.com/spreadsheets/d/17LzKFD14EYlp2zvq8MLdOLiphvNO0tBZoIDnXPQyrPE/htmlembed/sheet?gid=367259484" height="240" width="100%"></iframe>
 

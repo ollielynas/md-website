@@ -1,10 +1,15 @@
 ## Wordle
 
+<!-- META the game Wordle made using only a mixture of google forms and google sheets META -->
+
 wordle implemented using google sheets and google forms. the google sheet & form are shared between all players. every 7th submission will clear the wordle and generate a new word. 
 
 to make a guess submit your word using the google sheet below
 
 you should not need to click "refresh google sheet" each time you submit however if nothing happens after a couple of seconds you should try clicking the button.
+
+
+sometimes the google sheet formatting breaks and you need to manually refresh untill it sortes itself out. I have no idea why it behaves like that, something to do with race conditions I think. 
 
 <button onclick="var iframe = document.getElementById('FrameID');iframe.src = iframe.src;">refresh google sheet</button>
 
