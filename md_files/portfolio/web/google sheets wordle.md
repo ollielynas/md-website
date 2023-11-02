@@ -4,7 +4,7 @@ wordle implemented using google sheets and google forms. the google sheet & form
 
 to make a guess submit your word using the google sheet below
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpAT4hBW0kE90w3v0md72UiWgF0_7AeCHTmhaBVoDptkd0_vd3utMjad0786ugxZTS8mmNzRREMqff/pubhtml?gid=367259484&amp;single=true&amp;widget=true&amp;" height="240" height="100%"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSpAT4hBW0kE90w3v0md72UiWgF0_7AeCHTmhaBVoDptkd0_vd3utMjad0786ugxZTS8mmNzRREMqff/pubhtml?gid=367259484&amp;single=true&amp;widget=true&amp;" height="240" width="100%"></iframe>
 
 <br>
 
