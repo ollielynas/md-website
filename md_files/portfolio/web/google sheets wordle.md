@@ -4,7 +4,7 @@ wordle implemented using google sheets and google forms. the google sheet & form
 
 to make a guess submit your word using the google sheet below
 
-you will need to click "refresh google sheet" each time you submit
+you should not need to click "refresh google sheet" each time you submit however if nothing happens after a couple of seconds you should try clicking the button.
 
 <button onclick="var iframe = document.getElementById('FrameID');iframe.src = iframe.src;">refresh google sheet</button>
 
@@ -12,4 +12,14 @@ you will need to click "refresh google sheet" each time you submit
 
 <br>
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeT9-owRH8ygfzdOOtc9s4rroqqnueQ72HEjxs0Rru-DGCiBA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" height="600" width= "100%">Loading…</iframe>
+<iframe onload="var monitor = setInterval(function(){
+    var elem = document.activeElement;
+    if(elem && elem.tagName == 'IFRAME'){
+        clearInterval(monitor);
+        setTimeout(
+    function() {
+        var iframe = document.getElementById('FrameID');
+        iframe.src = iframe.src;
+    }, 1000);
+}
+}, 100);" src="https://docs.google.com/forms/d/e/1FAIpQLSeT9-owRH8ygfzdOOtc9s4rroqqnueQ72HEjxs0Rru-DGCiBA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" height="600" width= "100%">Loading…</iframe>
