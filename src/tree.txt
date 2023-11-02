@@ -45,6 +45,7 @@ md_files\portfolio\team projects
 md_files\portfolio\team projects\capture the flag.md
 md_files\portfolio\team projects\typing competition game.md
 md_files\portfolio\web
+md_files\portfolio\web\google sheets wordle.md
 md_files\portfolio\web\portfolio.md
 md_files\portfolio\web\short url.md
 md_files\portfolio\web\superfast re-randomiser.md

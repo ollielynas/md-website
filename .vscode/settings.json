@@ -3,7 +3,9 @@
         "autocapatalisation",
         "bindgen",
         "perticular",
-        "rerandomisations"
+        "rerandomisations",
+        "respawn",
+        "wordle"
     ],
     "rust-analyzer.linkedProjects": [
         ".\\Cargo.toml"
