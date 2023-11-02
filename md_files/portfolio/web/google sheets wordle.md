@@ -4,8 +4,7 @@ wordle implemented using google sheets and google forms. the google sheet & form
 
 to make a guess submit your word using the google sheet below
 
-**It doesn't format properly and idk why :(**
-
+you will need to click "refresh google sheet" each time you submit
 
 <button onclick="var iframe = document.getElementById('FrameID');iframe.src = iframe.src;">refresh google sheet</button>
 
