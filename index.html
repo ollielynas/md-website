@@ -43,7 +43,8 @@
             update_nav,
             load_gzip,
             load_md,
-            console_error_panic_hook_set
+            console_error_panic_hook_set,
+            search_results
         } from "./rust-out/md_website.js";
 
         async function run() {
@@ -68,6 +69,7 @@
         window.rs_onload=rs_onload;
         window.collapse = collapse;
         window.clicked_scroll = clicked_scroll;
+        window.search_results = search_results;
         window.update_from_hash = update_from_hash;
 
         rs_onload();
@@ -91,8 +93,6 @@
     <div id = "slider" style="left:0dvw">
     <div class="navigation">
         <div class="md_file" id="nav" onclick="">
-            md_files
-            <br>
         </div>
     </div>
     <a id="link_to_external"></a>

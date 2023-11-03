@@ -47,6 +47,11 @@ export function show_nav(): Promise<void>;
 * @returns {Promise<void>}
 */
 export function show_content(): Promise<void>;
+/**
+* @param {string} input
+* @returns {Promise<void>}
+*/
+export function search_results(input: string): Promise<void>;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -63,6 +68,7 @@ export interface InitOutput {
   readonly clicked_scroll: () => number;
   readonly show_nav: () => number;
   readonly show_content: () => number;
+  readonly search_results: (a: number, b: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;

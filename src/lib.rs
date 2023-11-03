@@ -5,6 +5,7 @@ use std::str;
 use wasm_bindgen::prelude::*;
 use web_sugars::prelude::*;
 use zune_inflate::DeflateDecoder;
+use rust_fuzzy_search::*;
 
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
@@ -72,7 +73,7 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
     let nav = get_element_by_id("nav")?;
     let inner_html = nav.inner_html();
 
-    nav.set_inner_html("");
+    nav.set_inner_html(include_str!("search_bar.html"));
 
     let mut indent_number = (0, 0);
 
@@ -394,4 +395,33 @@ pub async fn show_content() -> Result<(), WebSysSugarsError> {
     button.set_text_content(Some("<- menu"));
 
     Ok(())
+}
+
+
+#[wasm_bindgen]
+pub async fn search_results(mut input: String) {
+    input = input.to_lowercase();
+    let mut search_results = "".to_owned();
+
+    let mut results = include_str!("tree.txt").lines().filter(|s| s.ends_with(".md")).map(|s|
+    (s.split("\\").last().unwrap_or("error no \\\\ found").replace(".md",""),s.to_owned(), fuzzy_compare(&s.replace(".md", "").replace("\\", " "), &input))).collect::<Vec<(String, String, f32)>>();
+
+    results.sort_by(|a,b| b.2.total_cmp(&a.2));
+    
+    for i in 0..10.min(results.len()) {
+        if results[i].2 == 0.0 {
+            break;
+        }
+        if results[i].2 < results[0].2 * 0.5 {
+            break;
+        }
+        search_results.push_str(&format!(
+                        "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
+                        results[i].1.replace("\\", "/"),
+                        results[i].0,
+        ));
+    }
+    
+    get_element_by_id("results").unwrap().set_inner_html(&(search_results));
+
 }

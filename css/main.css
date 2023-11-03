@@ -577,3 +577,37 @@ table {
 .info-box {
     border-radius: 1em; background-color: whitesmoke; padding: 1em;
 }
+
+.search {
+    margin-left: 2em;
+    height: 1em;
+    font-size: 1em;
+    width: 6em;
+    z-index: 10000;
+    /* width: 1em; */
+    align-self: center;
+    /* color: transparent !important; */
+}
+
+.search:focus {
+    width: max-content;
+    color: black !important;
+    padding-right: 1.5em;
+}
+
+.search-icon {
+    height: 1em;
+    top: 0.5em;
+    width: 1em;
+    transform: translate(-200%, 0%);
+}
+
+#results {
+    padding-left: 1em;
+    padding: 1em !important;
+}
+#results > li {
+    /* make point invisible */
+    /* list-style-type: none; */
+    padding-left: 0.5em;
+}

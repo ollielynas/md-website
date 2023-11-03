@@ -12,6 +12,7 @@ export function rs_onload(): number;
 export function clicked_scroll(): number;
 export function show_nav(): number;
 export function show_content(): number;
+export function search_results(a: number, b: number): number;
 export function __wbindgen_malloc(a: number, b: number): number;
 export function __wbindgen_realloc(a: number, b: number, c: number, d: number): number;
 export const __wbindgen_export_2: WebAssembly.Table;
