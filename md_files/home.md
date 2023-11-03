@@ -6,12 +6,14 @@ h2 {
 </style>
 # Ollie Lynas
 student
-
 <br>
 
 <div class="info-box">
 <h2>about me</h2>
 I am a software engineering students based in Auckland. I made this website as a place to keep my all of my projects in one place and to show them off to my friends. 
+<br>
+<br>
+<a id = "md_files/about me/links.md" class="link" onclick = "window.load_md(this.id);">links</a>
 </div>
 <br>
 <div class="info-box">
@@ -19,4 +21,3 @@ I am a software engineering students based in Auckland. I made this website as a
 loading starred projects...
 </div>
 
-<a id = "md_files/about me/links.md" class="link" onclick = "window.load_md(this.id);">contact me</a>
