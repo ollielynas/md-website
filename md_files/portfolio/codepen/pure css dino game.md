@@ -1,4 +1,4 @@
-### 100% css dinosaur game
+### 100% CSS dinosaur game
 <!-- META a version of the chrome dinosaur game implemented using only css and html META -->
 *fun fact, css is turing complete*
 
