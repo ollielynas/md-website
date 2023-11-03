@@ -1,6 +1,7 @@
 ## Mini City
 
 <!-- META A minimalist city builder game META -->
+<!-- STAR ICON -->
 
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/minimalist_city_builder)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/minimalist_city_builder)

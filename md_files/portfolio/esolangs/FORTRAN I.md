@@ -3,6 +3,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/Fortran-1)
 
 <!-- META A fortran 1 interpreter based on the original documentation from 1956 META -->
+<!-- STAR ICON -->
 
 <small>*yeh I consider it exoteric*</small>
 
@@ -12,7 +13,7 @@ this project is unfinished as I still have several features to implement
 
 ### links
 
-[website](https://ollielynas.github.io/Fortran-1/)
+[try it out](https://ollielynas.github.io/Fortran-1/)
 
 [based on this documentation](https://archive.computerhistory.org/resources/text/Fortran/102649787.05.01.acc.pdf)
 

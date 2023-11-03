@@ -280,7 +280,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         link.set_inner_html("open external ->");
     }
     match file.as_str() {
-        "md_files\\home.md" => {
+        "md_files\\home.md" | "md_files\\portfolio\\index.md" => {
             let fav = include_str!("favorite.txt")
                 .lines()
                 .map(|x| {
