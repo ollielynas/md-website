@@ -10,6 +10,8 @@ md_files\portfolio
 md_files\portfolio\index.md
 md_files\portfolio\books
 md_files\portfolio\books\tic tac toe.md
+md_files\portfolio\codepen
+md_files\portfolio\codepen\pure css dino game.md
 md_files\portfolio\desmos
 md_files\portfolio\desmos\boids.md
 md_files\portfolio\desmos\complex numbers.md

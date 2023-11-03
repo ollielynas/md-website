@@ -71,6 +71,9 @@ with open('tree.csv', 'w', encoding="utf-8") as f:
     f.write(csv)
 
 
+#  does tree + csv ^
+
+
 resources = ["favicon.ico"]
 
 resources.append("src/tree.txt")
@@ -156,7 +159,8 @@ with open("md_files/site/website stats.md", "r", encoding="utf-8") as f:
         # if "<td>word count</td><td>" in lines[i]:
         #     lines[i] = "<td>word count</td><td>"+str(total_words)+"</td>\n"
     text="".join(lines)
-    
+
+
 with open("md_files/site/website stats.md", "w", encoding="utf-8") as f:
     if text=="":raise ValueError
     f.write(text)
@@ -248,6 +252,7 @@ def compress(a):
     else:
         with open(a, 'rb') as f_in, gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
             f_out.writelines(f_in)
+
 for i in resources:
     compress(i)
 

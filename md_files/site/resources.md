@@ -19,6 +19,8 @@
 
 [md_files/portfolio/books/tic tac toe.md](md_files/portfolio/books/tic%20tac%20toe.md)
 
+[md_files/portfolio/codepen/pure css dino game.md](md_files/portfolio/codepen/pure%20css%20dino%20game.md)
+
 [md_files/portfolio/desmos/boids.md](md_files/portfolio/desmos/boids.md)
 
 [md_files/portfolio/desmos/complex numbers.md](md_files/portfolio/desmos/complex%20numbers.md)

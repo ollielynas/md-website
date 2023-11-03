@@ -70,13 +70,12 @@
         window.clicked_scroll = clicked_scroll;
         window.update_from_hash = update_from_hash;
 
-      
         rs_onload();
         load_style();
 
         }
 
-      run();
+    run();
 
 </script>
 
@@ -99,7 +98,37 @@
     <a id="link_to_external"></a>
     <div class="md_file" id="content">
         <div id="md_block">
-            <!-- START-STOP --><!-- START-STOP -->
+            <!-- START-STOP -->
+             <noscript><h3>Your browser does not support JavaScript!</h3></noscript> 
+              <noscript>
+<style> h1 {position: absolute;bottom:0;transition:0.6s;right:-1em;width: 15em;font-size:0.5em;font-weight: normal;animation-duration: 1s;animation-timing-function: jump-both;}.game {font-size: 5vw;overflow: hidden;height: 9em;width: 9em;border: 2px solid black;position: relative;padding-bottom: 0;background-color: whitesmoke;margin-left: 5vw;margin-top: 30vh;transform: translate(0%, -50%);color: rgba(1,1,1,0.7);font-style: italic;}@media screen and (min-width: 100vh) {.game {font-size: 5vh;}}.game:after {content: "hover to start" }.game:hover:after {content: "click to jump";background-color: whitesmoke;}.game:hover > .dino > .cactus:not(:hover) {animation: move-hitbox 3s linear infinite;}.game:hover > .dino > .cactus:not(:hover):active::before {}.game:hover > .dino > .cactus:not(:hover) ~ .cactus-icon {animation: move 3s linear infinite;}.game:hover > h1 {right: 18em;}.cactus:hover {position: fixed;background-color: whitesmoke;z-index: 99;left: 0;top: 0;animation: none;height: 6em;width: 9em;padding-top: 3em;}.cactus:hover:after {content: "click to restart";text-align: center;pointer-events: none;}.cactus {position: absolute;top: 0;height: 0em;width: 0em;border: 0px solid red;}.cactus-icon {position: absolute;bottom: 0em;right: -9em;}@keyframes move-hitbox {0% {right: -9em;width: 0em;height: 0em;}82% {width: 0em;height: 0em;right: 6em;}83% {right: 0em;width: 9em;height: 9em;}84% {width: 0em;height: 0em;right: 6em;}100% {right: 9em;width: 0em;height: 0em;}}@keyframes move {0% {right: -9em;}83% {right: 6em;}100% {right: 9em;}}.dino {--jump: none;display: flex;flex-direction: column;justify-content: flex-end;align-content: center;position: absolute;bottom: 0em;left: 0em;height: 9em;width: 100%;}svg {width: 1.8em;height: 1.8em;}.dino:active {pointer-events: none;}.dino:hover {animation: jump 0.9s linear;}@keyframes jump {0% {padding-bottom: 0em;height: 9em;}25% {padding-bottom: 1.5em;height: 9em;}26% {height: 18em;}50% {padding-bottom: 3em;}74% {height: 18em;}75% {height: 9em;padding-bottom: 1.5em;}100% {padding-bottom: 0em;}}.jump {position: absolute;left: 0;bottom: 0;height: 9em;width: 9em;}</style>
+<style>
+    #swipe_info, #nav {
+        display: none;
+    }
+</style>
+<button class="game">
+  <h1>
+    100% css dino game
+  </h1>
+  <div class="dino">
+    <svg width="800px" height="800px" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M357 104.221C334.405 90.96 322.475 77.7795 310.533 78.0028C271.714 78.7285 262.209 148.095 251.288 162.911C248.505 166.69 188.676 163.283 176.28 169.019C140.338 185.642 129.721 231.016 109.239 261.326C97.4534 278.772 77.1649 297.363 59.0581 307.888C57.2838 308.919 42.9534 315.919 43.0001 316.062C52.0432 343.654 143.808 266.707 155.079 256.547C160.668 251.508 175.956 260.821 183.586 260.934C328.782 263.08 288.427 151.337 306.739 124.903C307.198 124.24 332.83 126.901 351.747 124.903" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M235.444 157.407C225.044 147.18 216.428 129.209 200.271 126.943C190.375 125.555 196.592 158.402 191.58 157C178.94 153.454 157.106 131.877 143.157 138.72C131.203 144.591 152.448 170.763 149.779 177.306C148.34 180.842 110.912 169.546 105.909 175.682C94.5745 189.587 120.318 210.918 117.499 221.983C114.68 233.048 88.5273 222.788 88.5273 263.816" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M216.567 211.408C246.662 239.422 246.077 300.147 198.166 310.459" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M196.228 260.934C169.513 343.137 183.912 314.37 251.287 317.962" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324.936 175.947C312.615 175.844 304.845 183.144 296.129 190.358" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M294.689 199.137C303.338 198.293 310.494 201.682 317.735 204.771" stroke="#000000" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    <div class="cactus">
+    </div>
+    <div class="cactus-icon">
+      <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="40" y1="216" x2="216" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M96,216V136H84A60,60,0,0,1,24,76h0A20,20,0,0,1,44,56h0A20,20,0,0,1,64,76h0A20,20,0,0,0,84,96H96V56a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v80h12a20,20,0,0,0,20-20h0a20,20,0,0,1,20-20h0a20,20,0,0,1,20,20h0a60,60,0,0,1-60,60H160v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+    </div>
+  </div> 
+</button>
+              </noscript> 
+            <!-- START-STOP -->
     </div>
     </div>
     
