@@ -1,5 +1,7 @@
 ### 100% CSS dinosaur game
 <!-- META a version of the chrome dinosaur game implemented using only css and html META -->
+<!-- STAR ICON -->
+
 *fun fact, css is turing complete*
 
 <br>

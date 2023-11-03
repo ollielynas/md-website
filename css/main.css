@@ -573,3 +573,7 @@ table {
     /* animate opacity smothly */
           transition: 500ms linear; 
 }
+
+.info-box {
+    border-radius: 1em; background-color: whitesmoke; padding: 1em;
+}

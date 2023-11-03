@@ -55,9 +55,13 @@ pub async fn collapse(mut path: String) -> Result<(), WebSysSugarsError> {
 pub async fn update_nav() -> Result<(), WebSysSugarsError> {
     let window = option_to_sugar(web_sys::window())?;
     let document = option_to_sugar(window.document())?;
-    
+
     let mut files: Vec<&str> = include_str!(r"tree.txt").lines().collect();
-    let list = files.iter().filter(|x|!x.contains(".md") && x!=&&"md_files").map(|x|String::from(*x)).collect::<Vec<String>>();
+    let list = files
+        .iter()
+        .filter(|x| !x.contains(".md") && x != &&"md_files")
+        .map(|x| String::from(*x))
+        .collect::<Vec<String>>();
 
     let mut collapsed = get_collapsed().await?;
 
@@ -70,7 +74,7 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
 
     nav.set_inner_html("");
 
-    let mut indent_number = (0,0);
+    let mut indent_number = (0, 0);
 
     for i in 0..files.len() {
         let f = files[i];
@@ -80,21 +84,23 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         let name = option_to_sugar(f.split("\\").last())?;
         let md = f.contains(".md");
         let horizontal = err_to_sugar(document.create_element("div"))?;
-        horizontal.set_class_name(&("horizontal".to_owned() + if inner_html.contains(
-            &format!("\"{}\"",f)) {""} else {
-                " new"
-            })
+        horizontal.set_class_name(
+            &("horizontal".to_owned()
+                + if inner_html.contains(&format!("\"{}\"", f)) {
+                    ""
+                } else {
+                    " new"
+                }),
         );
         let new_element = err_to_sugar(document.create_element("p"))?;
         new_element.set_id(&f);
-        new_element.set_text_content(Some(&name.replace(".md","")));
+        new_element.set_text_content(Some(&name.replace(".md", "")));
 
-        new_element.set_class_name(&if md 
-            {
+        new_element.set_class_name(&if md {
             if include_str!("favorite.txt").contains(&(f.to_owned())) {
                 "favorite link".to_owned()
-            }else {
-            "link".to_owned()
+            } else {
+                "link".to_owned()
             }
         } else {
             "folder ".to_owned()
@@ -105,23 +111,21 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
                 }
         });
 
-        err_to_sugar(new_element
-            .add_event_listener_with_callback_and_bool(
-                "click",
-                &if md {
-                    Function::new_no_args("window.load_md(this.id);")
-                } else {
-                    Function::new_no_args(&format!("window.collapse('{}');", f.replace("\\", "/")))
-                },
-                true,
-            ))?;
-        
+        err_to_sugar(new_element.add_event_listener_with_callback_and_bool(
+            "click",
+            &if md {
+                Function::new_no_args("window.load_md(this.id);")
+            } else {
+                Function::new_no_args(&format!("window.collapse('{}');", f.replace("\\", "/")))
+            },
+            true,
+        ))?;
+
         let indent = (f.split("\\").count() as i32 - 1).max(0) as usize;
         let mut tree_text = " ".repeat(indent);
-        
+
         let current_len = f.split("\\").count();
         let next_len = files.get(i + 1).unwrap_or(&"").split("\\").count();
-
 
         tree_text += match (current_len < next_len, current_len > next_len) {
             _ if current_len <= 2 => "",
@@ -143,12 +147,9 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         //     (true, false) => "",
         // };
 
-        
-
         let path_text_element = err_to_sugar(document.create_element("p"))?;
         path_text_element.set_class_name("path");
         path_text_element.set_text_content(Some(&tree_text));
-        
 
         err_to_sugar(horizontal.append_child(&path_text_element))?;
         err_to_sugar(horizontal.append_child(&new_element))?;
@@ -197,24 +198,22 @@ pub async fn get_collapsed() -> Result<Vec<String>, WebSysSugarsError> {
 
     let collapsed = window.get("collapsed");
 
-
     let list = if let Some(collapsed_string) = collapsed {
         option_to_sugar(collapsed_string.as_string())?
-        .as_str().replace("\\", "/")
+            .as_str()
+            .replace("\\", "/")
             .to_owned()
             .split(";")
             .map(|x| x.to_owned())
             .collect::<Vec<String>>()
-        
-    }else {
+    } else {
         let files: Vec<&str> = include_str!(r"tree.txt").lines().collect();
-        
+
         files
             .into_iter()
             .filter(|x| !x.contains(".md") && x != &"md_files")
             .map(|x| String::from(x).replace("\\", "/"))
             .collect::<Vec<String>>()
-
     };
 
     return Ok(list);
@@ -230,7 +229,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     if !file.contains(".md") {
         return Err(WebSysSugarsError::NotImplemented);
     }
-    
+
     file = file.replace("/", "\\");
 
     // let window = get_window()?;
@@ -242,13 +241,13 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         .filter(|x| !x.contains(".md"))
         .collect::<Vec<&str>>()
         .join("/");
-    
+
     collapsed_list.retain(|x| !path.replace("\\", "/").contains(x) && x != &"");
-    
+
     set_collapsed(collapsed_list);
-    
+
     let md_block = get_element_by_id("md_block")?;
-    
+
     let window = get_window()?;
     let loc = window.location();
     if loc.hash().unwrap_or("x".to_owned()) != file {
@@ -259,14 +258,14 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
             file.replace("\\", "/")
         ));
     }
-    
-    let text = match load_gzip(&file).await {
+
+    let mut text = match load_gzip(&file).await {
         Ok(a) => a,
         Err(a) => format!("{:?}", a),
     };
-    
+
     let link = get_element_by_id("link_to_external")?;
-    
+
     err_to_sugar(link.set_attribute(
         "href",
         &format!(
@@ -276,21 +275,44 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     ))?;
     if text.contains("no index") {
         link.set_inner_html("");
-    }else {
+    } else {
         link.set_inner_html("open external ->");
     }
+    match file.as_str() {
+        "md_files\\home.md" => {
+            let fav = include_str!("favorite.txt")
+                .lines()
+                .map(|x| {
+                    if x.ends_with(".md") {
+                    format!(
+                        "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
+                        x.replace("\\", "/"),
+                        x.split("\\").last().unwrap_or("error!").replace(".md", "")
+                    )
+                }else {format!("<p>{x}<p>\n",)}
+                })
+                .collect::<String>();
+
+            text = text.replace("loading starred projects...", &fav);
+        }
+        _ => {}
+    }
     md_block.set_inner_html(&text);
-    
+
     // window()
     update_nav().await?;
-    
+
     show_content().await?;
-    
+
     let link = get_element_by_id(&file.replace("/", "\\"))?;
     let class = link.class_name();
-    link.set_class_name(&class.replace("link ur-here", "link").replace("link", "link ur-here"));
+    link.set_class_name(
+        &class
+            .replace("link ur-here", "link")
+            .replace("link", "link ur-here"),
+    );
     // md
-    
+
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
 }
@@ -337,8 +359,6 @@ pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
             "console.log('hashchange');window.update_from_hash()",
         ),
     ))?;
-
-    
 
     return Ok(());
 }

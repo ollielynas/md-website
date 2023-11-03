@@ -199,8 +199,6 @@ def html_template(path, html):
         template = t.read()
     path2 = path.replace('\\', '/')
     if "no index" in html:return
-    if "<!-- STAR ICON -->" in html:
-        favorite += f"{path}\n"
     template = template.replace("CONTENT", html)
     folder , name = path.split("\\")[-2:]
     folder = folder.replace("md_files","")
@@ -210,6 +208,9 @@ def html_template(path, html):
     if len(meta) > 2:
         _, inner_meta, _ = meta
     else: inner_meta = name + " by Ollie Lynas"
+    if "<!-- STAR ICON -->" in html:
+        favorite += f"{path}\n"
+        favorite += f"{inner_meta}\n"
     template=template.replace("META_DESCRIPTION", inner_meta)
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)

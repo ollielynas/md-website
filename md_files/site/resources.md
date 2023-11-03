@@ -19,8 +19,6 @@
 
 [md_files/portfolio/books/tic tac toe.md](md_files/portfolio/books/tic%20tac%20toe.md)
 
-[md_files/portfolio/codepen/pure css dino game.md](md_files/portfolio/codepen/pure%20css%20dino%20game.md)
-
 [md_files/portfolio/desmos/boids.md](md_files/portfolio/desmos/boids.md)
 
 [md_files/portfolio/desmos/complex numbers.md](md_files/portfolio/desmos/complex%20numbers.md)
@@ -84,6 +82,8 @@
 [md_files/portfolio/web/short url.md](md_files/portfolio/web/short%20url.md)
 
 [md_files/portfolio/web/superfast re-randomiser.md](md_files/portfolio/web/superfast%20re-randomiser.md)
+
+[md_files/portfolio/web/codepen/pure css dino game.md](md_files/portfolio/web/codepen/pure%20css%20dino%20game.md)
 
 [md_files/site/cache.md](md_files/site/cache.md)
 

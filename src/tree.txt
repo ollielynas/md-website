@@ -10,8 +10,6 @@ md_files\portfolio
 md_files\portfolio\index.md
 md_files\portfolio\books
 md_files\portfolio\books\tic tac toe.md
-md_files\portfolio\codepen
-md_files\portfolio\codepen\pure css dino game.md
 md_files\portfolio\desmos
 md_files\portfolio\desmos\boids.md
 md_files\portfolio\desmos\complex numbers.md
@@ -51,6 +49,8 @@ md_files\portfolio\web\google sheets wordle.md
 md_files\portfolio\web\portfolio.md
 md_files\portfolio\web\short url.md
 md_files\portfolio\web\superfast re-randomiser.md
+md_files\portfolio\web\codepen
+md_files\portfolio\web\codepen\pure css dino game.md
 md_files\site
 md_files\site\cache.md
 md_files\site\credits.md

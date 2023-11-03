@@ -9,9 +9,14 @@ student
 
 <br>
 
+<div class="info-box">
+<h2>about me</h2>
+I am a software engineering students based in Auckland. I made this website as a place to keep my all of my projects in one place and to show them off to my friends. 
+</div>
+<br>
+<div class="info-box">
+<h2> starred projects</h2>
+loading starred projects...
+</div>
 
-
-<button id = "md_files/portfolio/index.md" class="link" onclick = "window.load_md(this.id);">my projects</button>
-
-
-<button id = "md_files/about me/links.md" class="link" onclick = "window.load_md(this.id);">contact me</button>
+<a id = "md_files/about me/links.md" class="link" onclick = "window.load_md(this.id);">contact me</a>
