@@ -59,7 +59,7 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
   </img>
 </td>
 <tr>
-<td>last compiled</td><td>2023-11-05 23:11:12</td>
+<td>last compiled</td><td>2023-11-05 23:18:01</td>
 </tr>
 <tr>
 <td>number of pages</td><td>45</td>
