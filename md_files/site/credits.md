@@ -1,6 +1,10 @@
 <!-- no index -->
 
-icon from [icons8](https://icons8.com/)
+[icons8](https://icons8.com/)
+
+[phosphor icons](https://phosphoricons.com/)
+
+
 
 <!-- add gif with link https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODltamU3M2VsN2w3bHdqb3dnbnJ2OWYzaTI1bWN5aDVqZnNnaDgyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTnLmaxrlBHxsMMg/giphy.gif -->
 

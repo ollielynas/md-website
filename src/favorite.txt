@@ -1,5 +1,5 @@
 md_files\portfolio\desmos\fragment shader.md
- A full fragment shader made in desmos 
+ A full fragment shader made in desmos. has uniforms for time, resolution, mouse position, and time.  
 md_files\portfolio\esolangs\docscript.md
  A full IDE made in a google doc. 
 md_files\portfolio\esolangs\FORTRAN I.md

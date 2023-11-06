@@ -190,6 +190,8 @@ h3 {
     border: none;
 }
 
+
+
 .folder, .link {
   cursor: pointer;
   user-select: none;
@@ -548,6 +550,13 @@ table {
     color: rgba(209, 179, 9, 0.377)
 }
 
+/* .link:hover::after {
+    color: gray;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
+    
+} */
 
 
 
@@ -579,6 +588,9 @@ table {
 }
 
 .search {
+    background-color: transparent;
+    border: none;
+    border-bottom: #a2a4aa 1px solid;
     margin-left: 2em;
     height: 1em;
     font-size: 1em;
@@ -586,13 +598,13 @@ table {
     z-index: 10000;
     /* width: 1em; */
     align-self: center;
-    /* color: transparent !important; */
 }
 
 .search:focus {
     width: max-content;
     color: black !important;
     padding-right: 1.5em;
+    outline: none;
 }
 
 .search-icon {
@@ -604,10 +616,24 @@ table {
 
 #results {
     padding-left: 1em;
-    padding: 1em !important;
+    /* padding: 1em !important; */
+    padding-bottom: 0.7em;
 }
 #results > li {
     /* make point invisible */
     /* list-style-type: none; */
     padding-left: 0.5em;
+    padding: 0.1em;
+}
+
+.bookmark {
+    height: 1em;
+    width: 1em;
+    color: black;
+    fill:rgba(92, 92, 92, 0.5);
+}
+
+.bookmark:hover {
+    /* half fill */
+    fill:rgb(62, 53, 53);
 }

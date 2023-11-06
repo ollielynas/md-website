@@ -1,11 +1,11 @@
 use console_error_panic_hook;
 use js_sys::Function;
 use js_sys::Uint8Array;
+use rust_fuzzy_search::*;
 use std::str;
 use wasm_bindgen::prelude::*;
 use web_sugars::prelude::*;
 use zune_inflate::DeflateDecoder;
-use rust_fuzzy_search::*;
 
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
@@ -58,17 +58,20 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
     let document = option_to_sugar(window.document())?;
 
     let mut files: Vec<&str> = include_str!(r"tree.txt").lines().collect();
-    let list = files
-        .iter()
-        .filter(|x| !x.contains(".md") && x != &&"md_files")
-        .map(|x| String::from(*x))
-        .collect::<Vec<String>>();
+    // let list = files
+    //     .iter()
+    //     .filter(|x| !x.contains(".md") && x != &&"md_files")
+    //     .map(|x| String::from(*x))
+    //     .collect::<Vec<String>>();
+    
 
-    let mut collapsed = get_collapsed().await?;
+    let collapsed = 
+        get_collapsed().await?;
 
     for i in &collapsed {
         files.retain(|x| !x.replace("\\", "/").contains(&format!("{}/", i)));
     }
+
 
     let nav = get_element_by_id("nav")?;
     let inner_html = nav.inner_html();
@@ -97,20 +100,23 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         new_element.set_id(&f);
         new_element.set_text_content(Some(&name.replace(".md", "")));
 
-        new_element.set_class_name(&if md {
-            if include_str!("favorite.txt").contains(&(f.to_owned())) {
-                "favorite link".to_owned()
-            } else {
-                "link".to_owned()
-            }
-        } else {
-            "folder ".to_owned()
-                + if collapsed.contains(&f.replace("\\", "/")) {
-                    "open"
+
+        new_element.set_class_name(
+            &(if md {
+                if include_str!("favorite.txt").contains(&(f.to_owned())) {
+                    "favorite link".to_owned()
                 } else {
-                    "close"
+                    "link".to_owned()
                 }
-        });
+            } else {
+                "folder ".to_owned()
+                    + if collapsed.contains(&f.replace("\\", "/")) {
+                        "open"
+                    } else {
+                        "close"
+                    }
+            }),
+        );
 
         err_to_sugar(new_element.add_event_listener_with_callback_and_bool(
             "click",
@@ -192,6 +198,26 @@ fn option_to_sugar<T>(a: Option<T>) -> Result<T, WebSysSugarsError> {
             "---Null value error---"
         ))),
     }
+}
+
+pub async fn get_show_search() -> Result<Vec<String>, WebSysSugarsError> {
+    let window = get_window()?;
+
+    let collapsed = window.get("show_search");
+
+    let list = if let Some(collapsed_string) = collapsed {
+        option_to_sugar(collapsed_string.as_string())?
+            .as_str()
+            .replace("\\", "/")
+            .to_owned()
+            .split(";")
+            .map(|x| x.to_owned())
+            .collect::<Vec<String>>()
+    } else {
+        vec![]
+    };
+
+    return Ok(list);
 }
 
 pub async fn get_collapsed() -> Result<Vec<String>, WebSysSugarsError> {
@@ -279,6 +305,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     } else {
         link.set_inner_html("open external ->");
     }
+    // let bookmark = include_str!("bookmark.html");
     match file.as_str() {
         "md_files\\home.md" | "md_files\\portfolio\\index.md" => {
             let fav = include_str!("favorite.txt")
@@ -288,7 +315,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
                     format!(
                         "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
                         x.replace("\\", "/"),
-                        x.split("\\").last().unwrap_or("error!").replace(".md", "")
+                        x.split("\\").last().unwrap_or("error!").replace(".md", ""),
                     )
                 }else {format!("<p>{x}<p>\n",)}
                 })
@@ -314,8 +341,15 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     );
     // md
 
+
+    let bookmarks = md_block.get_elements_by_class_name("bookmark");
+
+
+
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
+
+
 }
 
 #[wasm_bindgen]
@@ -397,17 +431,28 @@ pub async fn show_content() -> Result<(), WebSysSugarsError> {
     Ok(())
 }
 
-
 #[wasm_bindgen]
 pub async fn search_results(mut input: String) {
     input = input.to_lowercase();
     let mut search_results = "".to_owned();
 
-    let mut results = include_str!("tree.txt").lines().filter(|s| s.ends_with(".md")).map(|s|
-    (s.split("\\").last().unwrap_or("error no \\\\ found").replace(".md",""),s.to_owned(), fuzzy_compare(&s.replace(".md", "").replace("\\", " "), &input))).collect::<Vec<(String, String, f32)>>();
+    let mut results = include_str!("tree.txt")
+        .lines()
+        .filter(|s| s.ends_with(".md"))
+        .map(|s| {
+            (
+                s.split("\\")
+                    .last()
+                    .unwrap_or("error no \\\\ found")
+                    .replace(".md", ""),
+                s.to_owned(),
+                fuzzy_compare(&s.replace(".md", "").replace("\\", " "), &input),
+            )
+        })
+        .collect::<Vec<(String, String, f32)>>();
 
-    results.sort_by(|a,b| b.2.total_cmp(&a.2));
-    
+    results.sort_by(|a, b| b.2.total_cmp(&a.2));
+    let mut show: Vec<String> = vec![];
     for i in 0..10.min(results.len()) {
         if results[i].2 == 0.0 {
             break;
@@ -415,13 +460,16 @@ pub async fn search_results(mut input: String) {
         if results[i].2 < results[0].2 * 0.5 {
             break;
         }
+        show.push(results[i].1.replace("\\", "/"));
+
         search_results.push_str(&format!(
-                        "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
-                        results[i].1.replace("\\", "/"),
-                        results[i].0,
+            "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
+            results[i].1.replace("\\", "/"),
+            results[i].0,
         ));
     }
-    
-    get_element_by_id("results").unwrap().set_inner_html(&(search_results));
-
+    js_sys::eval(&format!("window.show_search='{}'", show.join(";")));
+    get_element_by_id("results")
+        .unwrap()
+        .set_inner_html(&(search_results));
 }
