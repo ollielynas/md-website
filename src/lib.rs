@@ -434,7 +434,7 @@ pub async fn show_content() -> Result<(), WebSysSugarsError> {
 #[wasm_bindgen]
 pub async fn search_results(mut input: String) {
     input = input.to_lowercase();
-    let mut search_results = "".to_owned();
+    let mut search_results = "<ul>".to_owned();
 
     let mut results = include_str!("tree.txt")
         .lines()
@@ -463,12 +463,14 @@ pub async fn search_results(mut input: String) {
         show.push(results[i].1.replace("\\", "/"));
 
         search_results.push_str(&format!(
-            "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
+            "<li><a aria-label='view this content as a standalone page' id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
             results[i].1.replace("\\", "/"),
             results[i].0,
         ));
     }
-    js_sys::eval(&format!("window.show_search='{}'", show.join(";")));
+    search_results.push_str("</ul>");
+
+    // js_sys::eval(&format!("window.show_search='{}'", show.join(";")));
     get_element_by_id("results")
         .unwrap()
         .set_inner_html(&(search_results));
