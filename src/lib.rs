@@ -302,7 +302,9 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     ))?;
     if text.contains("no index") {
         link.set_inner_html("");
+        link.set_attribute("style", "display: none");
     } else {
+        link.set_attribute("style", "display: auto");
         link.set_inner_html("open external ->");
     }
     // let bookmark = include_str!("bookmark.html");
@@ -321,7 +323,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
                 })
                 .collect::<String>();
 
-            text = text.replace("loading starred projects...", &fav);
+            text = text.replace("loading starred projects...", &format!("<ul>{fav}</ul>"));
         }
         _ => {}
     }
