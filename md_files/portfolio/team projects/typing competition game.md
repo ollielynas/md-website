@@ -16,6 +16,8 @@ Made by:
 
 2 player typing speed competition. You are given two lists of words. If you type words from the list on the left they will be added to your opponents right hand list. If your right hand list gets longer than 20 words then you lose. 
 
+The game is played through your local network. To play against another person you must be connected to the same network. One person is must chose to be the host. they will determine the ip and port of the game. To run on your local network set the ip to local host and the port to and number. 
+
 [GitHub](https://github.com/BelgianSalamander/word-game)
 
 <br>
