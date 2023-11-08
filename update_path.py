@@ -7,6 +7,7 @@ from io import BytesIO
 import os.path, time
 from html2image import Html2Image
 from PIL import Image
+import threading
 
 from css_html_js_minify import html_minify, js_minify, css_minify
 
@@ -275,7 +276,7 @@ def html_template(path, html, has_been_modified):
 
     
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=5000', '--hide-scrollbars'])
+    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
     
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
@@ -329,10 +330,25 @@ def compress(file_name):
         with open(file_name, 'rb') as f_in, gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
             f_out.writelines(f_in)
 
-for i in resources:
-    compress(i)
+# for i in resources:
+#     compress(i)
 
+def run_item(f, item):
+    result_info = [threading.Event(), None]
+    def runit():
+        result_info[1] = f(item)
+        result_info[0].set()
+    threading.Thread(target=runit).start()
+    return result_info
 
+def gather_results(result_infos):
+    results = [] 
+    for i in xrange(len(result_infos)):
+        result_infos[i][0].wait()
+        results.append(result_infos[i][1])
+    return results
+
+gather_results([run_item(compress, item) for item in resources])
 
 # with open('tree.csv', 'w') as f:
 #     f.write(csv)
@@ -344,6 +360,7 @@ for i in resources:
 sitemap += "\n</urlset>"
 with open('sitemap.xml', 'w', encoding = "utf-8") as f:
     f.write(sitemap)
+    
 
 with open('src/favorite.txt', 'w', encoding = "utf-8") as f:
     f.write(favorite)
