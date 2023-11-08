@@ -4,6 +4,7 @@ from pathlib import Path
 import gzip
 import markdown
 from io import BytesIO
+import os.path, time
 
 from css_html_js_minify import html_minify, js_minify, css_minify
 
@@ -167,11 +168,29 @@ with open("md_files/site/website stats.md", "w", encoding="utf-8") as f:
     
 
 
-def process(text,a):
+def process_and_detect_edit(text,file_name):
     replace = {
         "- [ ]": "<input type=\"checkbox\"></input>",
         "- [x]": "<input type=\"checkbox\" checked></input>"
     }
+    
+    last_edit = time.ctime(os.path.getmtime(file_name))
+    
+    has_been_modified = not text.contains(f"<!-- LAST EDITED {last_edit} LAST EDITED-->")
+    
+    if has_been_modified:
+        new_text = ""
+        for line in text.split("\n"):
+            if "LAST EDITED" in line:
+                new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
+            else:
+                new_text += f"\n{line}"
+        if f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->" not in new_text:
+            new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
+        text = new_text
+        with open(file_name, 'w') as file_writer:
+            file_writer.write(new_text)
+    
     
     for i in replace:
         text = text.replace(i, replace[i])
@@ -187,17 +206,23 @@ def process(text,a):
     #                         text+"<!-- START-STOP -->"+f_index_list[2])
 
     
-    return text
+    return (text, has_been_modified)
 
 favorite = ""
 
 def html_template(path, html):
     global sitemap, favorite, sitemap
+    path2 = path.replace('\\', '/')
+    sitemap += "\n  <url>"
+    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html').replace(' ', '%20')}</loc>"
+    sitemap += "\n  </url>"
+    
+    #  only do if edited
+    
     meta = html.split("META")
     template = ""
     with open("sub/template.html", encoding="utf-8") as t:
         template = t.read()
-    path2 = path.replace('\\', '/')
     if "no index" in html:return
     template = template.replace("CONTENT", html)
     folder , name = path.split("\\")[-2:]
@@ -214,44 +239,45 @@ def html_template(path, html):
     template=template.replace("META_DESCRIPTION", inner_meta)
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
-    sitemap += "\n  <url>"
-    sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html').replace(' ', '%20')}</loc>"
-    sitemap += "\n  </url>"
+
     
     with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
         f.write(template)
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
-def compress(a):
+def compress(file_name):
     # global total_words
-    output_file = Path('gz/'+a.replace("\\","/")+'.gz')
+    output_file = Path('gz/'+file_name.replace("\\","/")+'.gz')
     output_file.parent.mkdir(exist_ok=True, parents=True)
     
-    if ".md" in a:
-        with open(a, 'r', encoding = "utf-8") as f_in:
+    if ".md" in file_name:
+        with open(file_name, 'r', encoding = "utf-8") as f_in:
             # total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
             # print(total_words)
-            f_in = process(f_in.read(),a)
-            html_template(a,f_in)
+            # if 
+            f_in = process_and_detect_edit(f_in.read(),file_name)
+
+            
+            html_template(file_name,f_in)
             
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             
-            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+            with gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
-    elif ".js" in a:
-        with open(a, 'r', encoding = "utf-8") as f_in:
+    elif ".js" in file_name:
+        with open(file_name, 'r', encoding = "utf-8") as f_in:
             f_in = js_minify(f_in.read())
             f_in = BytesIO(bytes(f_in, 'utf-8'))
-            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+            with gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
-    elif ".css" in a:
-        with open(a, 'r', encoding="utf-8") as f_in:
+    elif ".css" in file_name:
+        with open(file_name, 'r', encoding="utf-8") as f_in:
             f_in = css_minify(f_in.read())
             f_in = BytesIO(bytes(f_in, 'utf-8'))
-            with gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+            with gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
                 f_out.writelines(f_in)
     else:
-        with open(a, 'rb') as f_in, gzip.open('gz/'+a.replace("\\", "/")+'.gz', 'wb') as f_out:
+        with open(file_name, 'rb') as f_in, gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
             f_out.writelines(f_in)
 
 for i in resources:
