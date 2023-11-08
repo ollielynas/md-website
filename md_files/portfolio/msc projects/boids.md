@@ -13,4 +13,4 @@ can run up to 100,000 boids, through at not such a good framerate.
 [github](https://github.com/ollielynas/rust-boid)
 
 ![screenshot](md_files/portfolio/msc%20projects/boids.png)
-<!-- LAST EDITED 1699416108 LAST EDITED-->
+<!-- LAST EDITED 1699416469 LAST EDITED-->

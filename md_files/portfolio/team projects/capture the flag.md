@@ -23,4 +23,4 @@ This project was inspired by [Jet Lag:The Game](https://www.youtube.com/@jetlagt
 Those are the features that are currently implemented. The plan is to add the ability to tag a person by takeing a picture of them. The web interface allows you to send pictures to any of the people playing. Once they conform that the picture is of them, they will be marked as dead. They will then need to return to their sides in order to respawn. This works on the honor system, however the pictures are kept on the server until the game is over so they can be used to settle disagreements after the fact. This also serves to discourage cheating. 
 
 
-<!-- LAST EDITED 1699416108 LAST EDITED-->
+<!-- LAST EDITED 1699416469 LAST EDITED-->
