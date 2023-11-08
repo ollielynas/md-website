@@ -6,7 +6,7 @@ import markdown
 from io import BytesIO
 import os.path, time
 from html2image import Html2Image
-
+from PIL import Image
 
 from css_html_js_minify import html_minify, js_minify, css_minify
 
@@ -184,7 +184,18 @@ def process_and_detect_edit(text,file_name):
     print(text.split("\n")[-1] , f"<!-- LAST EDITED {last_edit} LAST EDITED-->")
     has_been_modified = text.split("\n")[-1] != f"<!-- LAST EDITED {last_edit} LAST EDITED-->"
     
-    # has_been_modified = True
+    
+#                                                                      o8o  oooo                           oooo  oooo  
+#                                                                      `"'  `888                           `888  `888  
+# oooo d8b  .ooooo.   .ooooo.   .ooooo.  ooo. .oo.  .oo.   oo.ooooo.  oooo   888   .ooooo.        .oooo.    888   888  
+# `888""8P d88' `88b d88' `"Y8 d88' `88b `888P"Y88bP"Y88b   888' `88b `888   888  d88' `88b      `P  )88b   888   888  
+#  888     888ooo888 888       888   888  888   888   888   888   888  888   888  888ooo888       .oP"888   888   888  
+#  888     888    .o 888   .o8 888   888  888   888   888   888   888  888   888  888    .o      d8(  888   888   888  
+# d888b    `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o o888o  888bod8P' o888o o888o `Y8bod8P'      `Y888""8o o888o o888o 
+#                                                           888                                                        
+#                                                          o888o                                                       
+
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -264,16 +275,20 @@ def html_template(path, html, has_been_modified):
 
     
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=1000', '--hide-scrollbars'])
-    # print()
+    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=5000', '--hide-scrollbars'])
+    
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
     
     template = template.replace("IMAGE_PATH", "og-img/"+path2.replace('.md','.png'))
     
-    
+    print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
     hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+    print("finished screenshot for", name)
     
+    img_path = hti.output_path + "/" + name + ".png"
+    im = Image.open(img_path)
+    im.crop((0, 0, 500, 300)).save(img_path, quality=95)
     
     
     with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
