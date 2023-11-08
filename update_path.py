@@ -201,7 +201,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -281,7 +281,7 @@ def html_template(path, html, has_been_modified):
 
     
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
+    hti = Html2Image(size=(1000, 1800), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
     
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
@@ -294,7 +294,7 @@ def html_template(path, html, has_been_modified):
     
     img_path = hti.output_path + "/" + name + ".png"
     im = Image.open(img_path)
-    im.crop((0, 0, 500, 300)).save(img_path, quality=95)
+    im.crop((0, 0, 1000, 600)).save(img_path, quality=95)
     
     
     with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
