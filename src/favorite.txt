@@ -1,18 +1,18 @@
 md_files\portfolio\desmos\fragment shader.md
  A full fragment shader made in desmos. has uniforms for time, resolution, mouse position, and time.  
-md_files\portfolio\esolangs\docscript.md
- A full IDE made in a google doc. 
-md_files\portfolio\esolangs\FORTRAN I.md
- A fortran 1 interpreter based on the original documentation from 1956 
-md_files\portfolio\golf\donut.md
- A golfed version of a spinning donut, made with python 
 md_files\portfolio\itch.io\bare king.md
  A turn based, chess themed, rougelike, survival game made with rust 
-md_files\portfolio\itch.io\mini city.md
- A minimalist city builder game 
-md_files\portfolio\itch.io\quantum chess.md
- Quantum Chess. A terminal based game that adds random chance to chess (just what it was missing) 
+md_files\portfolio\esolangs\FORTRAN I.md
+ A fortran 1 interpreter based on the original documentation from 1956 
+md_files\portfolio\esolangs\docscript.md
+ A full IDE made in a google doc. 
 md_files\portfolio\web\superfast re-randomiser.md
  a web based program that re-randomizes grouped data to estimate the probability of completely random correlation  
+md_files\portfolio\itch.io\mini city.md
+ A minimalist city builder game 
 md_files\portfolio\web\codepen\pure css dino game.md
  a version of the chrome dinosaur game implemented using only css and html 
+md_files\portfolio\golf\donut.md
+ A golfed version of a spinning donut, made with python 
+md_files\portfolio\itch.io\quantum chess.md
+ Quantum Chess. A terminal based game that adds random chance to chess (just what it was missing) 
