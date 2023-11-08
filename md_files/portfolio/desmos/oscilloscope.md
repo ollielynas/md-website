@@ -1,6 +1,2 @@
-## oscilloscope
-<!-- META A two channel oscilloscope made in desmos. META -->
-
-A two channel oscilloscope made in desmos. Inverted contrast recommended.
-
-<iframe src="https://www.desmos.com/calculator/vfdbswn2wc?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+## oscilloscope<!-- META A two channel oscilloscope made in desmos. META -->A two channel oscilloscope made in desmos. Inverted contrast recommended.<iframe src="https://www.desmos.com/calculator/vfdbswn2wc?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<!-- LAST EDITED Wed Nov  8 14:23:42 2023 LAST EDITED-->

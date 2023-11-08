@@ -3,7 +3,19 @@
       <loc>https://ollielynas.github.io/md-website/index.html</loc>
   </url>
   <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/home.html</loc>
+  </url>
+  <url>
       <loc>https://ollielynas.github.io/md-website/sub/md_files/about%20me/github.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/about%20me/links.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/about%20me/resume.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/about%20me/skills.html</loc>
   </url>
   <url>
       <loc>https://ollielynas.github.io/md-website/sub/md_files/portfolio/index.html</loc>
@@ -99,6 +111,9 @@
       <loc>https://ollielynas.github.io/md-website/sub/md_files/portfolio/web/google%20sheets%20wordle.html</loc>
   </url>
   <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/portfolio/web/portfolio.html</loc>
+  </url>
+  <url>
       <loc>https://ollielynas.github.io/md-website/sub/md_files/portfolio/web/short%20url.html</loc>
   </url>
   <url>
@@ -108,6 +123,18 @@
       <loc>https://ollielynas.github.io/md-website/sub/md_files/portfolio/web/codepen/pure%20css%20dino%20game.html</loc>
   </url>
   <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/site/cache.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/site/credits.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/site/report%20bug.html</loc>
+  </url>
+  <url>
       <loc>https://ollielynas.github.io/md-website/sub/md_files/site/resources.html</loc>
+  </url>
+  <url>
+      <loc>https://ollielynas.github.io/md-website/sub/md_files/site/website%20stats.html</loc>
   </url>
 </urlset>
