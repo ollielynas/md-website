@@ -6,6 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Security-Policy" content="sandbox" />
     <title>Ollie Lynas -  - home</title>
+    
+    <meta property="og:title" content="Ollie Lynas -  - home" />
+    <meta property="twitter:title" content="Ollie Lynas -  - home" />
+
+    <meta property="og:description" content="home by Ollie Lynas" />
+    <meta property="twitter:description" content="home by Ollie Lynas" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" content="https://ollielynas.github.io/md-website/og-img/md_files/home.png" />
+    <meta property="twitter:image" content="https://ollielynas.github.io/md-website/og-img/md_files/home.png" />
+
+    <meta property="twitter:domain" content="ollielynas.github.io">
+    
+    <meta property="og:url" content="https://ollielynas.github.io/md-website/sub/md_files/home.html" />
+    <meta property="twitter:url" content="https://ollielynas.github.io/md-website/sub/md_files/home.html" />
+
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="600" />
+    
+    <meta property="og:image:alt" content="Screenshot of home by Ollie Lynas" />
+    <meta property="twitter:image:alt" content="Screenshot of home by Ollie Lynas" />
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="https://ollielynas.github.io/md-website/impo/main.css" /> -->
@@ -35,10 +61,13 @@
         body {
             background-color: rgb(247, 248, 246);
             overflow-y: scroll;
+            padding-top: none;
         }
         .md_file {
             margin-left: 1dvw;
-            overflow-y: scroll;
+            /* overflow-y: no; */
+            height: 100%;
+            
         }
         #md_block {
         padding: 1em;
@@ -48,7 +77,15 @@
         width: 50dvw;
         min-height: 65dvw;
     }
-        @media screen and (orientation:portrait) {
+    .md_file {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      top: 0;
+      padding-top: 0;
+      background-color: transparent;
+    }
+    @media screen and (orientation:portrait) {
            #md_block {
         padding: 1em;
         margin-left: 0;
@@ -56,6 +93,19 @@
         filter: none;
         width: 90dvw;
     } 
+    .md_file {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      top: 0;
+      padding-top: 0;
+      padding-right: 0;
+      background-color: transparent;
+      width: 100%;
+    }
+    .md_content {
+      
+    }
 }
 
     .home_link {
@@ -64,14 +114,36 @@
         left: 0;
         padding: 1em;
     }
+    
     </style>
 
 
     <div class="md_file" id="content">
-      <div id="md_block"></div>
+      <div id="md_block"><style>
+h2 {
+    font-size: 1.5em;
+}
+</style>
+<h1>Ollie Lynas</h1>
+<p>student</p>
+<p><br></p>
+<div class="info-box">
+<h2>about me</h2>
+I am a software engineering student based in Auckland. I made this website as a way to keep my all of my projects in one place as well as a way show them off to my friends. 
+<br>
+<br>
+<a id = "md_files/about me/links.md" class="link" onclick = "window.load_md(this.id);">links</a>
+</div>
+<p><br></p>
+<div class="info-box">
+<h2> starred projects</h2>
+loading starred projects...
+</div>
+
+<!-- LAST EDITED 1699417852 LAST EDITED--></div>
     </div>
     <div class="home_link">
-        <a href="https://ollielynas.github.io/md-website/#md_files/home.md"><- return to portfolio</a>
+        <a href="https://ollielynas.github.io/md-website/#md_files/home.md">Check Out Other Content!</a>
     </div>
   </body>
 </html>
