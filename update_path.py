@@ -282,7 +282,7 @@ def html_template(path, html, has_been_modified):
 
     # if sum(img.convert("L").getextrema()) in (0, 2):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(1000, 1800), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
+    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=1000', '--hide-scrollbars'])
     
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
@@ -294,14 +294,18 @@ def html_template(path, html, has_been_modified):
     
     while im_diff < 10 and im_loop < 10:
         print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
-        hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+        
+        # hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+        hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
+        
+        
         print("finished screenshot for", name)
         
         im_loop += 1
         
         img_path = hti.output_path + "\\" + name + ".png"
         im = Image.open(img_path)
-        im = im.crop((0, 0, 1000, 600))
+        im = im.crop((0, 0, 500, 300))
         ex = im.convert("L").getextrema()
         im_diff = abs(ex[1] - ex[0])
         print(ex, img_path)
