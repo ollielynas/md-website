@@ -176,23 +176,19 @@ def process_and_detect_edit(text,file_name):
     
     last_edit = time.ctime(os.path.getmtime(file_name))
     
-    has_been_modified = (f"<!-- LAST EDITED {last_edit} LAST EDITED-->") not in text
+    has_been_modified = not text.contains(f"<!-- LAST EDITED {last_edit} LAST EDITED-->")
     
     if has_been_modified:
         new_text = ""
-        first = True
         for line in text.split("\n"):
             if "LAST EDITED" in line:
                 new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
-                first = False
-            elif first:  
-                new_text += f"{line}"
-            else: 
+            else:
                 new_text += f"\n{line}"
         if f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->" not in new_text:
             new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
         text = new_text
-        with open(file_name, 'w', encoding="utf-8") as file_writer:
+        with open(file_name, 'w') as file_writer:
             file_writer.write(new_text)
     
     
@@ -214,15 +210,12 @@ def process_and_detect_edit(text,file_name):
 
 favorite = ""
 
-def html_template(path, html, has_been_modified):
+def html_template(path, html):
     global sitemap, favorite, sitemap
     path2 = path.replace('\\', '/')
     sitemap += "\n  <url>"
     sitemap += f"\n      <loc>https://ollielynas.github.io/md-website/sub/{path2.replace('.md','.html').replace(' ', '%20')}</loc>"
     sitemap += "\n  </url>"
-    
-    if not has_been_modified:
-        return
     
     #  only do if edited
     
@@ -262,11 +255,10 @@ def compress(file_name):
             # total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
             # print(total_words)
             # if 
-            print("file name:",file_name)
-            f_in, has_been_modified = process_and_detect_edit(f_in.read(),file_name)
+            f_in = process_and_detect_edit(f_in.read(),file_name)
 
             
-            html_template(file_name,f_in, has_been_modified)
+            html_template(file_name,f_in)
             
             f_in = BytesIO(bytes(f_in, 'utf-8'))
             

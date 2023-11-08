@@ -1,2 +1,11 @@
-<!-- no index -->### Skills<br>I have none :(<br>*todo: become skilled*
-<!-- LAST EDITED Wed Nov  8 14:23:42 2023 LAST EDITED-->
+<!-- no index -->
+
+### Skills
+
+<br>
+
+I have none :(
+
+<br>
+
+*todo: become skilled*
