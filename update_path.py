@@ -270,9 +270,9 @@ def compress(file_name):
             html_template(file_name,f_in, has_been_modified)
             
             f_in = BytesIO(bytes(f_in, 'utf-8'))
-            
-            with gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
-                f_out.writelines(f_in)
+            if has_been_modified:
+                with gzip.open('gz/'+file_name.replace("\\", "/")+'.gz', 'wb') as f_out:
+                    f_out.writelines(f_in)
     elif ".js" in file_name:
         with open(file_name, 'r', encoding = "utf-8") as f_in:
             f_in = js_minify(f_in.read())
