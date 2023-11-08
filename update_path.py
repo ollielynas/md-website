@@ -282,7 +282,7 @@ def html_template(path, html, has_been_modified):
 
     # if sum(img.convert("L").getextrema()) in (0, 2):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
+    hti = Html2Image(size=(1000, 1800), custom_flags=['--virtual-time-budget=20000', '--hide-scrollbars', '--timeout=5000'])
     
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
@@ -293,12 +293,10 @@ def html_template(path, html, has_been_modified):
     im_loop = 0
     
     while im_diff < 10 and im_loop < 10:
-        print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
-        
-        # hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
         
         try:
-            hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
+            hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+            # hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
         except:
             print("An exception occurred") 
         
@@ -310,7 +308,7 @@ def html_template(path, html, has_been_modified):
         
         img_path = hti.output_path + "\\" + name + ".png"
         im = Image.open(img_path)
-        im = im.crop((0, 0, 500, 300))
+        im = im.crop((0, 0, 1000, 1000))
         ex = im.convert("L").getextrema()
         im_diff = abs(ex[1] - ex[0])
         print(ex, img_path)
@@ -365,7 +363,10 @@ def run_item(f, item):
     def runit():
         result_info[1] = f(item)
         result_info[0].set()
+        print("finished processing", item)
+        
     threading.Thread(target=runit).start()
+    
     return result_info
 
 def gather_results(result_infos):
