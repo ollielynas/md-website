@@ -201,7 +201,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -280,7 +280,7 @@ def html_template(path, html, has_been_modified):
     output_file2 = Path('og-img/'+path2)
     output_file2.parent.mkdir(exist_ok=True, parents=True)
 
-    
+    # if sum(img.convert("L").getextrema()) in (0, 2):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     hti = Html2Image(size=(1000, 1800), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
     
@@ -289,13 +289,25 @@ def html_template(path, html, has_been_modified):
     
     template = template.replace("IMAGE_PATH", "og-img/"+path2.replace('.md','.png'))
     
-    print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
-    hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
-    print("finished screenshot for", name)
+    im_diff = 0
+    im_loop = 0
     
-    img_path = hti.output_path + "/" + name + ".png"
-    im = Image.open(img_path)
-    im.crop((0, 0, 1000, 600)).save(img_path, quality=95)
+    while im_diff < 10 and im_loop < 10:
+        print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
+        hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+        print("finished screenshot for", name)
+        
+        im_loop += 1
+        
+        img_path = hti.output_path + "\\" + name + ".png"
+        im = Image.open(img_path)
+        im = im.crop((0, 0, 1000, 600))
+        ex = im.convert("L").getextrema()
+        im_diff = abs(ex[1] - ex[0])
+        print(ex, img_path)
+        im.save(img_path, quality=95)
+        
+        
     
     
     with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
