@@ -5,6 +5,8 @@ import gzip
 import markdown
 from io import BytesIO
 import os.path, time
+from html2image import Html2Image
+
 
 from css_html_js_minify import html_minify, js_minify, css_minify
 
@@ -14,6 +16,8 @@ except ModuleNotFoundError:
     import tomli as tomllib
     
 total_words = 0
+
+
 
 p = Path('./md_files/')
 
@@ -175,23 +179,28 @@ def process_and_detect_edit(text,file_name):
     }
 
 
-    last_edit = time.ctime(os.path.getmtime(file_name))
-    has_been_modified = text.split("\n")[-1] == f"<!-- LAST EDITED {last_edit} LAST EDITED-->"
-
+    last_edit = round(os.path.getmtime(file_name))
+    
+    print(text.split("\n")[-1] , f"<!-- LAST EDITED {last_edit} LAST EDITED-->")
+    has_been_modified = text.split("\n")[-1] != f"<!-- LAST EDITED {last_edit} LAST EDITED-->"
+    
+    # has_been_modified = True
+    
+    current_time = round(time.time())
     
     if has_been_modified:
         new_text = ""
         first = True
         for line in text.split("\n"):
             if "LAST EDITED" in line:
-                new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
+                ...
+                # new_text += f"\n<!-- LAST EDITED {current_time} LAST EDITED-->"
             elif first:
                 new_text += f"{line}"
                 first = False
             else:
                 new_text += f"\n{line}"
-        if f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->" not in new_text:
-            new_text += f"\n<!-- LAST EDITED {last_edit} LAST EDITED-->"
+        new_text += f"\n<!-- LAST EDITED {current_time} LAST EDITED-->"
         print(len(new_text))
         text = new_text
         with open(file_name, 'w', encoding='utf-8') as file_writer:
@@ -245,13 +254,30 @@ def html_template(path, html, has_been_modified):
         favorite += f"{path}\n"
         favorite += f"{inner_meta}\n"
     template=template.replace("META_DESCRIPTION", inner_meta)
+    
+    
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
 
+    output_file2 = Path('og-img/'+path2)
+    output_file2.parent.mkdir(exist_ok=True, parents=True)
+
+    
+        # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
+    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=1000', '--hide-scrollbars'])
+    # print()
+    hti.output_path = str(output_file2.parent)
+    print("adding image to", hti.output_path)
+    
+    template = template.replace("IMAGE_PATH", "og-img/"+path2.replace('.md','.png'))
+    
+    
+    hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+    
+    
     
     with open("sub/"+path.replace(".md",".html"), "w", encoding = "utf-8") as f:
         f.write(template)
-        # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
     
 def compress(file_name):
     # global total_words
@@ -263,9 +289,8 @@ def compress(file_name):
             # total_words += len([i for i in f_in.read().split(" ") if i.isalnum()])
             # print(total_words)
             # if 
-            print("error here", file_name)
             f_in, has_been_modified = process_and_detect_edit(f_in.read(),file_name)
-
+            print(has_been_modified)
             
             html_template(file_name,f_in, has_been_modified)
             

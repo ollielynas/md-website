@@ -28,4 +28,4 @@ $$m_{atch}=\left[\sum_{w=\frac{r_{g}}{100}}^{100}\left(f_{p}\left(w,w+\frac{r_{g
 click *find best distro* to find the best model to fit your data
 
 <iframe src="https://www.desmos.com/calculator/acydcvlec3?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
-<!-- LAST EDITED Wed Nov  8 14:40:18 2023 LAST EDITED-->
+<!-- LAST EDITED 1699411046 LAST EDITED-->
