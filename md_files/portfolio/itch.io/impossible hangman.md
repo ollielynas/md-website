@@ -48,4 +48,4 @@ A version of hangman in which your opponent cheats.
 <p>very rage inducing</p>
 <p>- lots of people</p>
 </div>
-<!-- LAST EDITED Wed Nov  8 14:36:38 2023 LAST EDITED-->
+<!-- LAST EDITED Wed Nov  8 14:40:18 2023 LAST EDITED-->

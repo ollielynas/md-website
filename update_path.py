@@ -173,10 +173,11 @@ def process_and_detect_edit(text,file_name):
         "- [ ]": "<input type=\"checkbox\"></input>",
         "- [x]": "<input type=\"checkbox\" checked></input>"
     }
-    
+
+
     last_edit = time.ctime(os.path.getmtime(file_name))
-    
-    has_been_modified = (f"<!-- LAST EDITED {last_edit} LAST EDITED-->") not in text
+    has_been_modified = text.split("\n")[-1] == f"<!-- LAST EDITED {last_edit} LAST EDITED-->"
+
     
     if has_been_modified:
         new_text = ""
