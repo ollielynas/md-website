@@ -271,6 +271,7 @@ def html_template(path, html, has_been_modified):
         favorite += f"{path}\n"
         favorite += f"{inner_meta}\n"
     template=template.replace("META_DESCRIPTION", inner_meta)
+    template=template.replace("THIS_URL", "sub/"+path2.replace(".md",".html").replace(" ","%20"))
     
     
     output_file = Path('sub/'+path2)
