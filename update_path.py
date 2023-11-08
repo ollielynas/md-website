@@ -282,7 +282,7 @@ def html_template(path, html, has_been_modified):
 
     # if sum(img.convert("L").getextrema()) in (0, 2):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
-    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=1000', '--hide-scrollbars'])
+    hti = Html2Image(size=(500, 900), custom_flags=['--virtual-time-budget=10000', '--hide-scrollbars'])
     
     hti.output_path = str(output_file2.parent)
     print("adding image to", hti.output_path)
@@ -296,7 +296,12 @@ def html_template(path, html, has_been_modified):
         print("started screenshot for", name, f'https://ollielynas.github.io/md-website/#{path2}')
         
         # hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
-        hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
+        
+        try:
+            hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
+        except:
+            print("An exception occurred") 
+        
         
         
         print("finished screenshot for", name)
@@ -368,6 +373,7 @@ def gather_results(result_infos):
     for i in range(len(result_infos)):
         result_infos[i][0].wait()
         results.append(result_infos[i][1])
+        print("results: ", len(results))
     return results
 
 gather_results([run_item(compress, item) for item in resources])
