@@ -20,3 +20,5 @@ navigator.serviceWorker
 window.location.reload(true) // works in firefox
 window.location.reload() // just reloads in other browsers
 ">clear</button>
+
+<!-- LAST EDITED Wed Nov  8 14:31:24 2023 LAST EDITED-->

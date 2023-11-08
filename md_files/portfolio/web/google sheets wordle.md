@@ -25,7 +25,8 @@ you should not need to click "refresh google sheet" each time you submit however
         iframe.src = iframe.src;
     }, 1000);
 }
-}, 100);" src="https://docs.google.com/forms/d/e/1FAIpQLSeT9-owRH8ygfzdOOtc9s4rroqqnueQ72HEjxs0Rru-DGCiBA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" height="600" width= "100%">Loading…</iframe>
+}, 100);" src="https://docs.google.com/forms/d/e/1FAIpQLSeT9-owRH8ygfzdOOtc9s4rroqqnueQ72HEjxs0Rru-DGCiBA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" height="600" width= "100%">Loading�</iframe>
 
 [sheet link](https://docs.google.com/spreadsheets/d/17LzKFD14EYlp2zvq8MLdOLiphvNO0tBZoIDnXPQyrPE/edit#gid=764618375)
 [form link](https://forms.gle/MRBL5jvXSpsMi4Ad8)
+<!-- LAST EDITED Wed Nov  8 14:37:13 2023 LAST EDITED-->

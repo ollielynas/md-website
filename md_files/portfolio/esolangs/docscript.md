@@ -22,3 +22,4 @@ designed and built to run docscript
  - Spell checking and auto-capitalization (sorry about that)
 
 <iframe src="https://docs.google.com/document/d/e/2PACX-1vSV7saPBxNrxc5NfddK_Uxa4v9kuFU9Qn5a5p8FUDIQNL_5Boi1hMN9Hj1WXcIphCMXhZXhUAq98K38/pub?embedded=true" width= "100%" height="700px"></iframe>
+<!-- LAST EDITED Wed Nov  8 14:36:38 2023 LAST EDITED-->

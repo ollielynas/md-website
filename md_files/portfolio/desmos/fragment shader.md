@@ -15,3 +15,5 @@ This graph simulates a fragment shader. It can display the full 0-255 color rang
 [another example](https://www.desmos.com/calculator/kbp1zl0hfr)
 
 <iframe src="https://www.desmos.com/calculator/omismxpptv" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+<!-- LAST EDITED Wed Nov  8 14:36:37 2023 LAST EDITED-->

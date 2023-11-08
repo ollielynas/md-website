@@ -25,3 +25,5 @@ img[src^="https://img.shields.io"] {
 [![Email Me](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lynasollie@gmail.com)
 
 
+
+<!-- LAST EDITED Wed Nov  8 14:36:37 2023 LAST EDITED-->
