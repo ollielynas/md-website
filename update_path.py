@@ -101,7 +101,7 @@ old_resources = ""
 
 with open('md_files/site/resources.md', 'r', encoding="utf-8") as f:
     old_resources = f.read()
-if resources != old_resources:
+if resources_str != old_resources:
     with open('md_files/site/resources.md', 'w', encoding="utf-8") as f:
         f.write(resources_str)
 
