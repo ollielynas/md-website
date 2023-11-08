@@ -97,8 +97,13 @@ resources_str = ""
 for i in resources:
     resources_str += "\n["+i.replace("\\", "/")+"](" + i.replace(" ", "%20").replace("\\", "/")+")"+"\n"
 
-with open('md_files/site/resources.md', 'w', encoding="utf-8") as f:
-    f.write(resources_str)
+old_resources = ""
+
+with open('md_files/site/resources.md', 'r', encoding="utf-8") as f:
+    old_resources = f.read()
+if resources != old_resources:
+    with open('md_files/site/resources.md', 'w', encoding="utf-8") as f:
+        f.write(resources_str)
 
 
 date_time = datetime.datetime.now()
@@ -196,7 +201,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    has_been_modified = True
+    # has_been_modified = True
     
     current_time = round(time.time())
     
@@ -343,7 +348,7 @@ def run_item(f, item):
 
 def gather_results(result_infos):
     results = [] 
-    for i in xrange(len(result_infos)):
+    for i in range(len(result_infos)):
         result_infos[i][0].wait()
         results.append(result_infos[i][1])
     return results
