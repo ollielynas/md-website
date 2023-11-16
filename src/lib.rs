@@ -327,6 +327,9 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         }
         _ => {}
     }
+    if text.starts_with("JsValue") {
+        text = format!("<h1>{}</h1>\n<i>an error occured while trying to load page</i>\n<br><br>", file.split("\\").last().unwrap_or("invalid file").replace(".md", "")) + &text;
+    }
     md_block.set_inner_html(&text);
 
     // window()
@@ -344,7 +347,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     // md
 
 
-    let bookmarks = md_block.get_elements_by_class_name("bookmark");
+    // let bookmarks = md_block.get_elements_by_class_name("bookmark");
 
 
 

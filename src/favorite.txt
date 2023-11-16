@@ -1,2 +1,0 @@
-md_files\portfolio\itch.io\quantum chess.md
- Quantum Chess. A terminal based game that adds random chance to chess (just what it was missing) 
