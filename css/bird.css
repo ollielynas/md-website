@@ -1,6 +1,6 @@
 
 
-.bird {
+.parrot-button[open] ~ .bird {
     pointer-events: none !important;
     position: sticky;
     z-index: 999100;
@@ -33,3 +33,9 @@
 
 
 
+
+.parrot-button {
+    position: fixed;
+    right: 4em;
+    bottom: 1em;
+}
