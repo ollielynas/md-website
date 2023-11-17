@@ -13,4 +13,4 @@ $$R_{ightTurn}=w_{heel}\to\min\left(w_{heel}\ +\ 0.7,\frac{\pi}{6}\right)$$
 <br>
 <iframe src="https://www.desmos.com/3d/607e4e946d" title = "desmos racing sim" height="500" width="600"></iframe>
 
-<!-- LAST EDITED 1700194053 LAST EDITED-->
+<!-- LAST EDITED 1700195799 LAST EDITED-->

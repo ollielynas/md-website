@@ -531,13 +531,13 @@ table {
         background-color: #e4e4c0;
     }
 }
-
+/* 
 #link_to_external {
     position: fixed;
     bottom: 1em;
     right: 1em;
-    /* left: inherit; */
 }
+*/
 
 
 .katex-display  {
@@ -648,7 +648,7 @@ table {
 
 .share-buttons {
     position: fixed;
-    right: 5.5em;
+    right: 1em;
     bottom: 1em;
 }
 
@@ -658,15 +658,7 @@ table {
     gap: 0.3em;
 }
 
-@media screen and (orientation:portrait) {
 
-    .share-buttons {
-    position: fixed;
-    right: 1em;
-    bottom: 4em;
-    z-index: 999;
-    }
-}
 
 details.share-buttons summary::-webkit-details-marker {
   display:none;

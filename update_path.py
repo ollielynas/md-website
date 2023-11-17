@@ -292,7 +292,7 @@ def html_template(path, html, has_been_modified):
     im_diff = 0
     im_loop = 0
     
-    while im_diff < 10 and im_loop < 10:
+    while im_diff < 10 and im_loop < 30:
         
         try:
             hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
