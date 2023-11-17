@@ -52,6 +52,18 @@ export function show_content(): Promise<void>;
 * @returns {Promise<void>}
 */
 export function search_results(input: string): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
+export function on_finish_animation(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
+export function startle_bird(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
+export function update_bird_target_location(): Promise<void>;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -69,6 +81,9 @@ export interface InitOutput {
   readonly show_nav: () => number;
   readonly show_content: () => number;
   readonly search_results: (a: number, b: number) => number;
+  readonly on_finish_animation: () => number;
+  readonly startle_bird: () => number;
+  readonly update_bird_target_location: () => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;

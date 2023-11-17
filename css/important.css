@@ -155,3 +155,10 @@ body {
 
 
 }
+
+.bird {
+    position: sticky;
+    opacity: 0;
+    top: 0vh;
+    left: 0vw;
+}

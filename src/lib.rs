@@ -8,6 +8,10 @@ use web_sugars::prelude::*;
 use zune_inflate::DeflateDecoder;
 use urlencoding::encode;
 
+pub mod bird;
+
+use bird::*;
+
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
 extern "C" {
@@ -392,7 +396,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 
     // let bookmarks = md_block.get_elements_by_class_name("bookmark");
 
-
+    startle_bird().await?;
 
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
@@ -403,6 +407,9 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 #[wasm_bindgen]
 pub async fn load_style() -> Result<(), WebSysSugarsError> {
     let style = match load_gzip("css/main.css").await {
+        Ok(a) => a,
+        Err(a) => format!("body:after {{content: '{:?}'}}", a),
+    } + &match load_gzip("css/bird.css").await {
         Ok(a) => a,
         Err(a) => format!("body:after {{content: '{:?}'}}", a),
     };

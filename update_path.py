@@ -84,6 +84,7 @@ resources = ["favicon.ico"]
 
 resources.append("src/tree.txt")
 resources.append("css/main.css")
+resources.append("css/bird.css")
 
 
 for i in text.split("\n"):

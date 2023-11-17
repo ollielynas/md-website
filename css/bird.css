@@ -1,0 +1,35 @@
+
+
+.bird {
+    pointer-events: none !important;
+    position: sticky;
+    z-index: 999100;
+    height: 1.5em;
+    width: 1.5em;
+    opacity: 0.9;
+    transition: top 1s linear, left 1s linear;
+}
+
+
+.bird > * {
+    display: none;
+    height: inherit !important;
+    width: inherit !important;
+}
+
+.bird[flip="true"] {
+    transform: rotateY(180deg);
+}
+
+
+.bird[animation="flying"] > .flying-gif {
+    display: block !important;
+}
+
+.bird[animation="rest"] > .standing-img {
+    display: block !important;
+}
+
+
+
+

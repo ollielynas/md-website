@@ -43,6 +43,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "00dd184a4524c7ce087a90f1bb8f6fd0041ceeddd002c2b6fc6dda2dac77274d"
 
 [[package]]
+name = "fastrand"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "25cbce373ec4653f1a01a31e8a5e5ec0c622dc27ff9c4e6606eefef5cbbed4a5"
+
+[[package]]
 name = "futures"
 version = "0.3.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -157,6 +163,7 @@ name = "md-website"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "fastrand",
  "js-sys",
  "rust-fuzzy-search",
  "urlencoding",

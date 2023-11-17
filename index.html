@@ -70,7 +70,10 @@
             load_gzip,
             load_md,
             console_error_panic_hook_set,
-            search_results
+            search_results,
+            update_bird_target_location,
+            on_finish_animation,
+            startle_bird
         } from "./rust-out/md_website.js";
 
         async function run() {
@@ -97,7 +100,10 @@
         window.clicked_scroll = clicked_scroll;
         window.search_results = search_results;
         window.update_from_hash = update_from_hash;
-
+        window.update_bird_target_location = update_bird_target_location;
+        window.on_finish_animation = on_finish_animation;
+        window.startle_bird = startle_bird;
+        window.startle_bird();
         rs_onload();
         load_style();
 
@@ -105,7 +111,7 @@
 
     run();
 
-    
+
 
 </script>
 
@@ -115,6 +121,13 @@
 </head>
 
 <body style="display: flex; flex-direction: row;">
+
+    <div ontransitionend ="on_finish_animation()" startle="0" id = "bird" class="bird" animation="flying" goal="">
+        <img class="flying-gif" src = "bird-sprites/bird-flying.gif">
+        <img class="standing-img" src = "bird-sprites/bird-stand.png">
+    </img>
+    </div>
+
 
 
     <!-- <div class="blocker"></div> -->
@@ -177,6 +190,37 @@
     if (window.location.hostname != "ollielynas.github.io") {
         document.querySelector("link[rel*='icon']").href = "favicon-dev.ico";
     }
+
+    var bird = document.getElementById("bird");
+
+    // loop every 4 seconds 
+
+    function countdown_bird() {
+        let startle_int = parseInt(bird.getAttribute('startle'));
+        startle_int = Math.max(startle_int - 1, 0);
+        if( startle_int == 0 && bird.getAttribute('goal') != "land") {
+            update_bird_target_location();
+        }
+        bird.setAttribute('startle', startle_int.toString());
+    }
+
+    setInterval(countdown_bird, 1000)
+
+    window.addEventListener('scroll', async ()=>{
+        console.log('scroll');
+        bird.setAttribute('startle',1);
+        // try {
+        // await window.startle_bird();
+        // } catch (e) {}
+});
+    window.addEventListener('click', async ()=>{
+        console.log('scroll');
+        bird.setAttribute('startle',1);
+        try {
+        await window.startle_bird();
+        } catch (e) {}
+});
+    
     </script>
 
 </body>
