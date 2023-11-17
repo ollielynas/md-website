@@ -6,6 +6,7 @@ use std::str;
 use wasm_bindgen::prelude::*;
 use web_sugars::prelude::*;
 use zune_inflate::DeflateDecoder;
+use urlencoding::encode;
 
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
@@ -305,8 +306,41 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         link.set_attribute("style", "display: none");
     } else {
         link.set_attribute("style", "display: auto");
-        link.set_inner_html("open external ->");
+        link.set_inner_html(include_str!("open_in_external.svg"));
     }
+
+    
+    let local_link = if text.contains("no index") {
+        format!(
+            "https://ollielynas.github.io/md-website/#{}",
+            file.replace("\\", "/").replace(" ", "%20")
+        )
+    }else {
+        format!(
+            "https://ollielynas.github.io/md-website/sub/{}?redirect=true",
+            file.replace("\\", "/").replace(".md", ".html").replace(" ", "%20")
+        )
+    };
+    
+    let link_internal = get_element_by_id("link_to_internal")?;
+
+    err_to_sugar(link_internal.set_attribute(
+        "onclick",
+        &format!(
+             "navigator.clipboard.writeText('{local_link}');alert('copied link!');"
+        ),
+    ))?;
+    let link_internal = get_element_by_id("link_to_twitter")?;
+
+    err_to_sugar(link_internal.set_attribute(
+        "href",
+        &format!(
+            "https://twitter.com/intent/tweet?prefiltext&url={}",
+            encode(&local_link)
+        ),
+    ))?;
+
+
     // let bookmark = include_str!("bookmark.html");
     match file.as_str() {
         "md_files\\home.md" | "md_files\\portfolio\\index.md" => {

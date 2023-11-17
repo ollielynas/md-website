@@ -380,6 +380,8 @@ img {
 }
 
 @media screen and (orientation:portrait) {
+
+
     .blocker {
         display: none;
     }
@@ -455,7 +457,7 @@ img {
         width: 60vw;
     }
 
-    a, .link {
+    a, .link, .share-buttons {
         font-size: calc((1vw + 0.1rem) * 3);
         padding-bottom: 0.5em;
     }
@@ -636,4 +638,56 @@ table {
 .bookmark:hover {
     /* half fill */
     fill:rgb(62, 53, 53);
+}
+
+.svg-link {
+    height: 2em;
+    width: 2em;
+    color: rgb(80, 42, 42) !important;
+}
+
+.share-buttons {
+    position: fixed;
+    right: 5.5em;
+    bottom: 1em;
+}
+
+.share-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+@media screen and (orientation:portrait) {
+
+    .share-buttons {
+    position: fixed;
+    right: 1em;
+    bottom: 4em;
+    z-index: 999;
+    }
+}
+
+details.share-buttons summary::-webkit-details-marker {
+  display:none;
+}
+
+details.share-buttons > summary {
+  list-style: none;
+}
+
+*[open] > * > .show-if-closed {
+    display: none !important;
+}
+
+.show-if-open {
+    display: none;
+}
+
+*[open] > * > .show-if-open {
+    display: block !important;
+}
+
+.close-x {
+    color: red !important;
 }
