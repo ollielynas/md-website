@@ -26,6 +26,7 @@
     height: 6em !important;
     width: 6em !important;
     filter: drop-shadow(0.5em 1.3em 0.6em #000000);
+    /* position: fixed !important; */
 }
 
 .bird[flip="true"] > * {
@@ -52,11 +53,14 @@
 }
 
 
-
-
-
 .parrot-button {
     position: fixed;
     right: 4em;
     bottom: 1em;
+}
+
+@media screen and (orientation:portrait) {
+    /* .bird {
+        position: absolute;
+    } */
 }

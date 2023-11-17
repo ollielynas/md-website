@@ -38,8 +38,8 @@ pub async fn startle_bird() -> Result<(), WebSysSugarsError> {
     
 
 
-    let x = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_x).min(body.client_width() as f64 - 10.0).max(0.0);
-    let y = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_y).min(body.client_height() as f64 - 10.0).max(0.0);
+    let x = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_x).min(body.client_width() as f64 - 20.0).max(20.0);
+    let y = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_y).min(body.client_height() as f64 - 20.0).max(20.0);
 
     
 
@@ -84,7 +84,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
     let bird = get_element_by_id("bird")?;
     let document = get_document()?;
 
-    let targets_node_list = err_to_sugar(document.query_selector_all("#content .link , #nav .link, h1, h2,h3, p, li"))?;
+    let targets_node_list = err_to_sugar(document.query_selector_all("#content .link , #nav .link, h1, h2,h3,#content p,#content li, img, iframe"))?;
 
     let nodes = (0..targets_node_list.length())
         .map(|x| targets_node_list.get(x))
@@ -110,6 +110,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
     let y = rect.y();
 
 
+    // err_to_sugar(element.set_attribute("style", "border: 1px black solid"))?;
 
     err_to_sugar(bird.set_attribute("animation", "flying"))?;
     err_to_sugar(bird.set_attribute("goal", "land"))?;
@@ -119,6 +120,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
     let bird_x = bird_rect.x();
     let bird_y = bird_rect.y();
 
+    
 
     let body = get_body()?;
     
@@ -146,7 +148,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
 
     err_to_sugar(bird.set_attribute("style", 
     &format!(
-        "top: calc( {y}px - 4em ); left: {x}px;transition:top {time}s linear, left {time}s linear;"
+        "top: calc( {y}px - 4.5em ); left: calc( {x}px );transition:top {time}s linear, left {time}s linear;"
     )))?;
 
     // let x = landing_node

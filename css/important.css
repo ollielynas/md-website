@@ -105,7 +105,7 @@ body {
         border-radius: 1em;
         border: none;
         padding-top: 0.5em;
-        padding-bottom: 1.5em;
+        padding-bottom: 0.5em;
         
         
     }
@@ -160,6 +160,6 @@ body {
     display: none;
     position: sticky;
     /* opacity: 0; */
-    top: 0vh;
-    left: 0vw;
+    top: calc( 100vh - 8em );
+    left: calc( 100vw - 8em );
 }

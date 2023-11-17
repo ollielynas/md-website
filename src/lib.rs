@@ -396,7 +396,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 
     // let bookmarks = md_block.get_elements_by_class_name("bookmark");
 
-    startle_bird().await?;
+    // startle_bird().await?;
 
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
