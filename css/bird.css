@@ -25,6 +25,7 @@
     display: none;
     height: 6em !important;
     width: 6em !important;
+    filter: drop-shadow(0.5em 1.3em 0.6em #000000);
 }
 
 .bird[flip="true"] > * {
@@ -49,6 +50,7 @@
 .bird[animation="soar"] > .soar-gif {
     display: block !important;
 }
+
 
 
 

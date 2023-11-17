@@ -461,7 +461,7 @@ img {
         width: 60vw;
     }
 
-    a, .link, .share-buttons {
+    a, .link, .share-buttons, .parrot-button {
         font-size: calc((1vw + 0.1rem) * 3);
         padding-bottom: 0.5em;
     }
