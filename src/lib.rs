@@ -292,6 +292,8 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         Err(a) => format!("{:?}", a),
     };
 
+    let name = file.split("\\").last().unwrap_or("invalid file").replace(".md", "");
+
     let link = get_element_by_id("link_to_external")?;
 
     err_to_sugar(link.set_attribute(
@@ -330,12 +332,19 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
              "navigator.clipboard.writeText('{local_link}');alert('copied link!');"
         ),
     ))?;
-    let link_internal = get_element_by_id("link_to_twitter")?;
-
-    err_to_sugar(link_internal.set_attribute(
+    let link_twitter = get_element_by_id("link_to_twitter")?;
+    err_to_sugar(link_twitter.set_attribute(
         "href",
         &format!(
             "https://twitter.com/intent/tweet?prefiltext&url={}",
+            encode(&local_link)
+        ),
+    ))?;
+    let link_reddit = get_element_by_id("link_to_reddit")?;
+    err_to_sugar(link_reddit.set_attribute(
+        "href",
+        &format!(
+            "https://www.reddit.com/r/test/submit?title={name}&url={}",
             encode(&local_link)
         ),
     ))?;
@@ -362,7 +371,7 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         _ => {}
     }
     if text.starts_with("JsValue") {
-        text = format!("<h1>{}</h1>\n<i>an error occured while trying to load page</i>\n<br><br>", file.split("\\").last().unwrap_or("invalid file").replace(".md", "")) + &text;
+        text = format!("<h1>{}</h1>\n<i>an error occured while trying to load page</i>\n<br><br>", name) + &text;
     }
     md_block.set_inner_html(&text);
 
