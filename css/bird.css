@@ -4,20 +4,30 @@
     pointer-events: none !important;
     position: sticky;
     z-index: 999100;
-    height: 1.5em;
-    width: 1.5em;
-    opacity: 0.9;
+    height: 0em;
+    width: 0em;
+    /* opacity: 1.0; */
     transition: top 1s linear, left 1s linear;
+    image-rendering: -moz-crisp-edges;
+    /* Firefox */
+    image-rendering: -o-crisp-edges;
+    /* Opera */
+    image-rendering: -webkit-optimize-contrast;
+    /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE (non-standard property) */
+    display: block;
 }
 
 
 .bird > * {
     display: none;
-    height: inherit !important;
-    width: inherit !important;
+    height: 6em !important;
+    width: 6em !important;
 }
 
-.bird[flip="true"] {
+.bird[flip="true"] > * {
     transform: rotateY(180deg);
 }
 
@@ -30,6 +40,15 @@
     display: block !important;
 }
 
+.bird[animation="float"] > .float-gif {
+    display: block !important;
+}
+.bird[animation="caw"] > .caw-gif {
+    display: block !important;
+}
+.bird[animation="soar"] > .soar-gif {
+    display: block !important;
+}
 
 
 

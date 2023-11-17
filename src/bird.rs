@@ -54,6 +54,17 @@ pub async fn startle_bird() -> Result<(), WebSysSugarsError> {
         err_to_sugar(bird.set_attribute("flip", "false"))?;
     }
 
+        let direction = (bird_x - x).abs() / (bird_y - y).abs();
+
+    if bird_y < y {
+        if direction < 1.0 {
+            err_to_sugar(bird.set_attribute("animation", "float"))?;
+        } else if direction < 1.9 {
+            err_to_sugar(bird.set_attribute("animation", "soar"))?;
+
+        }
+    }
+
     let time = ((bird_x - x).abs().powi(2) + (bird_y - y).abs().powi(2)).sqrt()/50.0;
 
     err_to_sugar(bird.set_attribute("style", 
@@ -94,7 +105,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
     };
     let rect = element.get_bounding_client_rect();
 
-    let x = rect.x() + fastrand::f64() * rect.width();
+    let x = rect.x() + fastrand::f64() * rect.width() * 0.5;
     // let x = rect.x();
     let y = rect.y();
 
@@ -108,7 +119,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
     let bird_x = bird_rect.x();
     let bird_y = bird_rect.y();
 
-    
+
     let body = get_body()?;
     
     if x >= body.client_width() as f64 || y >= body.client_height() as f64 || x <=0.0 || y <= 0.0 {
@@ -121,11 +132,21 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
         err_to_sugar(bird.set_attribute("flip", "false"))?;
     }
 
-    let time = ((bird_x - x).abs().powi(2) + (bird_y - y).abs().powi(2)).sqrt()/150.0;
+    let time = ((bird_x - x).abs().powi(2) + (bird_y - y).abs().powi(2)).sqrt()/70.0;
+
+    let direction = (bird_x - x).abs() / (bird_y - y).abs();
+
+    if bird_y < y {
+        if direction < 1.0 {
+            err_to_sugar(bird.set_attribute("animation", "float"))?;
+        } else if direction < 1.9 {
+            err_to_sugar(bird.set_attribute("animation", "soar"))?;
+        }
+    }
 
     err_to_sugar(bird.set_attribute("style", 
     &format!(
-        "top: calc( {y}px - 1.5em ); left: {x}px;transition:top {time}s linear, left {time}s linear;"
+        "top: calc( {y}px - 4em ); left: {x}px;transition:top {time}s linear, left {time}s linear;"
     )))?;
 
     // let x = landing_node

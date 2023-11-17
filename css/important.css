@@ -157,8 +157,9 @@ body {
 }
 
 .bird {
+    display: none;
     position: sticky;
-    opacity: 0;
+    /* opacity: 0; */
     top: 0vh;
     left: 0vw;
 }

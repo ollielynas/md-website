@@ -106,12 +106,12 @@
         window.startle_bird();
         rs_onload();
         load_style();
-
-        }
+        
+    }
 
     run();
-
-
+    
+    
 
 </script>
 
@@ -121,10 +121,10 @@
 </head>
 
 <body style="display: flex; flex-direction: row;">
-
     
     
-
+    
+    
     <!-- <div class="blocker"></div> -->
     <div id = "slider" style="left:0dvw">
     <div class="navigation">
@@ -141,22 +141,25 @@
             <a class="show-if-open" id="link_to_external"></a>
         </summary>
     </details>
-    <details class="parrot-button" onclick = "bird.style.left = 'calc( 100vw - 1em )';bird.style.top = 'calc( 100vh - 2em )'">
+    <details class="parrot-button">
         <summary class="share-summary">
             <svg class="svg-link show-if-closed" style="color: transparent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><path d="M136,120l-24,24V64.52L66.34,109.66A8,8,0,0,0,64,115.31V192h76.69a8,8,0,0,0,5.65-2.34L215.6,119.6Z" opacity="0.2"/><line x1="184" y1="72" x2="32" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M146.34,189.66a8,8,0,0,1-5.65,2.34H64V115.31a8,8,0,0,1,2.34-5.65L136.4,40.4a56,56,0,0,1,79.2,79.2Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="112" y1="64.52" x2="112" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="136" y1="120" x2="215.2" y2="120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
             <svg class="svg-link show-if-open" style="color: transparent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="184" y1="72" x2="32" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M146.34,189.66a8,8,0,0,1-5.65,2.34H64V115.31a8,8,0,0,1,2.34-5.65L136.4,40.4a56,56,0,0,1,79.2,79.2Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="112" y1="64.52" x2="112" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="136" y1="120" x2="215.2" y2="120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
         </summary>
     </details>
+
     <div ontransitionend ="on_finish_animation()" startle="0" id = "bird" class="bird" animation="flying" goal="">
-        <img class="flying-gif" src = "bird-sprites/bird-flying.gif">
-        <img class="standing-img" src = "bird-sprites/bird-stand.png">
+        <img class="flying-gif" src = "bird-sprites/parrot_fly_12fps.gif">
+        <img id = "idle-animation" class="standing-img" src = "bird-sprites/parrot_sit_8fps.gif">
+        <img class="float-gif" src = "bird-sprites/parrot_fall_12fps.gif">
+        <img class="caw-gif" src = "bird-sprites/parrot_sit_caw_12fps.gif">
+        <img class="soar-gif" src = "bird-sprites/parrot_soar_12fps.gif">
     </img>
     </div>
-
     <div class="md_file" id="content">
         <div id="md_block">
             <!-- START-STOP -->
-             <noscript><h3>Your browser does not support JavaScript!</h3></noscript> 
+            <noscript><h3>Your browser does not support JavaScript!</h3></noscript> 
               <noscript>
 <style> h1 {position: absolute;bottom:0;transition:0.6s;right:-1em;width: 15em;font-size:0.5em;font-weight: normal;animation-duration: 1s;animation-timing-function: jump-both;}.game {font-size: 5vw;overflow: hidden;height: 9em;width: 9em;border: 2px solid black;position: relative;padding-bottom: 0;background-color: whitesmoke;margin-left: 5vw;margin-top: 30vh;transform: translate(0%, -50%);color: rgba(1,1,1,0.7);font-style: italic;}@media screen and (min-width: 100vh) {.game {font-size: 5vh;}}.game:after {content: "hover to start" }.game:hover:after {content: "click to jump";background-color: whitesmoke;}.game:hover > .dino > .cactus:not(:hover) {animation: move-hitbox 3s linear infinite;}.game:hover > .dino > .cactus:not(:hover):active::before {}.game:hover > .dino > .cactus:not(:hover) ~ .cactus-icon {animation: move 3s linear infinite;}.game:hover > h1 {right: 18em;}.cactus:hover {position: fixed;background-color: whitesmoke;z-index: 99;left: 0;top: 0;animation: none;height: 6em;width: 9em;padding-top: 3em;}.cactus:hover:after {content: "click to restart";text-align: center;pointer-events: none;}.cactus {position: absolute;top: 0;height: 0em;width: 0em;border: 0px solid red;}.cactus-icon {position: absolute;bottom: 0em;right: -9em;}@keyframes move-hitbox {0% {right: -9em;width: 0em;height: 0em;}82% {width: 0em;height: 0em;right: 6em;}83% {right: 0em;width: 9em;height: 12em;}84% {width: 0em;height: 0em;right: 6em;}100% {right: 9em;width: 0em;height: 0em;}}@keyframes move {0% {right: -9em;}83% {right: 6em;}100% {right: 9em;}}.dino {--jump: none;display: flex;flex-direction: column;justify-content: flex-end;align-content: center;position: absolute;bottom: 0em;left: 0em;height: 9em;width: 100%;}svg {width: 1.8em;height: 1.8em;}.dino:active {pointer-events: none;}.dino:hover {animation: jump 0.9s linear;}@keyframes jump {0% {padding-bottom: 0em;height: 9em;}25% {padding-bottom: 1.5em;height: 9em;}26% {height: 18em;}50% {padding-bottom: 3em;}74% {height: 18em;}75% {height: 9em;padding-bottom: 1.5em;}100% {padding-bottom: 0em;}}.jump {position: absolute;left: 0;bottom: 0;height: 9em;width: 9em;}</style>
 <style>
@@ -207,10 +210,15 @@
         if( startle_int == 0 && bird.getAttribute('goal') != "land") {
             update_bird_target_location();
         }
+        if(Math.random() > 0.9) {
+            document.getElementById("idle-animation").src = "bird-sprites/parrot_sit_caw_12fps.gif";
+        }else {
+            document.getElementById("idle-animation").src = "bird-sprites/parrot_sit_8fps.gif";
+        }
         bird.setAttribute('startle', startle_int.toString());
     }
 
-    setInterval(countdown_bird, 1000)
+    setInterval(countdown_bird, 960)
 
     window.addEventListener('scroll', async ()=>{
         console.log('scroll');
