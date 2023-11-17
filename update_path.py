@@ -250,8 +250,6 @@ def html_template(path, html, has_been_modified):
     sitemap += "\n  </url>"
     
     #  only do if edited
-    if not has_been_modified:
-        return
     
     meta = html.split("META")
     template = ""
@@ -273,6 +271,8 @@ def html_template(path, html, has_been_modified):
     template=template.replace("META_DESCRIPTION", inner_meta)
     template=template.replace("THIS_URL", "sub/"+path2.replace(".md",".html").replace(" ","%20"))
     
+    if not has_been_modified:
+        return
     
     output_file = Path('sub/'+path2)
     output_file.parent.mkdir(exist_ok=True, parents=True)
