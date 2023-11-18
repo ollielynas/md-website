@@ -1,7 +1,7 @@
 ## My Projects
 
 <div class="info-box">
-<h2>most downloads (as of writing)</h2>
+<h3>most downloads (as of writing)</h3>
 <ul>
 <li><a id = "md_files/portfolio/books/tic tac toe.md" class="link" onclick = "window.load_md(this.id);">tic tac toe</a></li>
 a pick your own adventure style book that lets you play tic tac toe.
@@ -13,9 +13,9 @@ A movement based game with infinite randomly generated levels with increasing di
 </div>
 <br>
 <div class="info-box">
-<h2> starred projects</h2>
+<h3> starred projects</h3>
 loading starred projects...
 </div>
 <br>
 
-<!-- LAST EDITED 1700297730 LAST EDITED-->
+<!-- LAST EDITED 1700298417 LAST EDITED-->

@@ -193,7 +193,6 @@ p {
 
 .folder {
     color: var(--folder);
-    font-family: 'Raleway', sans-serif;
 }
 
 .path-2 ~ .folder {
@@ -222,9 +221,10 @@ h3 {
 
 
 .folder, .link {
-  cursor: pointer;
-  user-select: none;
-  font-size: 1.2em;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.2em;
+    font-family: 'Raleway', sans-serif;
 }
 
 .link:hover {

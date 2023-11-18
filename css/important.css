@@ -163,3 +163,11 @@ body {
     top: calc( 100vh - 8em );
     left: calc( 100vw - 8em );
 }
+
+details.share-buttons summary::-webkit-details-marker {
+  display:none;
+}
+
+details.share-buttons > summary {
+  list-style: none;
+}
