@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rufina&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 :root {
     /* --main-bg-color: rgb(217, 244, 189); */
@@ -11,7 +12,7 @@
     --outline: rgb(249, 249, 249);
     --link-light: blue;
     --link-dark:rgb(50, 0, 149);
-    --folder: rgb(58, 58, 58);
+    --folder: rgb(60, 60, 60);
     --title-color: black;
     --epic: 0;
 
@@ -21,6 +22,10 @@
     font-family: 'Fira Code', monospace;
     font-size: 1.3em;
     /* color: green !important; */
+}
+
+.path ~ .link {
+    font-weight: 300;
 }
 
 pre {
@@ -188,7 +193,15 @@ p {
 
 .folder {
     color: var(--folder);
+    font-family: 'Raleway', sans-serif;
 }
+
+.path-2 ~ .folder {
+    font-weight: 600;
+}
+
+
+
 
 button {
     font-family: 'JetBrains Mono', monospace;
@@ -211,6 +224,7 @@ h3 {
 .folder, .link {
   cursor: pointer;
   user-select: none;
+  font-size: 1.2em;
 }
 
 .link:hover {
