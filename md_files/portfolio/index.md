@@ -1,4 +1,4 @@
-## Projects
+## My Projects
 
 <div class="info-box">
 <h2>most downloads (as of writing)</h2>
@@ -18,4 +18,4 @@ loading starred projects...
 </div>
 <br>
 
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

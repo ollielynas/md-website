@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rufina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
 :root {
     /* --main-bg-color: rgb(217, 244, 189); */
@@ -78,9 +80,18 @@ body {
     background: #6E6E6E;
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5 {
     color: var(--title-color);
     width: fit-content;
+    font-family: 'Rufina', serif;
+}
+
+h1 {
+    font-size: 5em;
+}
+
+h2 {
+    font-size: 3em;
 }
 
 .dark_mode {
@@ -168,8 +179,9 @@ p {
     margin: 0;
     width: fit-content;
     padding-left: 0.3em;
-        max-width: 100%;
-
+    max-width: 100%;
+    /* word-spacing: 0.05em; */
+    
 }
 
 

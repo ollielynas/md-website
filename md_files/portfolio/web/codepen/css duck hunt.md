@@ -1,5 +1,5 @@
 
-## 100% CSS duck hunt game
+## 100% CSS Duck Hunt Game
 <!-- META retro duck hunter game recreated using nothing but CSS and HTML META -->
 
 A recreation (at least in spirit) of the 1984 game [duck hunt](https://en.wikipedia.org/wiki/Duck_Hunt).
@@ -14,4 +14,4 @@ clicking the rerun button will allow you to play again.
   bird shooter</a> by ollielynas (<a href="https://codepen.io/ollielynas">@ollielynas</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

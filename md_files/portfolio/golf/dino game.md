@@ -1,5 +1,5 @@
 
-# Dino Game
+## Dino Game
 
 <!-- META
 import time as q,msvcrt as a;d=t=1;l=' '*20
@@ -31,4 +31,4 @@ C:\User\dino.py>   🦖    🌵🌵      🌵
 </code>
 </pre>
 
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285178 LAST EDITED-->

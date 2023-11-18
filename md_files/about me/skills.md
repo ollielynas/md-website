@@ -1,6 +1,6 @@
 <!-- no index -->
 
-### Skills
+## Skills
 
 <br>
 
@@ -9,4 +9,4 @@ todo
 <br>
 
 *todo: become skilled*
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285178 LAST EDITED-->

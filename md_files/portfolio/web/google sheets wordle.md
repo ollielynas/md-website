@@ -1,4 +1,4 @@
-## Wordle
+## Google Sheets Wordle
 
 <!-- META the game Wordle made using only a mixture of google forms and google sheets META -->
 
@@ -30,4 +30,4 @@ you should not need to click "refresh google sheet" each time you submit however
 [sheet link](https://docs.google.com/spreadsheets/d/17LzKFD14EYlp2zvq8MLdOLiphvNO0tBZoIDnXPQyrPE/edit#gid=764618375)
 [form link](https://forms.gle/MRBL5jvXSpsMi4Ad8)
 
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

@@ -1,6 +1,6 @@
 <!--META A static url shortener that uses string compression to generate shorter redirect links META -->
 
-## Static URL compressor
+## Statically Hosted URL Compressor
 
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/short_url)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/short_url)
@@ -20,4 +20,4 @@ output URL: [https://ollielynas.github.io/short_url/?i=ct11828270](https://ollie
 <br>
 
 <small><small>[compressor domain]/?[{code}={compressed url info}]</small></small>
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

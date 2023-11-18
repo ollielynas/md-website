@@ -1,4 +1,4 @@
-## bare king
+## Bare King
 ![GitHub top language](https://img.shields.io/github/languages/top/ollielynas/Chess)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ollielynas/Chess)
 <!-- STAR ICON -->
@@ -12,4 +12,4 @@ You can equip 5 different abilities. The abilities cost energy to use. You can g
 You get points relative to the value of the pieces that you take. If you take more than one piece at a time (using an ability) you get a point multiplier. As the game progresses the number, and difficulty of the enemy pieces increases. 
 
 <iframe frameborder="0" src="https://itch.io/embed/1964289?linkback=true&amp;border_color=4f3f3f" width="552" height="167"><a href="https://ollie-lynas.itch.io/bare-king">Bare King by Ollie lynas</a></iframe>
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

@@ -1,4 +1,4 @@
-### 100% CSS dinosaur game
+## 100% CSS Dinosaur Game
 <!-- META a version of the chrome dinosaur game implemented using only css and html META -->
 <!-- STAR ICON -->
 
@@ -17,4 +17,4 @@ feel free to use this as your "js is disabled" popup
   Untitled</a> by ollielynas (<a href="https://codepen.io/ollielynas">@ollielynas</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->

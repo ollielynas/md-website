@@ -151,7 +151,7 @@ pub async fn update_bird_target_location() -> Result<(), WebSysSugarsError> {
 
     err_to_sugar(bird.set_attribute("style", 
     &format!(
-        "top: calc( {y}px - 4.5em ); left: calc( {x}px );transition:top {time}s linear, left {time}s linear;"
+        "top: calc( {y}px - 4em ); left: calc( {x}px );transition:top {time}s linear, left {time}s linear;"
     )))?;
 
     // let x = landing_node

@@ -1,6 +1,6 @@
 
 
-## Fragment shader
+## Fragment Shader
 <!-- STAR ICON -->
 <!-- META A full fragment shader made in desmos. has uniforms for time, resolution, mouse position, and time.  META -->
 
@@ -16,4 +16,4 @@ This graph simulates a fragment shader. It can display the full 0-255 color rang
 
 <iframe src="https://www.desmos.com/calculator/omismxpptv" width="700" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
-<!-- LAST EDITED 1700195799 LAST EDITED-->
+<!-- LAST EDITED 1700285585 LAST EDITED-->
