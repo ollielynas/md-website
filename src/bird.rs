@@ -28,6 +28,9 @@ pub async fn on_finish_animation() -> Result<(), WebSysSugarsError> {
 #[wasm_bindgen]
 pub async fn startle_bird() -> Result<(), WebSysSugarsError> {
     let bird = get_element_by_id("bird")?;
+
+    
+
     let body = get_body()?;
 
     let bird_rect = bird.get_bounding_client_rect();
