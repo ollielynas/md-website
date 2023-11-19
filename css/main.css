@@ -108,7 +108,14 @@ h2 {
     border-radius: 2em;
 }
 
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
 
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: -10px}
+  100%  {opacity: 1; margin-left: 0px}
+}
 
 .md_file {
     background-color: var(--pg-color);
@@ -124,6 +131,7 @@ h2 {
     width: auto;
     max-height: 100dvh;
     /* height: 80%; */
+    transition: width 0.3s, height 0.3s, left 0.3s, right 0.3s, padding 0.3s, margin-left 0.7s;
 }
 @media screen and (orientation:landscape) {
     .navigation:not([open]) ~ .md_file {
@@ -139,6 +147,7 @@ h2 {
     }
     .navigation[open] > summary {
         font-size: 1.5em;
+        padding-top:0.3em;
     }
     .navigation:not([open]) > summary {
         font-size: 2.5em;
