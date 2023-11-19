@@ -40,7 +40,6 @@ pub async fn startle_bird() -> Result<(), WebSysSugarsError> {
 
     
 
-
     let x = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_x).min(body.client_width() as f64 - 20.0).max(20.0);
     let y = ((fastrand::f64() as f64 - 0.5) * 300.0 + bird_y).min(body.client_height() as f64 - 20.0).max(20.0);
 
