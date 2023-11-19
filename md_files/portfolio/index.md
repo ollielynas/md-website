@@ -1,5 +1,5 @@
 ## My Projects
-
+<!-- META A curated selection of projects.  META -->
 <div class="info-box">
 <h3>most downloads (as of writing)</h3>
 <ul>
@@ -18,4 +18,4 @@ loading starred projects...
 </div>
 <br>
 
-<!-- LAST EDITED 1700395681 LAST EDITED-->
+<!-- LAST EDITED 1700426640 LAST EDITED-->
