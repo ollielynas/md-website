@@ -1,5 +1,6 @@
-# md-website
+# Portfolio Website
 
-[link](https://ollielynas.github.io/md-website)
 
-`.\build.bat` to update files
+[Main Page](https://ollielynas.github.io/md-website)
+
+
