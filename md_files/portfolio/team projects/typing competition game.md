@@ -29,4 +29,4 @@ The game is played through your local network. To play against another person yo
 ![screenshot2](md_files/portfolio/team%20projects/Screenshot%202023-10-14%20124337.png)
 
 ![screenshot3](md_files/portfolio/team%20projects/Screenshot%202023-10-14%20185546.png)
-<!-- LAST EDITED 1700433912 LAST EDITED-->
+<!-- LAST EDITED 1700434646 LAST EDITED-->

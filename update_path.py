@@ -376,7 +376,7 @@ def html_template(path, html, has_been_modified):
 #                                   "Y88888P'            
 
     im_loop = 0
-    im_loop = 31
+    # im_loop = 31
     
     while im_diff < 10 and im_loop < 30:
         
