@@ -17,16 +17,6 @@
     <style id="main-style">
     </style>
 
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
-
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);">
-    </script>
     
     <script type="module">
         import init, {
@@ -46,6 +36,9 @@
         // load_md("md_files/home.md")
 
         window.search_results_big = search_results_big;
+        try {
+        document.getElementById('searchbar').onkeyup();
+        }catch(e) {}
         
     }
 
@@ -60,18 +53,26 @@
 
 </head>
 <!-- DESCRIPTION DESCRIPTION -->
-<body style="display: flex; flex-direction: column; overflow-y: scroll;">
+<body style="display: flex; flex-direction: column; overflow-y: scroll; width: 100dvw">
 <div style = "width: 100%; display: flex; align-items: center; flex-direction: row; justify-content: center;" class = "horizontal"><h1>Search</h1></div>
 <div style = "width: 100%; display: flex; align-items: center; flex-direction: row; justify-content: center;" class = "horizontal">
-    <input id="searchbar" style="font-size: 2em; min-width: 8em; padding-right: 0; width:max-content" class="search" placeholder="cool project..."></input>
+    <input id="searchbar" style="font-family: 'Rufina', serif;font-size: 2em; min-width: 8em; padding-right: 0; width:max-content" class="search" placeholder="cool project..."></input>
 </div>
 <style>
 #results-big {
     padding-left: 1em;
 }
+@media screen and (orientation:portrait) {
+    p {
+        font-size: 2em !important;
+    }
+    input {
+        font-size: 4em !important;
+    }
+}
 </style>
 <div id="results-big"></div>
-             
+
             <!-- START-STOP -->
     
     <!-- <script defer src = "js/non_head.js"></script> -->
@@ -80,15 +81,44 @@
     if (window.location.hostname != "ollielynas.github.io") {
         document.querySelector("link[rel*='icon']").href = "favicon-dev.ico";
     }
+    var descriptions = {};
     document.getElementById('searchbar').onkeyup=async() => {
         await search_results_big(document.getElementById('searchbar').value);
-        const search_res = document.querySelectorAll(".fake-image");
+        const search_res = document.querySelectorAll(".search-res");
         for (var i = 0; i < search_res.length; i++) {
             elem = search_res[i];
+            let path = elem.id;
+            let description = ""
+            if (descriptions.hasOwnProperty(path)) {
+                description = descriptions[path]
+            }else {
+                text = await fetch(("https://ollielynas.github.io/md-website/"+path.replaceAll("\\", "/")))
+                    .then((response) => {
+                        if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                        }
+                        return response.text();
+                    });
+                if (text.includes("META")) {
+                    description = text.split("META")[1]
+                    descriptions[path] = description
+                }else {
+                    descriptions[path] = description
+                }
+            }
+            elem.innerText = description;
             
         }
         }
-
+        window.onload = async() => { 
+        let params = new URLSearchParams(document.location.search);
+        let search = params.get('search');
+        document.getElementById('searchbar').value = search;
+        
+        try {
+        document.getElementById('searchbar').onkeyup();
+        }catch(e) {}
+        }
     </script>
 
 </body>

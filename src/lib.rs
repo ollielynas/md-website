@@ -563,10 +563,10 @@ pub async fn search_results_big(mut input: String) {
         show.push(results[i].1.replace("\\", "/"));
 
         search_results.push_str(&format!(
-            "<a id = '{}' class='link' href=\"https://ollielynas.github.io/md-website/#{}\"><h3>{}</h3></a><p class='search-res' id=\"description\">{}<p>",
-            results[i].1.replace("\\", "/"),
-            results[i].1.replace("\\", "/"),
+            "<h2 style='font-size: 2em; margin-bottom: 0'>{}</h2><a class='link' href=\"https://ollielynas.github.io/md-website/#{}\">{}</a><p class='search-res' id=\"{}\"><p>",
             results[i].0,
+            results[i].1.replace("\\", "/"),
+            results[i].1.replace("\\", "/").replace(".md", ""),
             results[i].1,
         ));
     }
