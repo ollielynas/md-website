@@ -29,10 +29,9 @@
 
 
     <meta name="google-site-verification" content="pZW8Y0wZQ9V6d0UkJjpkXDTb1AASfBlvDaHjr1o6AN8" />
-
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta  name="description" content="A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills">
-
+    
     
     <meta property="og:description" content="A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills" />
     <meta property="twitter:description" content="A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills" />
@@ -47,35 +46,36 @@
     <meta http-equiv="Content-Security-Policy" content="sandbox" />
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Ollie Lynas",
-      "alternateName" : ["Ollie Lynas Portfolio", "Ollie", "ollielynas.github.io", "OllieLynas","ollielynas"],
-      "description": "A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills",
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Ollie Lynas",
+            "alternateName" : ["Ollie Lynas Portfolio", "Ollie", "ollielynas.github.io", "OllieLynas","ollielynas"],
+            "description": "A portfolio website for Ollie Lynas / Oliver Lynas containing a portfolio of projects which demonstrate a range of software engineering skills",
       "url": "https://ollielynas.github.io/",
       "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
+          "@type": "SearchAction",
+          "target": {
+              "@type": "EntryPoint",
           "urlTemplate": "https://ollielynas.github.io/md-website/search.html?search={search_term_string}"
         },
         "query-input": "required name=search_term_string"
-      }
+    }
     }
     </script>
 
 
     <style id="main-style">
     </style>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
 
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
+<!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);">
     </script>
@@ -149,10 +149,12 @@
     
     <!-- <div class="blocker"></div> -->
     <div id = "slider" style="left:0dvw">
-    <div class="navigation">
+    
+    <details class="navigation">
         <div class="md_file" id="nav" onclick="">
         </div>
-    </div>
+        <summary><i class="ph ph-list-bullets"></i></summary>
+    </details>
     <details class="share-buttons">
         <summary class="share-summary">
             <svg class="svg-link show-if-closed" style="color: transparent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="64" cy="128" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="176" cy="200" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="176" cy="56" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="149.09" y1="73.3" x2="90.91" y2="110.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="90.91" y1="145.3" x2="149.09" y2="182.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>

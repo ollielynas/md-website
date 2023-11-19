@@ -104,14 +104,6 @@ resources_str = ""
 for i in resources:
     resources_str += "\n["+i.replace("\\", "/")+"](" + i.replace(" ", "%20").replace("\\", "/")+")"+"\n"
 
-old_resources = ""
-
-with open('md_files/site/resources.md', 'r', encoding="utf-8") as f:
-    old_resources = f.read()
-if resources_str != old_resources:
-    with open('md_files/site/resources.md', 'w', encoding="utf-8") as f:
-        f.write(resources_str)
-
 
 date_time = datetime.datetime.now()
 sitemap = ""
@@ -210,7 +202,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -384,7 +376,7 @@ def html_template(path, html, has_been_modified):
 #                                   "Y88888P'            
 
     im_loop = 0
-    # im_loop = 31
+    im_loop = 31
     
     while im_diff < 10 and im_loop < 30:
         

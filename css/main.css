@@ -115,8 +115,8 @@ h2 {
     width: 40em;
     padding: 1.2em;
     margin-top: 2em;
-    margin-left: calc( ( 100dvw - 48em + 24em ) / 2 );
-    margin-right: calc((100dvw - 40em - 24em ) / 2);
+    margin-left: calc( ( 100dvw - 48em + 20em ) / 2 );
+    margin-right: calc((100dvw - 40em - 20em ) / 2);
     border-right: 0.2em var(--outline) solid;
     border-bottom: 0.2em var(--outline) solid;
     /* min-height: 56em; */
@@ -124,6 +124,45 @@ h2 {
     width: auto;
     max-height: 100dvh;
     /* height: 80%; */
+}
+@media screen and (orientation:landscape) {
+    .navigation:not([open]) ~ .md_file {
+        margin-left: calc( ( 100dvw - 48em ) / 2 );
+        width: 50dvw;
+    }
+    .navigation > summary {
+        position: fixed;
+        z-index: 2;
+        top: 0.1em;
+        width: min-content;
+        font-size: 2.5em;
+    }
+    .navigation[open] > summary {
+        font-size: 1.5em;
+    }
+}
+.navigation >   summary:focus {
+outline:none !important
+}
+.navigation > summary::-webkit-details-marker {
+    display:none;
+}
+.navigation  summary { list-style-type: none; } /* Firefox */
+.navigation  summary::-webkit-details-marker { display: none; } /* Chrome */
+.navigation  summary::marker { display: none; }
+@media screen and (orientation:portrait) {
+    .navigation > summary {
+        width: 99dvw;
+    }
+    .navigation:not([open]) .ph {
+        display:inline-block;
+        height: 3em;
+        width: 3em;
+        font-size: 7em;
+    }
+    .navigation[open] > summary  {
+        display: none;
+    }
 }
 .navigation {
     position: sticky;
@@ -136,7 +175,7 @@ h2 {
     top: 1em;
     min-height: 0;
     overflow: scroll;
-    width: 24em;
+    width: 20em;
     margin: 0;  
     height: calc( 100vh - 3em );
     padding: 0.3em;
@@ -148,7 +187,7 @@ h2 {
     top: 0em;
     min-height: 0;
     overflow: scroll;
-    width: 24em;
+    width: 20em;
     margin: 0;
     height: 100%;
     padding: 0.3em;
@@ -392,7 +431,7 @@ img {
 .blocker {
     position: fixed;
     right: 0em;
-    width: calc ( 100dvw - 24em );
+    width: calc ( 100dvw - 20em );
     background-color: var(--pg-color);
     height: 100vw;
     display: none;
@@ -405,7 +444,7 @@ img {
         right: 0em;
     }
     to {
-        right: calc ( - ( 100dvw - 24em) );
+        right: calc ( - ( 100dvw - 20em) );
     }
 }
 

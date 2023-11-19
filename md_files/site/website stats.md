@@ -59,17 +59,17 @@ p.innerHTML = '<thead><th>Event</th><th>Time (ms)</th></thead>'+text;
   </img>
 </td>
 <tr>
-<td>last compiled</td><td>2023-11-20 09:43:58</td>
+<td>last compiled</td><td>2023-11-20 11:45:11</td>
 </tr>
 <tr>
-<td>number of pages</td><td>47</td>
+<td>number of pages</td><td>45</td>
 </tr>
 <tr>
-<td>project size</td><td>152.6MiB</td>
+<td>project size</td><td>153.1MiB</td>
 </tr>
 <!-- <tr>
 <td>word count</td><td>0</td>
 </tr> -->
 </table>
 
-<!-- LAST EDITED 1700426640 LAST EDITED-->
+<!-- LAST EDITED 1700433912 LAST EDITED-->
