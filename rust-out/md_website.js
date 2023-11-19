@@ -327,6 +327,17 @@ export function search_results(input) {
 }
 
 /**
+* @param {string} input
+* @returns {Promise<void>}
+*/
+export function search_results_big(input) {
+    const ptr0 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.search_results_big(ptr0, len0);
+    return takeObject(ret);
+}
+
+/**
 * @returns {Promise<void>}
 */
 export function on_finish_animation() {
@@ -720,7 +731,7 @@ function __wbg_get_imports() {
         const ret = getObject(arg0).arrayBuffer();
         return addHeapObject(ret);
     }, arguments) };
-    imports.wbg.__wbindgen_closure_wrapper881 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper887 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 34, __wbg_adapter_20);
         return addHeapObject(ret);
     };

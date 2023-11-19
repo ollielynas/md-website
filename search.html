@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- <meta lang="en"> -->
+    <title>Search</title>
+
+        <meta name="google-site-verification" content="pZW8Y0wZQ9V6d0UkJjpkXDTb1AASfBlvDaHjr1o6AN8" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link async rel='stylesheet' type='text/css' media='screen' href='css/important.css'>
+    <link async rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <!-- <link async rel='stylesheet' type='text/css' media='screen' href='css/prism.css'> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://ollielynas.github.io" />
+    <meta http-equiv="Content-Security-Policy" content="sandbox" />
+
+    <style id="main-style">
+    </style>
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous"> -->
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);">
+    </script>
+    
+    <script type="module">
+        import init, {
+            search_results_big,
+            console_error_panic_hook_set,
+        } from "./rust-out/md_website.js";
+
+        async function run() {
+        await init();
+
+        console_error_panic_hook_set();
+
+        // update_nav("FIRST");
+
+        
+        console.log("finished");
+        // load_md("md_files/home.md")
+
+        window.search_results_big = search_results_big;
+        
+    }
+
+    run();
+    
+    
+
+</script>
+
+
+
+
+</head>
+<!-- DESCRIPTION DESCRIPTION -->
+<body style="display: flex; flex-direction: column; overflow-y: scroll;">
+<div style = "width: 100%; display: flex; align-items: center; flex-direction: row; justify-content: center;" class = "horizontal"><h1>Search</h1></div>
+<div style = "width: 100%; display: flex; align-items: center; flex-direction: row; justify-content: center;" class = "horizontal">
+    <input id="searchbar" style="font-size: 2em; min-width: 8em; padding-right: 0; width:max-content" class="search" placeholder="cool project..."></input>
+</div>
+<style>
+#results-big {
+    padding-left: 1em;
+}
+</style>
+<div id="results-big"></div>
+             
+            <!-- START-STOP -->
+    
+    <!-- <script defer src = "js/non_head.js"></script> -->
+    <!-- <script src="js/prism.js"></script> -->
+    <script>
+    if (window.location.hostname != "ollielynas.github.io") {
+        document.querySelector("link[rel*='icon']").href = "favicon-dev.ico";
+    }
+    document.getElementById('searchbar').onkeyup=async() => {
+        await search_results_big(document.getElementById('searchbar').value);
+        const search_res = document.querySelectorAll(".fake-image");
+        for (var i = 0; i < search_res.length; i++) {
+            elem = search_res[i];
+            
+        }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -57,4 +57,5 @@ md_files\site\cache.md
 md_files\site\credits.md
 md_files\site\report bug.md
 md_files\site\resources.md
+md_files\site\search.md
 md_files\site\website stats.md

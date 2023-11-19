@@ -13,6 +13,7 @@ export function clicked_scroll(): number;
 export function show_nav(): number;
 export function show_content(): number;
 export function search_results(a: number, b: number): number;
+export function search_results_big(a: number, b: number): number;
 export function on_finish_animation(): number;
 export function startle_bird(): number;
 export function update_bird_target_location(): number;

@@ -6,7 +6,7 @@ designed and built to run docscript
 <!-- META A full IDE made in a google doc. META -->
 <!-- STAR ICON -->
 
-![screenshot](md_files/portfolio/esolangs/Screenshot%202023-09-13%20194709.png)
+![screenshot](https://ollielynas.github.io/md_files/portfolio/esolangs/Screenshot%202023-09-13%20194709.png)
 
 
 ### features
@@ -20,6 +20,8 @@ designed and built to run docscript
  - Integrated file system
  - Snippet saver
  - Spell checking and auto-capitalization (sorry about that)
+ - Code structure outline in the document outline. 
+ - ligatures with Fira Code font 
 
 <iframe src="https://docs.google.com/document/d/e/2PACX-1vSV7saPBxNrxc5NfddK_Uxa4v9kuFU9Qn5a5p8FUDIQNL_5Boi1hMN9Hj1WXcIphCMXhZXhUAq98K38/pub?embedded=true" width= "100%" height="700px"></iframe>
-<!-- LAST EDITED 1700297730 LAST EDITED-->
+<!-- LAST EDITED 1700392251 LAST EDITED-->

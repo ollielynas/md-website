@@ -18,7 +18,9 @@ except ModuleNotFoundError:
     
 total_words = 0
 
-
+schema = """<script type="application/ld+json">
+[
+"""
 
 p = Path('./md_files/')
 
@@ -86,12 +88,16 @@ resources.append("src/tree.txt")
 resources.append("css/main.css")
 resources.append("css/bird.css")
 
+portfolio_project_names_and_catagories = []
 
 for i in text.split("\n"):
     if ".md" not in i:
         continue
     resources.append(i)
+    if "portfolio" in i and "index.md" not in i :
+        portfolio_project_names_and_catagories.append((i.split("\\")[-2], i.split("\\")[-1].replace(".md","")))
 
+print(portfolio_project_names_and_catagories)
 
 resources_str = ""
 
@@ -184,6 +190,8 @@ def process_and_detect_edit(text,file_name):
         "- [ ]": "<input type=\"checkbox\"></input>",
         "- [x]": "<input type=\"checkbox\" checked></input>"
     }
+    
+    
 
 
     last_edit = round(os.path.getmtime(file_name))
@@ -202,7 +210,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -231,13 +239,11 @@ def process_and_detect_edit(text,file_name):
     for i in replace:
         text = text.replace(f"<p>{replace[i]}</p>", replace[i])
 
-    # if "home.md" in a:
-    #     with open("index.html", "r") as f_index:
-    #         f_index_list = f_index.read().split("<!-- START-STOP -->")
-    #     with open("index.html", "w") as f_index_w:
-    #         f_index_w.write(f_index_list[0]+"<!-- START-STOP -->" +
-    #                         text+"<!-- START-STOP -->"+f_index_list[2])
-
+    # text = text.replace("Ollie Lynas", """<span id="_author6" itemprop="author" itemscope itemtype="http://schema.org/Person">Ollie Lynas</span>""")
+    
+    # for p in portfolio_project_names_and_catagories:
+    #     text = text.replace(p[1], f"""<span itemscope itemtype="http://schema.org/SoftwareApplication" itemref="_author6">{p[1]}</span>""")
+        
     
     return (text, has_been_modified)
 
@@ -261,8 +267,79 @@ def html_template(path, html, has_been_modified):
     folder , name = path.split("\\")[-2:]
     folder = folder.replace("md_files","")
     name = name.replace(".md","")
-    template = template.replace("TITLE",f"Ollie Lynas - {folder} - {name}")
+    markup = ""
+    if "portfolio" in path and "books" not in path:
+        category = []
+        
+        # GameApplication
+        # SocialNetworkingApplication
+        # TravelApplication
+        # ShoppingApplication
+        # SportsApplication
+        # LifestyleApplication
+        # BusinessApplication
+        # DesignApplication
+        # DeveloperApplication
+        # DriverApplication
+        # EducationalApplication
+        # HealthApplication
+        # FinanceApplication
+        # SecurityApplication
+        # BrowserApplication
+        # CommunicationApplication
+        # DesktopEnhancementApplication
+        # EntertainmentApplication
+        # MultimediaApplication
+        # HomeApplication
+        # UtilitiesApplication
+        # ReferenceApplication
+        if "itch.io" in path2 or "game" in path2 or "golf" in path2:
+            category += ["GameApplication"]
+        if "web" in path2 or "desmos" in path2:
+            category += ["BrowserApplication"]
+        if "desmos" in path2 or "esolangs" in path2:
+            category += ["EducationalApplication"]
+        
+        if category == []:
+            category += [""]
+    
+        markup = f"""
+        {{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "author": {{
+        "@type": "Person",
+        "name": "Ollie Lynas"
+        }},
+        "image": "https://ollielynas.github.io/md-website/IMAGE_PATH"
+        "name": "{name}",
+        "applicationCategory": {category},
+        "offers": {{
+        "@type": "Offer",
+        "price": "0"
+        }}
+        }}""".replace("'", "\"")
+    # if "books" in path:
+    #     markup = f"""
+    #     {{
+    #     "@context": "https://schema.org",
+    #     "@type": "SoftwareApplication",
+    #     "name": "{name}",
+    #     <!-- "operatingSystem": "ANDROID", -->
+    #     "applicationCategory": "{" ".join(category)}",
+    #     "offers": {
+    #     "@type": "Offer",
+    #     "price": "0"
+    #     }
+    #     }}"""
+        
+        
+
+    template = template.replace("MARKUP", markup)
+        
+    
     template = template.replace("THISPAGE", path2)
+    template = template.replace("TITLE",f"Ollie Lynas - {folder} - {name}")
     if len(meta) > 2:
         _, inner_meta, _ = meta
     else: inner_meta = name + " by Ollie Lynas"
@@ -283,6 +360,8 @@ def html_template(path, html, has_been_modified):
 
     # if sum(img.convert("L").getextrema()) in (0, 2):
         # csv += f"https://ollielynas.github.io/md-website/sub/#{path.replace('.md','.html')}"
+
+
     hti = Html2Image(size=(1000, 1800), custom_flags=['--virtual-time-budget=50000', '--hide-scrollbars', '--enable-gpu'])
     
     hti.output_path = str(output_file2.parent)
@@ -291,7 +370,21 @@ def html_template(path, html, has_been_modified):
     template = template.replace("IMAGE_PATH", "og-img/"+path2.replace('.md','.png'))
     
     im_diff = 0
+    
+    
+#     
+# ooooo                                                  
+# `888'                                                  
+#  888  ooo. .oo.  .oo.    .oooo.    .oooooooo  .ooooo.  
+#  888  `888P"Y88bP"Y88b  `P  )88b  888' `88b  d88' `88b 
+#  888   888   888   888   .oP"888  888   888  888ooo888 
+#  888   888   888   888  d8(  888  `88bod8P'  888    .o 
+# o888o o888o o888o o888o `Y888""8o `8oooooo.  `Y8bod8P' 
+#                                   d"     YD            
+#                                   "Y88888P'            
+
     im_loop = 0
+    im_loop = 31
     
     while im_diff < 10 and im_loop < 30:
         
@@ -314,6 +407,7 @@ def html_template(path, html, has_been_modified):
         im_diff = abs(ex[1] - ex[0])
         print(ex, img_path)
         im.save(img_path, quality=95)
+        im.close()
         
         
     

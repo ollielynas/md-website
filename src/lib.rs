@@ -123,6 +123,8 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
             }),
         );
 
+
+
         err_to_sugar(new_element.add_event_listener_with_callback_and_bool(
             "click",
             &if md {
@@ -501,7 +503,7 @@ pub async fn search_results(mut input: String) {
                     .unwrap_or("error no \\\\ found")
                     .replace(".md", ""),
                 s.to_owned(),
-                fuzzy_compare(&s.replace(".md", "").replace("\\", " "), &input),
+                fuzzy_compare(&s.replace(".md", "").replace("\\", " ").to_lowercase(), &input),
             )
         })
         .collect::<Vec<(String, String, f32)>>();
@@ -530,3 +532,50 @@ pub async fn search_results(mut input: String) {
         .unwrap()
         .set_inner_html(&(search_results));
 }
+#[wasm_bindgen]
+pub async fn search_results_big(mut input: String) {
+    input = input.to_lowercase();
+    let mut search_results = "<ul>".to_owned();
+
+    let mut results = include_str!("tree.txt")
+        .lines()
+        .filter(|s| s.ends_with(".md"))
+        .map(|s| {
+            (
+                s.split("\\")
+                    .last()
+                    .unwrap_or("error no \\\\ found")
+                    .replace(".md", ""),
+                s.to_owned(),
+                fuzzy_compare(&s.replace(".md", "").replace("\\", " ").to_lowercase(), &input),
+            )
+        })
+        .collect::<Vec<(String, String, f32)>>();
+
+
+
+    results.sort_by(|a, b| b.2.total_cmp(&a.2));
+    let mut show: Vec<String> = vec![];
+    for i in 0..20.min(results.len()) {
+        if results[i].2 == 0.0 {
+            break;
+        }
+        show.push(results[i].1.replace("\\", "/"));
+
+        search_results.push_str(&format!(
+            "<a id = '{}' class='link' href=\"https://ollielynas.github.io/md-website/#{}\"><h3>{}</h3></a><p class='search-res' id=\"description\">{}<p>",
+            results[i].1.replace("\\", "/"),
+            results[i].1.replace("\\", "/"),
+            results[i].0,
+            results[i].1,
+        ));
+    }
+    search_results.push_str("</ul>");
+
+    // js_sys::eval(&format!("window.show_search='{}'", show.join(";")));
+    get_element_by_id("results-big")
+        .unwrap()
+        .set_inner_html(&(search_results));
+}
+
+

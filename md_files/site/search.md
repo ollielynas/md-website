@@ -1,12 +1,6 @@
 <!-- no index -->
 
-## Skills
+## Search
 
-<br>
-
-todo
-
-<br>
-
-*todo: become skilled*
+<input></input>
 <!-- LAST EDITED 1700392251 LAST EDITED-->
