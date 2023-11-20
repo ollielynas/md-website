@@ -202,7 +202,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
@@ -303,7 +303,7 @@ def html_template(path, html, has_been_modified):
         "@type": "Person",
         "name": "Ollie Lynas"
         }},
-        "image": "https://ollielynas.github.io/md-website/IMAGE_PATH"
+        "image": "https://ollielynas.github.io/md-website/IMAGE_PATH",
         "name": "{name}",
         "applicationCategory": {category},
         "offers": {{
@@ -376,7 +376,7 @@ def html_template(path, html, has_been_modified):
 #                                   "Y88888P'            
 
     im_loop = 0
-    # im_loop = 31
+    im_loop = 31
     
     while im_diff < 10 and im_loop < 30:
         
