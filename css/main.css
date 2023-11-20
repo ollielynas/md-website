@@ -242,7 +242,7 @@ details[open] summary ~ * {
     height: 100%;
     padding: 0.3em;
     padding-top: 1em;
-    border-right: 3px rgb(92, 92, 92) solid;
+    border-right: 2px rgb(92, 92, 92) solid;
     /* margin-top: -1.5em; */
     margin-left: -1em;
     padding-left: 2em;
@@ -287,6 +287,7 @@ p {
 
 .path-2 ~ .folder {
     font-weight: 600;
+    padding-top: 0.6em;
 }
 
 
@@ -520,6 +521,7 @@ img {
         display: flex;
         align-items: start;
         flex-direction: row;
+        font-size: calc(  1.5vw + 0.1rem );
         
     }
 
@@ -528,7 +530,7 @@ img {
         /* scroll-snap-align: middle; */
         display: flex;
         flex-direction: column;
-        font-size: calc((1vw + 0.1rem) * 2);
+        font-size: calc((1.5vw + 0.1rem) * 2);
         width: 80vw;
         min-width: 80vw;
         margin: 0;
@@ -551,7 +553,7 @@ img {
         left: 0;
         top: 0;
         padding-left: 1em;
-        font-size: calc( ( 1vw + 0.1rem ) * 3 );
+        font-size: calc( ( 1.5vw + 0.1rem ) * 3 );
         border-right: none;
         animation: fadeInAnimation 1s linear forwards;
     }
@@ -580,7 +582,7 @@ img {
     }
 
     a, .link, .share-buttons, .parrot-button, .results-big * {
-        font-size: calc((1vw + 0.1rem) * 3);
+        font-size: calc((1.5vw + 0.1rem) * 3);
         padding-bottom: 0.5em;
     }
 
