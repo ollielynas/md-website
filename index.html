@@ -154,7 +154,7 @@
     <!-- <div class="blocker"></div> -->
     <div id = "slider" style="left:0dvw">
     
-    <details class="navigation">
+    <details class="navigation" id="navid">
         <div class="md_file" id="nav" onclick="">
         </div>
         <summary><i class="ph ph-list-bullets"></i></summary>
@@ -311,8 +311,13 @@
             bird.setAttribute('startle',1);
         await window.startle_bird();
         }
+
+        
 });
-    
+
+if(window.innerHeight > window.innerWidth){
+    document.getElementById('navid').setAttribute('open',"");
+}
     </script>
 
 </body>
