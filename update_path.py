@@ -202,7 +202,7 @@ def process_and_detect_edit(text,file_name):
 #                                                           888                                                        
 #                                                          o888o                                                       
 
-    # has_been_modified = True
+    has_been_modified = True
     
     current_time = round(time.time())
     
