@@ -381,7 +381,8 @@ def html_template(path, html, has_been_modified):
     while im_diff < 10 and im_loop < 30:
         
         try:
-            hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
+            hti.screenshot(url=f'https://ollielynas.github.io/md-website/sub/{path2.replace(".md", ".html")}', save_as=(name+".png"))
+            # hti.screenshot(url=f'https://ollielynas.github.io/md-website/#{path2}', save_as=(name+".png"))
             # hti.screenshot(html_str = template, css_file='css\main.css', save_as=(name+".png"))
         except:
             print("An exception occurred") 

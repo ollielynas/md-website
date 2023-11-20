@@ -23,4 +23,4 @@ $$r_{epell}\left(a\right)\ =\frac{n_{orm}\left(a-b_{rb}\left[d_{is}\left(a,b_{rb
  - Follow *how much the boids follow each other*
 
 <iframe src="https://www.desmos.com/calculator/xbiv9gh80l?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
-<!-- LAST EDITED 1700444242 LAST EDITED-->
+<!-- LAST EDITED 1700451706 LAST EDITED-->

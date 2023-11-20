@@ -4,4 +4,4 @@
 A two channel oscilloscope made in desmos. Inverted contrast recommended.
 
 <iframe src="https://www.desmos.com/calculator/vfdbswn2wc?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
-<!-- LAST EDITED 1700444242 LAST EDITED-->
+<!-- LAST EDITED 1700451706 LAST EDITED-->

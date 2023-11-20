@@ -22,6 +22,15 @@ button {
     color: var(--link-light);
 }
 
+.navigation >   summary:focus {
+    outline:none !important
+}
+.navigation > summary::-webkit-details-marker {
+    display:none;
+}
+.navigation  summary { list-style-type: none; } /* Firefox */
+.navigation  summary::-webkit-details-marker { display: none; } /* Chrome */
+.navigation  summary::marker { display: none; }
 
 #swipe_info {
     display: none;
@@ -32,7 +41,7 @@ button {
     width: 40em;
     padding: 1.2em;
     margin-top: 2em;
-    margin-left: calc((100dvw - 48em + 24em) / 2);
+    margin-left: calc( ( 100dvw - 48em ) / 2 );
     margin-right: calc((100dvw - 40em - 24em) / 2);
     border-right: 0.2em var(--outline) solid;
     border-bottom: 0.2em var(--outline) solid;

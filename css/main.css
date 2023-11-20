@@ -510,7 +510,7 @@ img {
     body {
         /* overflow: scroll; */
         overflow-x: hidden;
-        overflow-y: hidden;
+        overflow-y: visible;
         
         width: 100vw;
         /* overflow-y: scroll; */
