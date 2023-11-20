@@ -60,6 +60,14 @@ export function search_results_big(input: string): Promise<void>;
 /**
 * @returns {Promise<void>}
 */
+export function back_arrow(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
+export function forward_arrow(): Promise<void>;
+/**
+* @returns {Promise<void>}
+*/
 export function on_finish_animation(): Promise<void>;
 /**
 * @returns {Promise<void>}
@@ -87,6 +95,8 @@ export interface InitOutput {
   readonly show_content: () => number;
   readonly search_results: (a: number, b: number) => number;
   readonly search_results_big: (a: number, b: number) => number;
+  readonly back_arrow: () => number;
+  readonly forward_arrow: () => number;
   readonly on_finish_animation: () => number;
   readonly startle_bird: () => number;
   readonly update_bird_target_location: () => number;

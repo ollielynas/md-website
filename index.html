@@ -96,7 +96,9 @@
             search_results,
             update_bird_target_location,
             on_finish_animation,
-            startle_bird
+            startle_bird,
+            back_arrow,
+            forward_arrow,
         } from "./rust-out/md_website.js";
 
         async function run() {
@@ -126,6 +128,8 @@
         window.update_bird_target_location = update_bird_target_location;
         window.on_finish_animation = on_finish_animation;
         window.startle_bird = startle_bird;
+        window.back_arrow = back_arrow;
+        window.forward_arrow = forward_arrow;
         rs_onload();
         load_style();
         
@@ -155,6 +159,10 @@
         </div>
         <summary><i class="ph ph-list-bullets"></i></summary>
     </details>
+    <div class="nav-arrows horizontal">
+        <i id="back-arrow" class="ph ph-arrow-left"></i>
+        <i id="forward-arrow" class="ph ph-arrow-right"></i>
+    </div>
     <details class="share-buttons">
         <summary class="share-summary">
             <svg class="svg-link show-if-closed" style="color: transparent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="64" cy="128" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="176" cy="200" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="176" cy="56" r="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="149.09" y1="73.3" x2="90.91" y2="110.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="90.91" y1="145.3" x2="149.09" y2="182.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
@@ -227,6 +235,7 @@
     var bird = document.getElementById("bird");
 
 
+
     // loop every 4 seconds 
 
     function countdown_bird() {
@@ -272,6 +281,13 @@
     function isScrollable(el) {
     return (el.scrollWidth > el.clientWidth || el.scrollHeight > el.clientHeight || el.id == 'content');
     }
+
+    document.getElementById('back-arrow').addEventListener('click', async () => {
+        back_arrow();
+    });
+    document.getElementById('forward-arrow').addEventListener('click', async () => {
+        forward_arrow();
+    });
 
 
     window.addEventListener('click', async function(e) {

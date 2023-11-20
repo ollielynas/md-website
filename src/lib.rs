@@ -284,6 +284,11 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
 
     let window = get_window()?;
     let loc = window.location();
+
+    let location = loc.hash().unwrap_or("".to_string());
+
+    add_history(location).await?;
+
     if loc.hash().unwrap_or("x".to_owned()) != file {
         // window.location().set_hash(&file.replace("\\","/"));
         loc.replace(&format!(
@@ -292,6 +297,10 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
             file.replace("\\", "/")
         ));
     }
+    
+    
+
+
 
     let mut text = match load_gzip(&file).await {
         Ok(a) => a,
@@ -578,4 +587,114 @@ pub async fn search_results_big(mut input: String) {
         .set_inner_html(&(search_results));
 }
 
+
+pub async fn get_history() -> Result<(usize, Vec<String>), WebSysSugarsError> {
+    let body = get_body()?;
+
+    let mut history: Vec<String> = match body.get_attribute("history") {
+    Some(a) => {
+        a.split(",").map(|x|x.to_owned()).collect::<Vec<String>>()
+    },
+    None => {
+        body.set_attribute("history", "");
+        vec![]
+    },
+    };
+    history.retain(|x| x!="");
+
+    let index = body.get_attribute("history-index").unwrap_or("0".to_string()).parse::<usize>().unwrap_or(0);
+
+
+
+    return Ok((index, history));
+}
+pub async fn add_history(location: String) -> Result<(), WebSysSugarsError> {
+    let body = get_body()?;
+    let (mut index, mut history) = get_history().await?;
+    history.truncate(index);
+    history.push(location);
+    history.dedup();
+    index = history.len();
+    
+        if index <= 1 {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
+    }
+    if index >= history.len() {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
+    }
+    
+
+
+
+    body.set_attribute("history", &history.join(","));
+    body.set_attribute("history-index", &index.to_string());
+
+    return Ok(());
+}
+
+
+#[wasm_bindgen]
+pub async fn back_arrow() -> Result<(), WebSysSugarsError> {
+    let body = get_body()?;
+    let (mut index, history) = get_history().await?;
+
+    if index > 1 {
+        index -=1;
+    }else {
+        return Ok(());
+    }
+
+
+    
+    let _ = load_md(history[index-1].clone().replace("#", "")).await;
+    
+    if index <= 1 {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
+    }
+    if index >= history.len() {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
+    }
+    body.set_attribute("history-index", &index.to_string());
+    body.set_attribute("history", &history.join(","));
+
+    return Ok(());
+}
+#[wasm_bindgen]
+pub async fn forward_arrow() -> Result<(), WebSysSugarsError> {
+    let body = get_body()?;
+    let (mut index, mut history) = get_history().await?;
+
+    if index >= history.len() {
+        return Ok(());
+    }
+    
+    load_md(history[index].clone().replace("#", "").replace("%20", " ")).await?;
+    
+    if index < history.len() {
+        index +=1;
+    }
+
+    if index <= 1 {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
+    }
+    if index >= history.len() {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
+    }else {
+        get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
+    }
+
+    body.set_attribute("history", &history.join(","));
+    body.set_attribute("history-index", &index.to_string());
+    return Ok(());
+}
 

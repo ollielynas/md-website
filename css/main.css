@@ -3,6 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
+
+.ph {
+    display: block;
+}
+
 :root {
     /* --main-bg-color: rgb(217, 244, 189); */
         --main-bg-color: rgb(249, 249, 249);
@@ -156,7 +161,7 @@ details[open] summary ~ * {
     }
 }
 .navigation >   summary:focus {
-outline:none !important
+    outline:none !important
 }
 .navigation > summary::-webkit-details-marker {
     display:none;
@@ -178,12 +183,43 @@ outline:none !important
         display: none;
     }
 }
-.navigation {
+/* .navigation {
     position: sticky;
     top: 0em;
     left:0;
+} */
+
+.nav-arrows {
+    z-index: 10;
+    position: fixed;
+    top: 2.8em;
+    left: 0.7em;
+    font-size: 2.5em !important;
+}
+.nav-arrows i { 
+    padding-left: 0.4em;
+}
+.navigation[open] ~ .nav-arrows i { 
+    padding-left: 1em;
 }
 
+#back-arrow[disabled="true"] {
+    color:rgb(104, 104, 104) !important;
+}
+#forward-arrow[disabled="true"] {
+    color:rgb(104, 104, 104) !important;
+}
+
+
+.navigation[open] ~ .nav-arrows {
+    font-size: 1.5em !important;
+    top: 0.5em;
+    left: 2.5em;
+}
+
+.navigation[open] .md_file {
+    padding-top: 3em !important;
+}
 /* .navigation .md_file {
     position: absolute;
     top: 1em;
@@ -219,6 +255,7 @@ outline:none !important
     padding: 0;
     margin: 0;
     font-size: 1em;
+
 }
 /* .new { */
     /* animation: scale_in .3s ease-out forwards; */
