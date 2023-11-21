@@ -20,4 +20,4 @@ output URL: [https://ollielynas.github.io/short_url/?i=ct11828270](https://ollie
 <br>
 
 <small><small>[compressor domain]/?[{code}={compressed url info}]</small></small>
-<!-- LAST EDITED 1700522411 LAST EDITED-->
+<!-- LAST EDITED 1700522779 LAST EDITED-->
