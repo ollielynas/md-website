@@ -54,7 +54,9 @@ body {
     background-color: var(--main-bg-color);
         /* font-family: 'Fira Code', monospace; */
     font-size: calc(  1vw + 0.1rem );
-    font-family: 'JetBrains Mono', monospace;
+    /* font-family: 'JetBrains Mono', monospace; */
+        font-family: 'Raleway', sans-serif;
+
     color: var(--text-color);
     scrollbar-color: black;
     /* overflow: visible; */
@@ -810,3 +812,18 @@ details.share-buttons > summary {
 .close-x {
     color: red !important;
 }
+
+p>p::first-letter {
+    color: red;
+}
+
+/* ul > li > a {
+    padding-top: 0.5em;
+    font-family: 'Rufina', serif !important;
+} */
+
+*:hover() {
+    scale: 1.1;
+    transition: scale 0.4;
+}
+

@@ -37,6 +37,8 @@ features = [
   'History',
   'NodeList',
   'DomRect',
+  'SpeechSynthesis',
+  'SpeechSynthesisUtterance'
 ]
 
 [profile.release]

@@ -3,14 +3,18 @@ use js_sys::Function;
 use js_sys::Uint8Array;
 use rust_fuzzy_search::*;
 use std::str;
+use urlencoding::encode;
 use wasm_bindgen::prelude::*;
 use web_sugars::prelude::*;
 use zune_inflate::DeflateDecoder;
-use urlencoding::encode;
 
 pub mod bird;
+pub mod speech;
+pub mod voicelines;
 
 use bird::*;
+use speech::*;
+use voicelines::*;
 
 // Import the `window.alert` function from the Web.
 #[wasm_bindgen]
@@ -68,15 +72,12 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
     //     .filter(|x| !x.contains(".md") && x != &&"md_files")
     //     .map(|x| String::from(*x))
     //     .collect::<Vec<String>>();
-    
 
-    let collapsed = 
-        get_collapsed().await?;
+    let collapsed = get_collapsed().await?;
 
     for i in &collapsed {
         files.retain(|x| !x.replace("\\", "/").contains(&format!("{}/", i)));
     }
-
 
     let nav = get_element_by_id("nav")?;
     let inner_html = nav.inner_html();
@@ -105,7 +106,6 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
         new_element.set_id(&f);
         new_element.set_text_content(Some(&name.replace(".md", "")));
 
-
         new_element.set_class_name(
             &(if md {
                 if include_str!("favorite.txt").contains(&(f.to_owned())) {
@@ -122,8 +122,6 @@ pub async fn update_nav() -> Result<(), WebSysSugarsError> {
                     }
             }),
         );
-
-
 
         err_to_sugar(new_element.add_event_listener_with_callback_and_bool(
             "click",
@@ -297,17 +295,19 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
             file.replace("\\", "/")
         ));
     }
-    
-    
-
-
 
     let mut text = match load_gzip(&file).await {
         Ok(a) => a,
         Err(a) => format!("{:?}", a),
     };
 
-    let name = file.split("\\").last().unwrap_or("invalid file").replace(".md", "");
+    let name = file
+    .split("\\")
+    .last()
+    .unwrap_or("invalid file")
+    .replace(".md", "");
+
+// console_log!("You have opened {name}");
 
     let link = get_element_by_id("link_to_external")?;
 
@@ -326,26 +326,25 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         link.set_inner_html(include_str!("open_in_external.svg"));
     }
 
-    
     let local_link = if text.contains("no index") {
         format!(
             "https://ollielynas.github.io/md-website/#{}",
             file.replace("\\", "/").replace(" ", "%20")
         )
-    }else {
+    } else {
         format!(
             "https://ollielynas.github.io/md-website/sub/{}?redirect=true",
-            file.replace("\\", "/").replace(".md", ".html").replace(" ", "%20")
+            file.replace("\\", "/")
+                .replace(".md", ".html")
+                .replace(" ", "%20")
         )
     };
-    
+
     let link_internal = get_element_by_id("link_to_internal")?;
 
     err_to_sugar(link_internal.set_attribute(
         "onclick",
-        &format!(
-             "navigator.clipboard.writeText('{local_link}');alert('copied link!');"
-        ),
+        &format!("navigator.clipboard.writeText('{local_link}');alert('copied link!');"),
     ))?;
     let link_twitter = get_element_by_id("link_to_twitter")?;
     err_to_sugar(link_twitter.set_attribute(
@@ -364,29 +363,31 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
         ),
     ))?;
 
-
     // let bookmark = include_str!("bookmark.html");
     match file.as_str() {
         "md_files\\home.md" | "md_files\\portfolio\\index.md" => {
             let fav = include_str!("favorite.txt")
-                .lines()
-                .map(|x| {
-                    if x.ends_with(".md") {
-                    format!(
-                        "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
-                        x.replace("\\", "/"),
-                        x.split("\\").last().unwrap_or("error!").replace(".md", ""),
-                    )
-                }else {format!("<p>{x}<p>\n",)}
-                })
-                .collect::<String>();
+        .lines()
+        .map(|x| {
+            if x.ends_with(".md") {
+                format!(
+                    "<li><a id = '{}' class='link' onclick = 'window.load_md(this.id);'>{}</a></li>",
+                    x.replace("\\", "/"),
+                    x.split("\\").last().unwrap_or("error!").replace(".md", ""),
+                )
+            }else {format!("<p>{x}<p>\n",)}
+        })
+        .collect::<String>();
 
             text = text.replace("loading starred projects...", &format!("<ul>{fav}</ul>"));
         }
         _ => {}
     }
     if text.starts_with("JsValue") {
-        text = format!("<h1>{}</h1>\n<i>an error occured while trying to load page</i>\n<br><br>", name) + &text;
+        text = format!(
+            "<h1>{}</h1>\n<i>an error occured while trying to load page</i>\n<br><br>",
+            name
+        ) + &text;
     }
     md_block.set_inner_html(&text);
 
@@ -404,15 +405,13 @@ pub async fn load_md(mut file: String) -> Result<(), WebSysSugarsError> {
     );
     // md
 
-
     // let bookmarks = md_block.get_elements_by_class_name("bookmark");
 
     // startle_bird().await?;
+    read_message(&format!("You Have Opened {name}")).await?;
 
     js_sys::eval("renderMathInElement(document.getElementById('md_block'))");
     return Ok(());
-
-
 }
 
 #[wasm_bindgen]
@@ -453,13 +452,13 @@ pub async fn rs_onload() -> Result<(), WebSysSugarsError> {
     update_nav().await?;
     update_from_hash().await?;
 
-    err_to_sugar(get_window()?.add_event_listener_with_callback(
-        "hashchange",
-        &Function::new_with_args(
-            "event",
-            "console.log('hashchange');window.update_from_hash()",
-        ),
-    ))?;
+    // err_to_sugar(get_window()?.add_event_listener_with_callback(
+    //     "hashchange",
+    //     &Function::new_with_args(
+    //         "event",
+    //         "console.log('hashchange');window.update_from_hash()",
+    //     ),
+    // ))?;
 
     return Ok(());
 }
@@ -512,7 +511,10 @@ pub async fn search_results(mut input: String) {
                     .unwrap_or("error no \\\\ found")
                     .replace(".md", ""),
                 s.to_owned(),
-                fuzzy_compare(&s.replace(".md", "").replace("\\", " ").to_lowercase(), &input),
+                fuzzy_compare(
+                    &s.replace(".md", "").replace("\\", " ").to_lowercase(),
+                    &input,
+                ),
             )
         })
         .collect::<Vec<(String, String, f32)>>();
@@ -556,12 +558,13 @@ pub async fn search_results_big(mut input: String) {
                     .unwrap_or("error no \\\\ found")
                     .replace(".md", ""),
                 s.to_owned(),
-                fuzzy_compare(&s.replace(".md", "").replace("\\", " ").to_lowercase(), &input),
+                fuzzy_compare(
+                    &s.replace(".md", "").replace("\\", " ").to_lowercase(),
+                    &input,
+                ),
             )
         })
         .collect::<Vec<(String, String, f32)>>();
-
-
 
     results.sort_by(|a, b| b.2.total_cmp(&a.2));
     let mut show: Vec<String> = vec![];
@@ -587,24 +590,23 @@ pub async fn search_results_big(mut input: String) {
         .set_inner_html(&(search_results));
 }
 
-
 pub async fn get_history() -> Result<(usize, Vec<String>), WebSysSugarsError> {
     let body = get_body()?;
 
     let mut history: Vec<String> = match body.get_attribute("history") {
-    Some(a) => {
-        a.split(",").map(|x|x.to_owned()).collect::<Vec<String>>()
-    },
-    None => {
-        body.set_attribute("history", "");
-        vec![]
-    },
+        Some(a) => a.split(",").map(|x| x.to_owned()).collect::<Vec<String>>(),
+        None => {
+            body.set_attribute("history", "");
+            vec![]
+        }
     };
-    history.retain(|x| x!="");
+    history.retain(|x| x != "");
 
-    let index = body.get_attribute("history-index").unwrap_or("0".to_string()).parse::<usize>().unwrap_or(0);
-
-
+    let index = body
+        .get_attribute("history-index")
+        .unwrap_or("0".to_string())
+        .parse::<usize>()
+        .unwrap_or(0);
 
     return Ok((index, history));
 }
@@ -615,20 +617,17 @@ pub async fn add_history(location: String) -> Result<(), WebSysSugarsError> {
     history.push(location);
     history.dedup();
     index = history.len();
-    
-        if index <= 1 {
+
+    if index <= 1 {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
     }
     if index >= history.len() {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
     }
-    
-
-
 
     body.set_attribute("history", &history.join(","));
     body.set_attribute("history-index", &index.to_string());
@@ -636,30 +635,27 @@ pub async fn add_history(location: String) -> Result<(), WebSysSugarsError> {
     return Ok(());
 }
 
-
 #[wasm_bindgen]
 pub async fn back_arrow() -> Result<(), WebSysSugarsError> {
     let body = get_body()?;
     let (mut index, history) = get_history().await?;
 
     if index > 1 {
-        index -=1;
-    }else {
+        index -= 1;
+    } else {
         return Ok(());
     }
 
+    let _ = load_md(history[index - 1].clone().replace("#", "")).await;
 
-    
-    let _ = load_md(history[index-1].clone().replace("#", "")).await;
-    
     if index <= 1 {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
     }
     if index >= history.len() {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
     }
     body.set_attribute("history-index", &index.to_string());
@@ -675,21 +671,21 @@ pub async fn forward_arrow() -> Result<(), WebSysSugarsError> {
     if index >= history.len() {
         return Ok(());
     }
-    
+
     load_md(history[index].clone().replace("#", "").replace("%20", " ")).await?;
-    
+
     if index < history.len() {
-        index +=1;
+        index += 1;
     }
 
     if index <= 1 {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("back-arrow")?.set_attribute("disabled", "false");
     }
     if index >= history.len() {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "true");
-    }else {
+    } else {
         get_element_by_id("forward-arrow")?.set_attribute("disabled", "false");
     }
 
@@ -697,4 +693,3 @@ pub async fn forward_arrow() -> Result<(), WebSysSugarsError> {
     body.set_attribute("history-index", &index.to_string());
     return Ok(());
 }
-

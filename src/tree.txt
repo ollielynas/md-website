@@ -29,6 +29,7 @@ md_files\portfolio\golf
 md_files\portfolio\golf\dino game.md
 md_files\portfolio\golf\donut.md
 md_files\portfolio\golf\go fish.md
+md_files\portfolio\golf\haiku generator.md
 md_files\portfolio\itch.io
 md_files\portfolio\itch.io\bare king.md
 md_files\portfolio\itch.io\Casio BASIC scratch.md

@@ -6,4 +6,4 @@
 This project was inspired by the brainfuck programming language. Porgrames for this project are written onto a list that is then fed into the graph. Each command command is represented by a single number. 
 
 <iframe src="https://www.desmos.com/calculator/hrhfrsgzul?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
-<!-- LAST EDITED 1700522779 LAST EDITED-->
+<!-- LAST EDITED 1700532117 LAST EDITED-->

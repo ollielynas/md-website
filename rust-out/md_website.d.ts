@@ -77,6 +77,11 @@ export function startle_bird(): Promise<void>;
 * @returns {Promise<void>}
 */
 export function update_bird_target_location(): Promise<void>;
+/**
+* @param {string} text
+* @returns {Promise<void>}
+*/
+export function read_message(text: string): Promise<void>;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -100,13 +105,14 @@ export interface InitOutput {
   readonly on_finish_animation: () => number;
   readonly startle_bird: () => number;
   readonly update_bird_target_location: () => number;
+  readonly read_message: (a: number, b: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
-  readonly wasm_bindgen__convert__closures__invoke1_mut__h38b53f778116c328: (a: number, b: number, c: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke1_mut__hab830eaad86031a3: (a: number, b: number, c: number) => void;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
   readonly __wbindgen_exn_store: (a: number) => void;
-  readonly wasm_bindgen__convert__closures__invoke2_mut__h13b8e6ae1589bee8: (a: number, b: number, c: number, d: number) => void;
+  readonly wasm_bindgen__convert__closures__invoke2_mut__h68423c55ff3db5ca: (a: number, b: number, c: number, d: number) => void;
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;
