@@ -11,5 +11,6 @@
     ],
     "rust-analyzer.linkedProjects": [
         ".\\Cargo.toml"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
