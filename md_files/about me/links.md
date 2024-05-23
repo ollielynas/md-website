@@ -22,8 +22,6 @@ img[src^="https://img.shields.io"] {
 
 <br>
 
-[![Email Me](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:lynasollie@gmail.com)
 
 
-
-<!-- LAST EDITED 1700532117 LAST EDITED-->
+<!-- LAST EDITED 1716457229 LAST EDITED-->
